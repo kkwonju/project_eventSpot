@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인 페이지</title>
+<title>리스트</title>
 </head>
 <body>
-	메인 페이지입니다
+	리스트입니다
 </body>
 </html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kkwo.demo.repository.EventRepository">
+
+
+	<select id="getEvents" resultType="Event">
+		SELECT *
+		FROM `event`
+		ORDER BY
+		id DESC;
+	</select>
+	
+	<insert id="addEvent">
+		INSERT INTO `event`
+		SET regDate = NOw(),
+		updateDate = now(),
+		beginDt = #{beginDt},
+		endDt = #{endDt},
+		genreId = #{genreId},
+		location = #{location},
+		title = #{title},
+		detail = #{detail},
+		duration = #{duration};
+	</insert>
+</mapper>
