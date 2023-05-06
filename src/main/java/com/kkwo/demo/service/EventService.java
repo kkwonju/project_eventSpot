@@ -17,8 +17,22 @@ public class EventService {
 		return eventRepository.getEvents();
 	}
 
-	public void addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail, int duration) {
+	public Event getEvent(int id) {
+		return eventRepository.getEvent(id);
+	}
+
+	public void addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
+			int duration) {
 		eventRepository.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
 	}
-	
+
+	public void deleteEvent(int id) {
+		eventRepository.deleteEvent(id);
+	}
+
+	public void updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
+			String detail, int duration) {
+		eventRepository.updateEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
+	}
+
 }

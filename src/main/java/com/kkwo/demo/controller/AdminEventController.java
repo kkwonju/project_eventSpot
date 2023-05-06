@@ -11,14 +11,28 @@ import com.kkwo.demo.service.EventService;
 public class AdminEventController {
 	@Autowired
 	private EventService eventService;
-	
+
 	public AdminEventController(EventService eventService) {
 		this.eventService = eventService;
 	}
-	
+
 	@RequestMapping("/admin/event/addEvent")
 	@ResponseBody
-	public void addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail, int duration) {
+	public void addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
+			int duration) {
 		eventService.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
+	}
+
+	@RequestMapping("/admin/event/updateEvent")
+	@ResponseBody
+	public void updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
+			String detail, int duration) {
+		eventService.updateEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
+	}
+
+	@RequestMapping("/admin/event/deleteEvent")
+	@ResponseBody
+	public void deleteEvent(int id) {
+		eventService.deleteEvent(id);
 	}
 }

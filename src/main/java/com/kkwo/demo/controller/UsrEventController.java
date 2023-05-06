@@ -19,10 +19,17 @@ public class UsrEventController {
 		this.eventService = eventService;
 	}
 	
-	@RequestMapping("/usr/event/list")
+	@RequestMapping("/usr/event/showList")
 	@ResponseBody
 	public List<Event> showList() {
 		List<Event> events = eventService.getEvents();
 		return events;
+	}
+	
+	@RequestMapping("/usr/event/showEvent")
+	@ResponseBody
+	public Event showEvent(int id) {
+		Event event = eventService.getEvent(id);
+		return event;
 	}
 }

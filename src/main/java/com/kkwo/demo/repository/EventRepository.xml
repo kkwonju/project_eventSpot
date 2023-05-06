@@ -12,6 +12,12 @@
 		id DESC;
 	</select>
 	
+	<select id="getEvent" resultType="Event">
+		SELECT *
+		FROM `event`
+		WHERE id = #{id};
+	</select>
+	
 	<insert id="addEvent">
 		INSERT INTO `event`
 		SET regDate = NOw(),
@@ -24,4 +30,22 @@
 		detail = #{detail},
 		duration = #{duration};
 	</insert>
+	
+	<update id="updateEvent">
+		UPDATE `event`
+		SET updateDate = NOW(),
+		beginDt = #{beginDt},
+		endDt = #{endDt},
+		genreId = #{genreId},
+		location = #{location},
+		title = #{title},
+		detail = #{detail},
+		duration = #{duration}
+		WHERE id = #{id};
+	</update>
+	
+	<delete id="deleteEvent">
+		DELETE FROM `event`
+		WHERE id = #{id};
+	</delete>
 </mapper>
