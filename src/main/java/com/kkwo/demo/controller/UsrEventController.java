@@ -23,6 +23,12 @@ public class UsrEventController {
 		this.eventService = eventService;
 	}
 	
+	/** 메인페이지, 리스트 */
+	@RequestMapping("/usr/event/list")
+	public String list() {
+		return "usr/event/list";
+	}
+	
 	/** 이벤트 리스트 보여주기 */
 	@RequestMapping("/usr/event/showList")
 	@ResponseBody
