@@ -40,8 +40,21 @@
 							<a href="#">PROFILE</a>
 						</li>
 						<li class="fg"></li>
-						<li>
-							<a href="#">LOGIN</a>
+						<li class="menu_btn">
+							<a href="#">
+								<i class="fas fa-sharp fa-regular fa-bars" style="color: #ffffff;"></i>
+							</a>
+							<ul class="hidden_menu">
+								<li>
+									<a href="#">LOGIN</a>
+								</li>
+								<li>
+									<a href="">LOGOUT</a>
+								</li>
+								<li>
+									<button>DARK MODE</button>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>

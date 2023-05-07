@@ -147,14 +147,14 @@ main > .side_box  > .side_layout > .logo_box > a > img {
 /* .main  >  .side_box  >  .side_layout  >  .menu_box { */
 
 /* } */
-main > .side_box > .side_layout > .menu_box > ul {
+main > .side_box > .side_layout > .menu_box ul {
 	flex-direction: column;
 	text-align: center;
 	width: 100%;
 	height: 100%;
 }
 
-main > .side_box > .side_layout > .menu_box > ul > li {
+main > .side_box > .side_layout > .menu_box ul > li {
 	height: 60px;
 }
 
@@ -162,7 +162,7 @@ main > .side_box > .side_layout > .menu_box > ul > .fg {
 	height: 348px;
 }
 
-main > .side_box > .side_layout > .menu_box > ul > li > a {
+main > .side_box > .side_layout > .menu_box ul > li > a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -173,8 +173,33 @@ main > .side_box > .side_layout > .menu_box > ul > li > a {
 	font-size: 20px;
 }
 
-main > .side_box > .side_layout > .menu_box > ul > li:hover > a {
+main > .side_box > .side_layout > .menu_box ul > li:hover > a {
 	background-color: white;
+}
+
+main .menu_box > ul > .menu_btn {
+	position: absolute;
+	left: 10px;
+	width: 280px;
+	bottom: 0;
+}
+
+main .menu_box > ul > .menu_btn:hover {
+	bottom: 200px;
+}
+
+main .menu_box > ul > li > .hidden_menu {
+	display: none;
+	height: 200px;
+	border: 1px solid red;
+	position: absolute;
+	width: 100%;
+	transition: 
+}
+
+main .menu_box > ul > li:hover > .hidden_menu {
+	display: block;
+	height: 200px;
 }
 
 /* 사이드 박스 끝 */
