@@ -35,7 +35,7 @@ public class UsrEventController {
 	public ResultData showList() {
 		List<Event> events = eventService.getEvents();
 		if(events == null || events.size() == 0) {
-			return ResultData.buildResultData("F-S", "이벤트 목록이 없습니다");
+			return ResultData.buildResultData("F-IN", "이벤트 목록이 없습니다");
 		}
 		return ResultData.buildResultData("S-1", "이벤트 목록입니다", "events", events);
 	}
@@ -45,12 +45,12 @@ public class UsrEventController {
 	@ResponseBody
 	public ResultData showEvent(int id) {
 		if(Ut.isEmpty(id)) {
-			return ResultData.buildResultData("F-N", "id를 입력해주세요");
+			return ResultData.buildResultData("F-IN", "id를 입력해주세요");
 		}
 		Event event = eventService.getEvent(id);
 		if(event == null) {
-			return ResultData.buildResultData("F-S", Ut.f("%d번 이벤트는 없습니다", id), "id", id);
+			return ResultData.buildResultData("F-N", Ut.f("%d번 이벤트는 없습니다", id), "id", id);
 		}
-		return ResultData.buildResultData("F-S", Ut.f("%d번 이벤트", id), "event", event);
+		return ResultData.buildResultData("S-1", Ut.f("%d번 이벤트", id), "event", event);
 	}
 }

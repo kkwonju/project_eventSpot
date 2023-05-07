@@ -102,5 +102,50 @@ title = "김종욱찾기",
 detail = "연극",
 duration = 100;
 
+# member 테이블 추가
+CREATE TABLE `member`(
+    id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    loginId CHAR(20) NOT NULL UNIQUE,
+    loginPw CHAR(100) NOT NULL,
+    authLevel SMALLINT(2) UNSIGNED DEFAULT 2 COMMENT '권한 레벨 (2 일반, 8 관리자)',
+    nickname CHAR(50) NOT NULL,
+    email CHAR(50) NOT NULL UNIQUE,
+    delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴 여부 (0 유지, 1 탈퇴)',
+    delDate DATETIME COMMENT '탈퇴 날짜',
+    CONSTRAINT check_password_length CHECK (LENGTH(loginPw) >= 6)
+);
+
+# member 테스트 데이터 생성
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'admin1',
+loginPw = 'admin123',
+authLevel = 7,
+nickname = 'kkwo',
+email = 'leeplus0414@naver.com';
+
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test2',
+loginPw = 'pwpwpw1',
+nickname = '준하',
+email = 'junha0414@naver.com';
+
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test3',
+loginPw = 'pwpwpw2',
+nickname = '명수',
+email = 'myungsu@naver.com';
+
+SELECT LAST_INSERT_ID();
+
 SELECT * FROM `event`;
+SELECT * FROM eventSchedule;
 SELECT * FROM genre;
+SELECT * FROM `member`;

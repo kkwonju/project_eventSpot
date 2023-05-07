@@ -35,7 +35,7 @@ public class EventService {
 
 		int affectedRow = eventRepository.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
 		
-		if (affectedRow == 0) {
+		if (affectedRow != 1) {
 			return -1;
 		}
 		
@@ -46,7 +46,7 @@ public class EventService {
 	public int deleteEvent(int id) {
 		int affectedRow = eventRepository.deleteEvent(id);
 		
-		if(affectedRow == 0) {
+		if(affectedRow != 1) {
 			return -1;
 		}
 		
@@ -58,7 +58,7 @@ public class EventService {
 		
 		int affectedRow =  eventRepository.updateEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
 		
-		if(affectedRow == 0) {
+		if(affectedRow != 1) {
 			return -1;
 		}
 		return affectedRow;
