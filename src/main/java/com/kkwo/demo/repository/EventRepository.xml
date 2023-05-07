@@ -3,7 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kkwo.demo.repository.EventRepository">
-
+	
+	<select id="getLastInsertId">
+		SELECT LAST_INSERT_ID();
+	</select>
 
 	<select id="getEvents" resultType="Event">
 		SELECT *

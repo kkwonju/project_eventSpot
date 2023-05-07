@@ -14,11 +14,13 @@ public interface EventRepository {
 
 	public Event getEvent(int id);
 
-	public void addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
+	public int addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
 			int duration);
 
-	public void deleteEvent(int id);
+	public int deleteEvent(int id);
 
-	public void updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
+	public int updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
 			String detail, int duration);
+
+	public int getLastInsertId();
 }

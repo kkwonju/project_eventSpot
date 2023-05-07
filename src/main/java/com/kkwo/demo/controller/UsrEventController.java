@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kkwo.demo.service.EventService;
 import com.kkwo.demo.vo.Event;
 
+import ch.qos.logback.core.joran.conditional.IfAction;
+
 @Controller
 public class UsrEventController {
 	@Autowired
@@ -19,17 +21,28 @@ public class UsrEventController {
 		this.eventService = eventService;
 	}
 	
+	/** 이벤트 리스트 보여주기 */
 	@RequestMapping("/usr/event/showList")
 	@ResponseBody
-	public List<Event> showList() {
+	public Object showList() {
 		List<Event> events = eventService.getEvents();
+		if(events == null || events.size() == 0) {
+			return "이벤트 목록이 없습니다";
+		}
 		return events;
 	}
 	
+	/** 이벤트 보여주기 */
 	@RequestMapping("/usr/event/showEvent")
 	@ResponseBody
-	public Event showEvent(int id) {
+	public Object showEvent(int id) {
+		if(id == 0) {
+			return "이벤트 id를 입력해주세요";
+		}
 		Event event = eventService.getEvent(id);
+		if(event == null) {
+			return "이벤트가 없습니다";
+		}
 		return event;
 	}
 }

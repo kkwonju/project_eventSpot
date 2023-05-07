@@ -12,6 +12,11 @@ import com.kkwo.demo.vo.Event;
 public class EventService {
 	@Autowired
 	private EventRepository eventRepository;
+	
+	private int getLastInsertId() {
+		int id = eventRepository.getLastInsertId();
+		return id;
+	}
 
 	public List<Event> getEvents() {
 		return eventRepository.getEvents();
@@ -21,18 +26,38 @@ public class EventService {
 		return eventRepository.getEvent(id);
 	}
 
-	public void addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
+	public int addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
 			int duration) {
-		eventRepository.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
+
+		int affectedRow = eventRepository.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
+		
+		if (affectedRow == 0) {
+			return -1;
+		}
+		
+		int eventId = getLastInsertId();		
+		return eventId;
 	}
 
-	public void deleteEvent(int id) {
-		eventRepository.deleteEvent(id);
+	public int deleteEvent(int id) {
+		int affectedRow = eventRepository.deleteEvent(id);
+		
+		if(affectedRow == 0) {
+			return -1;
+		}
+		
+		return affectedRow;
 	}
 
-	public void updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
+	public int updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
 			String detail, int duration) {
-		eventRepository.updateEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
+		
+		int affectedRow =  eventRepository.updateEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
+		
+		if(affectedRow == 0) {
+			return -1;
+		}
+		return affectedRow;
 	}
 
 }
