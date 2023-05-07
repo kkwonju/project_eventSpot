@@ -13,6 +13,10 @@ public class EventService {
 	@Autowired
 	private EventRepository eventRepository;
 	
+	public EventService(EventRepository eventRepository) {
+		this.eventRepository = eventRepository;
+	}
+	
 	private int getLastInsertId() {
 		int id = eventRepository.getLastInsertId();
 		return id;
@@ -35,7 +39,7 @@ public class EventService {
 			return -1;
 		}
 		
-		int eventId = getLastInsertId();		
+		int eventId = getLastInsertId();
 		return eventId;
 	}
 

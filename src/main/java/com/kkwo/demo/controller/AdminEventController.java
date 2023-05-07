@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kkwo.demo.service.EventService;
+import com.kkwo.demo.util.Ut;
 
 import ch.qos.logback.core.joran.conditional.IfAction;
 
@@ -23,25 +24,25 @@ public class AdminEventController {
 	public Object addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
 			int duration) {
 		
-		if(beginDt == null || beginDt.length() == 0) {
+		if(Ut.isEmpty(beginDt)) {
 			return "시작 날짜를 입력해주세요";
 		}
-		if(endDt == null || endDt.length() == 0) {
+		if(Ut.isEmpty(endDt)) {
 			return "종료 날짜를 입력해주세요";
 		}
-		if(genreId == 0) {
+		if(Ut.isEmpty(genreId)) {
 			return "장르를 입력해주세요";
 		}
-		if(location == null || location.length() == 0) {
+		if(Ut.isEmpty(location)) {
 			return "장소를 입력해주세요";
 		}
-		if(title == null || title.length() == 0) {
+		if(Ut.isEmpty(title)) {
 			return "제목을 입력해주세요";
 		}
-		if(detail == null || detail.length() == 0) {
+		if(Ut.isEmpty(detail)) {
 			return "내용을 입력해주세요";
 		}
-		if(duration == 0) {
+		if(Ut.isEmpty(duration)) {
 			return "공연 시간을 입력해주세요";
 		}
 		

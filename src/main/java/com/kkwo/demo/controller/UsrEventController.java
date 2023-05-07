@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kkwo.demo.service.EventService;
+import com.kkwo.demo.util.Ut;
 import com.kkwo.demo.vo.Event;
 
 import ch.qos.logback.core.joran.conditional.IfAction;
@@ -36,7 +37,7 @@ public class UsrEventController {
 	@RequestMapping("/usr/event/showEvent")
 	@ResponseBody
 	public Object showEvent(int id) {
-		if(id == 0) {
+		if(Ut.isEmpty(id)) {
 			return "이벤트 id를 입력해주세요";
 		}
 		Event event = eventService.getEvent(id);

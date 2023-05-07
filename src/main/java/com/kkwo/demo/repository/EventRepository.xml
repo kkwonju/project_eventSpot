@@ -4,7 +4,7 @@
 
 <mapper namespace="com.kkwo.demo.repository.EventRepository">
 	
-	<select id="getLastInsertId">
+	<select id="getLastInsertId" resultType="int">
 		SELECT LAST_INSERT_ID();
 	</select>
 
