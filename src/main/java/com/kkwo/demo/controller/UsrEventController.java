@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kkwo.demo.service.EventService;
 import com.kkwo.demo.util.Ut;
 import com.kkwo.demo.vo.Event;
+import com.kkwo.demo.vo.ResultData;
 
 import ch.qos.logback.core.joran.conditional.IfAction;
 
@@ -25,25 +26,25 @@ public class UsrEventController {
 	/** 이벤트 리스트 보여주기 */
 	@RequestMapping("/usr/event/showList")
 	@ResponseBody
-	public Object showList() {
+	public ResultData showList() {
 		List<Event> events = eventService.getEvents();
 		if(events == null || events.size() == 0) {
-			return "이벤트 목록이 없습니다";
+			return ResultData.buildResultData("F-S", "이벤트 목록이 없습니다");
 		}
-		return events;
+		return ResultData.buildResultData("S-1", "이벤트 목록입니다", "events", events);
 	}
 	
 	/** 이벤트 보여주기 */
 	@RequestMapping("/usr/event/showEvent")
 	@ResponseBody
-	public Object showEvent(int id) {
+	public ResultData showEvent(int id) {
 		if(Ut.isEmpty(id)) {
-			return "이벤트 id를 입력해주세요";
+			return ResultData.buildResultData("F-N", "id를 입력해주세요");
 		}
 		Event event = eventService.getEvent(id);
 		if(event == null) {
-			return "이벤트가 없습니다";
+			return ResultData.buildResultData("F-S", Ut.f("%d번 이벤트는 없습니다", id), "id", id);
 		}
-		return event;
+		return ResultData.buildResultData("F-S", Ut.f("%d번 이벤트", id), "event", event);
 	}
 }

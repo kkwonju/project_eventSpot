@@ -26,4 +26,8 @@ public class Ut {
 		}	
 	}
 
+	/** 지정된 형식으로 문자열 생성 */
+	public static String f(String format, Object... args) {
+		return String.format(format, args);
+	}
 }
