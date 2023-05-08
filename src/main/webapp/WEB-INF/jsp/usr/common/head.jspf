@@ -42,7 +42,7 @@
 						<li class="fg"></li>
 						<li class="menu_btn">
 							<a href="#">
-								<i class="fas fa-sharp fa-regular fa-bars" style="color: #ffffff;"></i>
+								<i class="fas fa-sharp fa-regular fa-bars"></i>
 							</a>
 							<ul class="hidden_menu">
 								<li>
