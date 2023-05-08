@@ -17,7 +17,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 </head>
 <body>
-	<main>
+	<section class="side">
 		<div class="side_box">
 			<div class="side_layout flex">
 				<div class="logo_box">
@@ -46,10 +46,13 @@
 							</a>
 							<ul class="hidden_menu">
 								<li>
-									<a href="#">LOGIN</a>
+									<a href="../member/login">LOGIN</a>
 								</li>
 								<li>
-									<a href="">LOGOUT</a>
+									<a href="../member/join">SIGN UP</a>
+								</li>
+								<li>
+									<a href="../member/doLogout">LOGOUT</a>
 								</li>
 								<li>
 									<button>DARK MODE</button>
@@ -60,3 +63,5 @@
 				</div>
 			</div>
 		</div>
+	</section>
+	<section class="center">

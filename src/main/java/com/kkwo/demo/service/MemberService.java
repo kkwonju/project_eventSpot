@@ -50,6 +50,10 @@ public class MemberService {
 		
 		return ResultData.buildResultData("S-1", "로그인 성공");
 	}
+	
+	public Member getMemberById(int id) {
+		return memberRepository.getMemberById(id);
+	}
 
 	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);

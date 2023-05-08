@@ -8,7 +8,7 @@
 		SELECT LAST_INSERT_ID();
 	</select>
 
-	<select id="getMemberById">
+	<select id="getMemberById" resultType="Member">
 		SELECT *
 		FROM `member`
 		WHERE id = #{id};

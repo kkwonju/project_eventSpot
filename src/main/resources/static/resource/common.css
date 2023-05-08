@@ -17,9 +17,15 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 /* 노말라이즈 */
 html {
-	/* 영문이면 roboto가 적용되고, 한글이면 Noto Sans KR가 적용되도록 아래와 같은 순서로 배치 */
 	font-family: "SUITE-Regular", sans;
 }
 
@@ -68,6 +74,10 @@ label[for] {
 	display: flex;
 }
 
+.fd-c {
+	flex-direction: column;
+}
+
 .flex-jc-e {
 	justify-content: flex-end;
 }
@@ -105,18 +115,14 @@ label[for] {
 	margin: 0 auto;
 }
 
-/* 임시 */
-/* * { */
-/*   border: 1px solid #000; */
-/* } */
 
 /* 메인 */
-main {
+body {
 	width: 100vw;
 }
 
 /* 사이드 박스 시작 */
-main > .side_box {
+section > .side_box {
 	position: fixed;
 	margin-top: -10px;
 	width: 300px;
@@ -124,7 +130,7 @@ main > .side_box {
 	background-color: white;
 }
 
-main > .side_box > .side_layout {
+section > .side_box > .side_layout {
 	flex-direction: column;
 	border-radius: 10px;
 	margin: 10px;
@@ -132,7 +138,7 @@ main > .side_box > .side_layout {
 	background-color: #F2B3B9;
 }
 
-main > .side_box > .side_layout > .logo_box > a {
+section > .side_box > .side_layout > .logo_box > a {
 	padding: 30px 0 20px 0;
 	height: 100px;
 	text-align: center;
@@ -147,22 +153,22 @@ main > .side_box  > .side_layout > .logo_box > a > img {
 /* .main  >  .side_box  >  .side_layout  >  .menu_box { */
 
 /* } */
-main > .side_box > .side_layout > .menu_box ul {
+section > .side_box > .side_layout > .menu_box ul {
 	flex-direction: column;
 	text-align: center;
 	width: 100%;
 	height: 100%;
 }
 
-main > .side_box > .side_layout > .menu_box ul > li {
+section > .side_box > .side_layout > .menu_box ul > li {
 	height: 60px;
 }
 
-main > .side_box > .side_layout > .menu_box > ul > .fg {
+section > .side_box > .side_layout > .menu_box > ul > .fg {
 	height: 348px;
 }
 
-main > .side_box > .side_layout > .menu_box ul > li > a {
+section > .side_box > .side_layout > .menu_box ul > li > a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -173,31 +179,31 @@ main > .side_box > .side_layout > .menu_box ul > li > a {
 	font-size: 20px;
 }
 
-main > .side_box > .side_layout > .menu_box ul > li:hover > a {
+section > .side_box > .side_layout > .menu_box ul > li:hover > a {
 	background-color: white;
+	color: #F2B3B9;
 }
 
-main .menu_box > ul > .menu_btn {
+section .menu_box > ul > .menu_btn {
 	position: absolute;
 	left: 10px;
 	width: 280px;
 	bottom: 0;
 }
 
-main .menu_box > ul > .menu_btn:hover {
+section .menu_box > ul > .menu_btn:hover {
 	bottom: 200px;
 }
 
-main .menu_box > ul > li > .hidden_menu {
+section .menu_box > ul > li > .hidden_menu {
 	display: none;
 	height: 200px;
 	border: 1px solid red;
 	position: absolute;
 	width: 100%;
-	transition: 
 }
 
-main .menu_box > ul > li:hover > .hidden_menu {
+section .menu_box > ul > li:hover > .hidden_menu {
 	display: block;
 	height: 200px;
 }
@@ -205,12 +211,12 @@ main .menu_box > ul > li:hover > .hidden_menu {
 /* 사이드 박스 끝 */
 
 /* 센터 박스 시작 */
-main > .center_box {
+section.center {
 	margin-top: 10px;
 	margin-left: 300px;
 }
 
-main > .center_box > .center_layout {
+section > .center_box > .center_layout {
 	border: 5px solid blue;
 }
 
@@ -247,3 +253,62 @@ main > .center_box > .center_layout {
 	height: 200px;
 }
 /* 센터박스 끝 */
+
+/* Member join 박스 시작 */
+section.center > .memberForm > form {
+	padding: 50px 0 100px 0;
+	border-radius: 10px;
+	box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.5);
+}
+
+section.center > .memberForm h1 {
+	text-align: center;
+	font-size: 30px;
+}
+
+section > .memberForm {
+/* 	border: 1px solid red; */
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+section > .memberForm .input_box {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+}
+
+.input_box > label, .input_box > input, .input_box > button {
+	border-radius: 10px;
+	font-family: "Pretendard-Regular", "sans";
+	font-size: 18px;
+	padding: 20px 0 10px 0;
+	width: 100%;
+}
+
+.input_box > input {
+	padding: 15px 0 15px 7px;
+	font-size: 15px;
+}
+
+.input_box > input:focus {
+	scale: 1.05;
+}
+
+.input_box > button {
+	margin-top: 40px;
+	padding: 15px;
+	width: 314px;
+	border: none;
+	background-color: #F2B3B9;
+	color: white;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.input_box > button:active {
+	scale: 0.9;
+}

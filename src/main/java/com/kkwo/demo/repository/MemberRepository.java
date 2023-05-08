@@ -11,7 +11,7 @@ public interface MemberRepository {
 
 	int getLastInsertId();
 
-	Member getMemberByid(int id);
+	Member getMemberById(int id);
 
 	Member getMemberByLoginId(String loginId);
 
