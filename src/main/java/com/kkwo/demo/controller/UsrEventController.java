@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,32 +26,23 @@ public class UsrEventController {
 	
 	/** 메인페이지, 리스트 */
 	@RequestMapping("/usr/event/list")
-	public String list() {
+	public String showEventlist(Model model) {
+		List<Event> events = eventService.getEvents();
+		model.addAttribute("events", events);
 		return "usr/event/list";
 	}
 	
-	/** 이벤트 리스트 보여주기 */
-	@RequestMapping("/usr/event/showList")
-	@ResponseBody
-	public ResultData showList() {
-		List<Event> events = eventService.getEvents();
-		if(events == null || events.size() == 0) {
-			return ResultData.buildResultData("F-IN", "이벤트 목록이 없습니다");
-		}
-		return ResultData.buildResultData("S-1", "이벤트 목록입니다", "events", events);
-	}
-	
 	/** 이벤트 보여주기 */
-	@RequestMapping("/usr/event/showEvent")
-	@ResponseBody
-	public ResultData showEvent(int id) {
+	@RequestMapping("/usr/event/detail")
+	public String showEventDetail(Model model, int id) {
 		if(Ut.isEmpty(id)) {
-			return ResultData.buildResultData("F-IN", "id를 입력해주세요");
+			return Ut.jsHistoryBack("id를 입력해주세요");
 		}
 		Event event = eventService.getEvent(id);
 		if(event == null) {
-			return ResultData.buildResultData("F-N", Ut.f("%d번 이벤트는 없습니다", id), "id", id);
+			return Ut.jsHistoryBack(Ut.f("%d번 이벤트는 없습니다", id));
 		}
-		return ResultData.buildResultData("S-1", Ut.f("%d번 이벤트", id), "event", event);
+		model.addAttribute("event", event);
+		return "usr/event/detail";
 	}
 }

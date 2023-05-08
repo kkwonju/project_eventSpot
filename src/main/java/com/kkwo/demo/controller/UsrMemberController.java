@@ -29,35 +29,34 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-	public ResultData doJoin(HttpServletRequest req, String loginId, String loginPw, String nickname, String email) {
+	public String doJoin(HttpServletRequest req, String loginId, String loginPw, String nickname, String email) {
 		Rq rq = new Rq(req, memberService);
 
 		if (rq.isLogined()) {
-			return ResultData.buildResultData("F-A", "이미 로그인 중입니다");
+			return Ut.jsHistoryBack("이미 로그인 중입니다");
 		}
-
 		if (Ut.isEmpty(loginId)) {
-			return ResultData.buildResultData("F-IN", "로그인 아이디를 입력하세요");
+			return Ut.jsHistoryBack("로그인 아이디를 입력하세요");
 		}
 		if (Ut.isEmpty(loginPw)) {
-			return ResultData.buildResultData("F-IN", "로그인 패스워드를 입력하세요");
+			return Ut.jsHistoryBack("로그인 패스워드를 입력하세요");
 		}
 		if (Ut.isEmpty(nickname)) {
-			return ResultData.buildResultData("F-IN", "닉네임을 입력하세요");
+			return Ut.jsHistoryBack("닉네임을 입력하세요");
 		}
 		if (Ut.isEmpty(email)) {
-			return ResultData.buildResultData("F-IN", "이메일를 입력하세요");
+			return Ut.jsHistoryBack("이메일를 입력하세요");
 		}
 
 		ResultData joinMemberRd = memberService.doJoinMember(loginId, loginPw, nickname, email);
 
 		if (joinMemberRd.isFail()) {
-			return (ResultData) joinMemberRd;
+			return Ut.jsHistoryBack(joinMemberRd.getResultMsg());
 		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 
-		return ResultData.buildResultData("S-1", Ut.f("%s님 회원가입 성공", member.getNickname()));
+		return Ut.jsReplace(Ut.f("%s님 회원가입 성공", member.getNickname()), "/");
 	}
 
 	@RequestMapping("/usr/member/login")
@@ -67,44 +66,44 @@ public class UsrMemberController {
 	
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody
-	public ResultData doLogin(HttpServletRequest req, String loginId, String loginPw) {
+	public String doLogin(HttpServletRequest req, String loginId, String loginPw) {
 		Rq rq = new Rq(req, memberService);
 
 		if (rq.isLogined()) {
-			return ResultData.buildResultData("F-A", "이미 로그인 중입니다");
+			return Ut.jsHistoryBack("이미 로그인 중입니다");
 		}
 
 		if (Ut.isEmpty(loginId)) {
-			return ResultData.buildResultData("F-IN", "로그인 아이디를 입력하세요");
+			return Ut.jsHistoryBack("로그인 아이디를 입력하세요");
 		}
 		if (Ut.isEmpty(loginPw)) {
-			return ResultData.buildResultData("F-IN", "로그인 패스워드를 입력하세요");
+			return Ut.jsHistoryBack("로그인 패스워드를 입력하세요");
 		}
 
 		ResultData loginMemberRd = memberService.doLoginMember(loginId, loginPw);
 
 		if (loginMemberRd.isFail()) {
-			return (ResultData) loginMemberRd;
+			return Ut.jsHistoryBack(loginMemberRd.getResultMsg());
 		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 		
 		rq.login(member);
 		
-		return ResultData.buildResultData("S-1", "로그인 성공");
+		return Ut.jsReplace("로그인 성공", "/");
 	}
 
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
-	public ResultData doLogout(HttpServletRequest req) {
+	public String doLogout(HttpServletRequest req) {
 		Rq rq = new Rq(req, memberService);
 
 		if (!rq.isLogined()) {
-			return ResultData.buildResultData("F-A", "로그아웃 상태입니다");
+			return Ut.jsHistoryBack("로그아웃 상태입니다");
 		}
 
 		rq.logout();
 		
-		return ResultData.buildResultData("S-1", "로그아웃 성공");
+		return Ut.jsReplace("로그아웃 성공", "/");
 	}
 }

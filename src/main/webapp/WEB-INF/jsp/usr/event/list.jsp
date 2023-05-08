@@ -5,22 +5,30 @@
 <%@ include file="../common/head.jspf"%>
 		<div class="center_box">
 			<div class="center_layout con flex">
-				<div class="content_box">
-					<div class="content flex">
-						<div class="profile_box">
-<%-- 							${} --%>
-						</div>
-						<div class="img_box">
-<%-- 							${ } --%>
-						</div>
-						<div class="reaction_box">
-<%-- 							${ } --%>
-						</div>
-						<div class="reply_box">
-<%-- 							${ } --%>
+				<c:forEach var="event" items="${events}">
+					<div class="content_box">
+						<div class="content flex">
+							<div class="profile_box">
+								프로필
+							</div>
+							<div class="img_box">
+								<a href="../event/detail?id=${event.id}">
+									<img src="https://picsum.photos/id/${event.id}/430/602" alt="image" />
+								</a>
+								${event.location }
+								${event.title}
+								${event.detail}
+							</div>
+							<div class="reaction_box">
+								<button style="cursor: pointer"><i class="fa-sharp fa-regular fa-heart"></i></button>
+								리액션
+							</div>
+							<div class="reply_box">
+								댓글
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 

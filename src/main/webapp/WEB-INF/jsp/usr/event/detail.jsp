@@ -7,16 +7,13 @@
 				<div class="content_box">
 					<div class="content flex">
 						<div class="profile_box">
-<%-- 							${} --%>
 						</div>
 						<div class="img_box">
-<%-- 							${ } --%>
+							<img src="https://picsum.photos/id/${event.id}/430/602" alt="image" />
 						</div>
 						<div class="reaction_box">
-<%-- 							${ } --%>
 						</div>
 						<div class="reply_box">
-<%-- 							${ } --%>
 						</div>
 					</div>
 				</div>

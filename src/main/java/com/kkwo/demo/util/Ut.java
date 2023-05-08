@@ -1,33 +1,71 @@
 package com.kkwo.demo.util;
 
 public class Ut {
-	
+
 	/** 해당 객체가 비었는지 체크 */
 	public static boolean isEmpty(Object obj) {
-		
-		if(obj == null) {
+
+		if (obj == null) {
 			return true;
 		}
-		
-		if(obj instanceof Integer) {
+
+		if (obj instanceof Integer) {
 			return (int) obj == 0;
 		}
-		
-		if(!(obj instanceof String)) {
+
+		if (!(obj instanceof String)) {
 			return true;
 		}
-		
+
 		String str = (String) obj;
-		
+
 		try {
 			return str.trim().length() == 0;
 		} catch (NullPointerException e) {
 			return true;
-		}	
+		}
 	}
 
 	/** 지정된 형식으로 문자열 생성 */
 	public static String f(String format, Object... args) {
 		return String.format(format, args);
+	}
+
+	/** 자바스크립트 메세지 띄운 뒤 되돌려보내기 */
+	public static String jsHistoryBack(String resultMsg) {
+		if (resultMsg == null) {
+			resultMsg = "";
+		}
+
+		return Ut.f("""
+				<script>
+					const resultMsg = '%s'.trim();
+					if( resultMsg.length > 0 ){
+						alert(resultMsg);
+					}
+					history.back();
+				</script>
+				""", resultMsg);
+	}
+
+	/** 자바스크립트 메세지 띄운 뒤 특정 페이지로 이동 */
+	public static String jsReplace(String resultMsg, String uri) {
+		if(resultMsg == null) {
+			resultMsg = "";
+		}
+		
+		if(uri == null) {
+			uri = "/";
+		}
+		
+		return Ut.f("""
+				<script>
+					const resultMsg = '%s'.trim();
+					if( resultMsg.length > 0 ){
+						alert(resultMsg);
+					}
+					location.replace('%s');
+				</script>
+				""", resultMsg, uri);
 	}
 }

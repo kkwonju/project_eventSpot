@@ -218,6 +218,7 @@ section.center {
 
 section > .center_box > .center_layout {
 	border: 5px solid blue;
+	flex-direction: column;
 }
 
 /* content 박스 시작 */
@@ -253,6 +254,11 @@ section > .center_box > .center_layout {
 	height: 200px;
 }
 /* 센터박스 끝 */
+
+/* 리액션 박스 시작 */
+.center_box .reaction_box > button > i {
+	font-size: 25px;
+}
 
 /* Member join 박스 시작 */
 section.center > .memberForm > form {

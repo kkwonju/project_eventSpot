@@ -19,12 +19,12 @@ public class MemberService {
 	public ResultData doJoinMember(String loginId, String loginPw, String nickname, String email) {
 		Member member = getMemberByLoginId(loginId);
 		if(member != null) {
-			return ResultData.buildResultData("F-E", "이미 존재하는 아이디");
+			return ResultData.buildResultData("F-E", "이미 존재하는 아이디입니다");
 		}
 		
 		member = getMemberByEmail(email);
 		if(member != null) {
-			return ResultData.buildResultData("F-E", "이미 존재하는 이메일");
+			return ResultData.buildResultData("F-E", "이미 존재하는 이메일입니다");
 		}
 		
 		int affectedRow = memberRepository.doJoinMember(loginId, loginPw, nickname, email);
