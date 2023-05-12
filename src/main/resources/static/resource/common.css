@@ -19,11 +19,14 @@
 }
 
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
 }
+
 /* 노말라이즈 */
 html {
 	font-family: "SUITE-Regular", sans;
@@ -111,191 +114,283 @@ label[for] {
 }
 
 .con {
-	width: 1200px;
 	margin: 0 auto;
 }
+/* 라이브러리 끝 */
 
-
-/* 메인 */
-html, body {
-	height: 100%;
-	width: 100%;
+/* CSS 변수 설정 */
+html[data-theme="light"] {
+	--primary-bgc: white;
+	--primary-bgc-2: #F2B3B9;
+	--primary-color: #F2B3B9;
+	--primary-font-color: black;
+	--primary-rev-color: white;
 }
 
-/* SECTION 사이드 시작 */
-section.side > .side_box {
-	position: fixed;
-	margin-top: -10px;
+html[data-theme="dark"] {
+	--primary-bgc: #032940;
+	--primary-bgc-2: #032940;
+	--primary-color: white;
+	--primary-font-color: white;
+	--primary-rev-color: #032940;
+}
+
+
+/* :root { */
+/* 	--primary-bgc: white; */
+/* 	--primary-bgc-2: #F2B3B9; */
+/* 	--primary-color: #F2B3B9; */
+/* 	--primary-font-color: black; */
+/* 	--primary-rev-color: white; */
+/* } */
+
+/* :root.dark { */
+/* 	--primary-bgc: #032940; */
+/* 	--primary-bgc-2: white; */
+/* 	--primary-color: white; */
+/* 	--primary-font-color: white; */
+/* 	--primary-rev-color: #032940; */
+/* } */
+
+
+main {
+	display: flex;
+	height: 100vh;
+}
+
+/* SECTION ghost 시작 */
+main > section.ghost {
 	width: 300px;
 	height: 100%;
-	background-color: white;
+}
+/* SECTION ghost 끝 */
+
+/* SECTION SIDE 시작 */
+main > .side {
+	position: fixed;
+	width: 300px;
+	height: 100%;
+	background-color: var(--primary-bgc);
 }
 
-section.side > .side_box > .side_layout {
+main > .side > .side_box {
+	position: relative;
 	flex-direction: column;
 	border-radius: 10px;
 	margin: 10px;
 	height: 100%;
-	border: 2px solid #F2B3B9;
-/* 	background-color: #F2B3B9; */
+	border: 2px solid var(--primary-color);
 }
 
-section.side > .side_box > .side_layout > .logo_box > a {
+/* 로고박스 시작 */
+main > .side > .side_box > .logo_box > a {
 	padding: 30px 0 20px 0;
 	height: 100px;
 	text-align: center;
 	justify-content: center;
 }
 
-
-main > .side_box  > .side_layout > .logo_box > a > img {
+main > .side > .side_box > .logo_box > a > img {
 	width: 100x;
 }
+/* 로고 박스 끝  */
 
-
-section > .side_box > .side_layout > .menu_box ul {
+/* 메뉴 박스 시작 */
+main > .side .menu_box > ul {
 	flex-direction: column;
 	text-align: center;
 	width: 100%;
 	height: 100%;
 }
 
-section > .side_box > .side_layout > .menu_box ul > li {
+main > .side .menu_box ul > li {
 	height: 60px;
 }
 
-section > .side_box > .side_layout > .menu_box > ul > .fg {
-	height: 348px;
-}
-
-section > .side_box > .side_layout > .menu_box ul > li > a {
+main > .side .menu_box ul > li > a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100%;
 	transition: .2s;
-	color: #F2B3B9;
+	color: var(--primary-color);
 	font-size: 20px;
 }
 
-section.side > .side_box > .side_layout > .menu_box ul > li:hover > a {
-	background-color: #F2B3B9;
-	color: white;
+main > .side .menu_box ul > li:hover > a {
+	background-color: var(--primary-color);
+	color: var(--primary-rev-color);
 }
 
-section.side .menu_box > ul > .menu_btn {
+/* hidden_menu 시작 */
+main > .side .menu_box > ul > .menu_btn.active > a {
+	background-color: var(--primary-color);
+}
+
+main > .side .menu_box > ul > .menu_btn {
 	position: absolute;
-	left: 10px;
-	width: 280px;
-	bottom: 0;
-}
-
-section.side .menu_box > ul > .menu_btn:hover {
-	bottom: 200px;
-}
-
-section.side .menu_box > ul > .menu_btn > a > i {
-	color: #F2B3B9;
-}
-
-section.side .menu_box > ul > .menu_btn:hover > a > i {
-	color: white;
-}
-
-section.side .menu_box > ul > li > .hidden_menu {
-	display: none;
-	height: 200px;
-	border: 1px solid red;
-	position: absolute;
+	background-color: var(--primary-bgc);
 	width: 100%;
+	bottom: 10px;
+	transition: bottom 1s;
 }
 
-section.side .menu_box > ul > li:hover > .hidden_menu {
-	display: block;
+main > .side .menu_box > ul > .menu_btn.active {
+	bottom: 270px;
+}
+
+main > .side .menu_box > ul > .menu_btn > a > i {
+	color: var(--primary-color);
+}
+
+main > .side .menu_box > ul > .menu_btn.active > a > i {
+	color: var(--primary-rev-color);
+}
+
+main > .side .menu_box > ul > .menu_btn:hover > a > i {
+	color: var(--primary-rev-color);
+}
+
+main > .side .menu_box > ul > .menu_btn > .hidden_menu {
+	background-color: var(--primary-bgc);
+	opacity: 0;
+	height: 200px;
+	width: 100%;
+	transition: opacity .5s .1s;
+}
+
+main > .side .menu_box > ul > .menu_btn.active > .hidden_menu {
+	opacity: 1;
 	height: 200px;
 }
+/* hidden_menu 끝 */
 
-/* SECTION 사이드 끝 */
-
-
-
-/* SECTION 센터 시작 */
-section.center {
-	margin-top: 10px;
-	margin-left: 300px;
+/* 다크모드 */
+.darkMode {
+	cursor: pointer;
 }
 
-section > .center_box > .center_layout {
-	border: 1px solid olive;
+/* SECTION SIDE 끝 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SECTION CENTER 시작 */
+main > section.center {
+	background-color: var(--primary-bgc);
+	flex-grow: 2;
+}
+
+main > section.center > .center_box {
+	background-color: white;
 	flex-direction: column;
-	width: 800px;
+	padding-top: 10px;
+	width: 600px;
 }
 
 /* content 박스 시작 */
-.content_box {
+main > section.center > .center_box > .content_box {
+	padding: 50px 0;
+	border-bottom: 1px solid var(--primary-font-color);
 	width: 100%;
 }
 
-.content_box > .content {
+main > section.center > .center_box > .content_box > .contents {
 	flex-direction: column;
 }
 
-.content_box > .content * {
-	border: 1px solid red;
+main > section.center > .center_box > .content_box > .contents * {
+	
 }
 
-.content_box > .content > .profile_box {
+/* location_box 시작 */
+
+/* location_box 끝 */
+
+/* img_box 시작 */   
+main > section.center > .center_box > .content_box > .contents > .info_box > .img_box
+	{
+	width: 350px;
+}
+
+main > section.center > .center_box > .content_box > .contents > .info_box > .img_box > img
+	{
+	border-radius: 10px;
+	width: 100%;
+}
+/* info_box 끝 */
+
+main > section.center > .center_box > .content_box > .contents > .reaction_box {
 	width: 100%;
 	height: 50px;
 }
 
-.content_box > .content > .img_box {
-	width: 100%;
-	height: 602px;
-}
-
-.content_box > .content > .reaction_box {
-	width: 100%;
-	height: 50px;
-}
-
-.content_box > .content > .reply_box {
+main > section.center > .center_box > .content_box > .content_box > .contents > .reply_box
+	{
 	width: 100%;
 	height: 200px;
 }
 
 /* 리액션 박스 시작 */
-.center_box .reaction_box > button > i {
+main > section.center > .center_box > .center_box > .content_box > .contents > .reaction_box > button > i
+	{
 	font-size: 25px;
 }
 
+/* 리액션 박스 끝 */
 
-/* Member join 박스 시작 */
-section.center > .memberForm > form {
-	padding: 50px 0 100px 0;
+
+
+
+
+
+
+
+/* Member 박스 시작 */
+main > section.center > .memberForm > form {
+	background-color: white; 
+	padding : 50px 0 100px 0;
 	border-radius: 10px;
-	box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.5);
+	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
+	padding: 50px 0 100px 0;
 }
 
-section.center > .memberForm h1 {
+html[data-theme="dark"]  main > section.center > .memberForm > form {
+	box-shadow: inset 3px 3px 5px 4px rgba(0, 0, 0, 0.5);
+}
+
+main > section.center > .memberForm h1 {
 	text-align: center;
 	font-size: 30px;
 }
 
-section > .memberForm {
-/* 	border: 1px solid red; */
-	margin-left: auto;
-	margin-right: auto;
+main > section.center > .memberForm {
+	margin: 0 auto;
 	width: 600px;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 50px;
 }
 
-section > .memberForm .input_box {
+main > section.center > .memberForm .input_box {
 	margin-left: auto;
 	margin-right: auto;
 	width: 300px;
+}
+
+.memberForm * {
+/* 	border: 1px solid red; */
 }
 
 .input_box > label, .input_box > input, .input_box > button {
@@ -306,26 +401,39 @@ section > .memberForm .input_box {
 	width: 100%;
 }
 
-.input_box > input {
+
+main > section.center > .memberForm .input_box > input {
 	padding: 15px 0 15px 7px;
 	font-size: 15px;
 }
 
-.input_box > input:focus {
+main > section.center > .memberForm .input_box > input:focus {
 	scale: 1.05;
 }
 
-.input_box > button {
+main > section.center > .memberForm .input_box > div {
+	margin-top: 20px;
+}
+
+main > section.center > .memberForm .input_box > div > .find_btn {
+	padding: 0 20px;
+}
+
+main > section.center > .memberForm .input_box > button {
 	margin-top: 40px;
 	padding: 15px;
 	width: 314px;
 	border: none;
-	background-color: #F2B3B9;
+	background-color: var(--primary-bgc-2);
 	color: white;
 	cursor: pointer;
 	transition: .2s;
 }
 
-.input_box > button:active {
+main > section.center > .memberForm .input_box > button:active {
 	scale: 0.9;
 }
+
+/* member box 끝 */
+
+/* SECTION CENTER 끝*/

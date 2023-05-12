@@ -7,61 +7,99 @@
 <meta charset="UTF-8">
 <title>${pageTitle}</title>
 <!-- 제이쿼리 불러오기 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- common.css 불러오기 -->
 <link rel="stylesheet" href="/resource/common.css" />
-<!-- common.js 불러오기 -->
-<script src="/resource/common.js" defer="defer"></script>
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+<script>
+function Theme__toggle() {
+	const theme = localStorage.getItem("theme") ?? "light";
+
+	if( theme == 'light'){
+		localStorage.setItem("theme","dark");
+		Theme__applyTo('dark');
+	}
+	else {
+	    localStorage.setItem("theme", "light");
+	    Theme__applyTo('light');
+	}
+
+	function Theme__applyTo(themeName) {
+		  $('html').attr('data-theme', themeName);
+	}
+
+
+	function Theme__init() {
+	  const theme = localStorage.getItem("theme") ?? "light";
+	  Theme__applyTo(theme);
+	}
+
+	Theme__init();
+// 	location.reload();
+
+}
+function Theme__applyTo(themeName) {
+	  $('html').attr('data-theme', themeName);
+	}
+
+	function Theme__init() {
+	  const theme = localStorage.getItem("theme") ?? "light";
+	  Theme__applyTo(theme);
+	}
+
+	Theme__init();
+</script>
+
+<!-- common.js 불러오기 -->
+<script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
 	<main>
 		<section class="side">
-			<div class="side_box">
-				<div class="side_layout flex">
-					<div class="logo_box">
-						<a class="flex" href="/">
-							<img src="/resource/image/logo_1.png" alt="Logo" />
-						</a>
-					</div>
-					<div class="menu_box">
-						<ul class="flex">
-							<li>
-								<a href="/">HOME</a>
-							</li>
-							<li>
-								<a href="#">SEARCH</a>
-							</li>
-							<li>
-								<a href="#">SCRAP</a>
-							</li>
-							<li>
-								<a href="#">PROFILE</a>
-							</li>
-							<li class="fg"></li>
-							<li class="menu_btn">
-								<a href="#">
-									<i class="fas fa-sharp fa-regular fa-bars"></i>
-								</a>
-								<ul class="hidden_menu">
-									<li>
-										<a href="../member/login">LOGIN</a>
-									</li>
-									<li>
-										<a href="../member/join">SIGN UP</a>
-									</li>
-									<li>
-										<a href="../member/doLogout">LOGOUT</a>
-									</li>
-									<li>
-										<button>DARK MODE</button>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
+			<div class="side_box flex">
+				<div class="logo_box">
+					<a class="flex" href="/">
+						<h1>로고</h1>
+						<!-- 						<img src="/resource/image/logo_1.png" alt="Logo" /> -->
+					</a>
+				</div>
+				<div class="menu_box">
+					<ul class="flex">
+						<li>
+							<a href="/">HOME</a>
+						</li>
+						<li>
+							<a href="#">SEARCH</a>
+						</li>
+						<li>
+							<a href="#">SCRAP</a>
+						</li>
+						<li>
+							<a href="#">PROFILE</a>
+						</li>
+						<li class="menu_btn">
+							<a class="bars">
+								<i class="fas fa-sharp fa-regular fa-bars"></i>
+							</a>
+							<ul class="hidden_menu">
+								<li>
+									<a href="../member/join">SIGN UP</a>
+								</li>
+								<li>
+									<a href="../member/login">LOGIN</a>
+								</li>
+								<li>
+									<a href="../member/doLogout">LOGOUT</a>
+								</li>
+								<li>
+									<a class="darkMode" href="javascript:Theme__toggle();">DARK MODE</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</section>
