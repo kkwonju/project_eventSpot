@@ -3,19 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="main"/>
 <%@ include file="../common/head.jspf"%>
-		<div class="center_box">
-			<div class="center_layout con flex">
+
+		<div class="center_box bd-red">
+			<div class="center_layout flex bd-pink">
 				<c:forEach var="event" items="${events}">
-					<div class="content_box">
-						<div class="content flex">
-							<div class="profile_box">
+					<div class="content_box bd-blue">
+						<div class="content flex bd-green">
+							<div class="profile_box bd-black">
 								프로필
 							</div>
-							<div class="img_box">
-								<a href="../event/detail?id=${event.id}">
-									<img src="https://picsum.photos/id/${event.id}/430/602" alt="image" />
-								</a>
-								${event.location }
+							<div class="img_box bd-gold">
+								<img src="https://picsum.photos/id/${event.id}/430/602" alt="image" />
+								${event.location}
 								${event.title}
 								${event.detail}
 							</div>
