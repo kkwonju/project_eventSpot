@@ -27,6 +27,15 @@
 	font-style: normal;
 }
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 /* 노말라이즈 */
 html {
 	font-family: "SUITE-Regular", sans;
@@ -50,27 +59,27 @@ label[for] {
 
 /* 라이브러리 */
 .bd-red {
-	border: 4px solid red;
+	border: 1px solid red;
 }
 
 .bd-pink {
-	border: 4px solid pink;
+	border: 1px solid pink;
 }
 
 .bd-blue {
-	border: 4px solid blue;
+	border: 1px solid blue;
 }
 
 .bd-green {
-	border: 4px solid green;
+	border: 1px solid green;
 }
 
 .bd-black {
-	border: 4px solid black;
+	border: 1px solid black;
 }
 
 .bd-gold {
-	border: 4px solid gold;
+	border: 1px solid gold;
 }
 
 .flex {
@@ -116,6 +125,10 @@ label[for] {
 .con {
 	margin: 0 auto;
 }
+
+.pl-5 {
+	padding-left: 5px;
+}
 /* 라이브러리 끝 */
 
 /* CSS 변수 설정 */
@@ -127,24 +140,37 @@ html[data-theme="light"] {
 	--primary-rev-color: white;
 }
 
+
+/* html[data-theme="dark"] { */
+/* 	--primary-bgc: #032940; */
+/* 	--primary-bgc-2: #032940; */
+/* 	--primary-color: white; */
+/* 	--primary-font-color: white; */
+/* 	--primary-rev-color: #032940; */
+/* } */
+
 html[data-theme="dark"] {
-	--primary-bgc: #032940;
-	--primary-bgc-2: #032940;
+	--primary-bgc: black;
+	--primary-bgc-2: black;
 	--primary-color: white;
 	--primary-font-color: white;
-	--primary-rev-color: #032940;
+	--primary-rev-color: black;
+}
+
+html, body {
+	height: 100%;
 }
 
 main {
 	display: flex;
-	height: 100vh;
+	min-width: 1220px;
 }
 
 /* SECTION ghost 시작 */
-main > section.ghost {
-	width: 300px;
-	height: 100%;
-}
+/* main  >  section.ghost { */
+/* 	width: 300px; */
+/* 	height: 100%; */
+/* } */
 /* SECTION ghost 끝 */
 
 /* SECTION SIDE 시작 */
@@ -217,9 +243,6 @@ main > .side .menu_box ul > li:hover > a {
 }
 
 /* hidden_menu 시작 */
-main > .side .menu_box > ul > .menu_btn.active > a {
-	background-color: var(--primary-color);
-}
 
 main > .side .menu_box > ul > .menu_btn {
 	position: absolute;
@@ -233,15 +256,15 @@ main > .side .menu_box > ul > .menu_btn.active {
 	bottom: 270px;
 }
 
-main > .side .menu_box > ul > .menu_btn > a > i {
-	color: var(--primary-color);
+main > .side .menu_box > ul > .menu_btn > a {
+	cursor: pointer;
 }
 
-main > .side .menu_box > ul > .menu_btn.active > a > i {
-	color: var(--primary-rev-color);
+main > .side .menu_box > ul > .menu_btn.active > a {
+	background-color: var(--primary-color);
 }
 
-main > .side .menu_box > ul > .menu_btn:hover > a > i {
+main > .side .menu_box > ul > .menu_btn.active > a > i, main > .side .menu_box > ul > .menu_btn:hover > a > i {
 	color: var(--primary-rev-color);
 }
 
@@ -269,93 +292,107 @@ main > .side .menu_box > ul > .menu_btn.active > .hidden_menu {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* SECTION CENTER 시작 */
 main > section.center {
 	background-color: var(--primary-bgc);
+	height: 100vh;
 	flex-grow: 2;
 }
 
+main > section.center.list {
+	font-family:"Pretendard-Regular", "sans";
+	flex-direction: column;
+	height: 100%;
+	color: var(--primary-font-color);
+}
+
 main > section.center > .center_box {
-	background-color: white;
+	
+	background-color: var(--primary-bgc);;
 	flex-direction: column;
 	padding-top: 10px;
 	width: 600px;
 }
 
-/* content 박스 시작 */
-main > section.center > .center_box > .content_box {
-	padding: 50px 0;
-	border-bottom: 1px solid var(--primary-font-color);
+main > .list > .center_box > .content_box {
+/* 	border-bottom: 1px solid var(--primary-font-color); */
+	margin: 30px 0;
 	width: 100%;
 }
 
-main > section.center > .center_box > .content_box > .contents {
+/* 콘텐츠 시작 */
+main > .list .contents {
+	width: 370px;
+	height: 100%;
+	border: 2px solid white;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 0 0 5px 2px white;
 	flex-direction: column;
 }
 
-main > section.center > .center_box > .content_box > .contents * {
-	
+main > .list .contents > * {
+	padding: 2px 0;
 }
 
 /* location_box 시작 */
-
+main > .list .contents > .location_box {
+	padding-left: 5px;
+	font-size: 0.95rem;
+}
 /* location_box 끝 */
 
-/* img_box 시작 */   
-main > section.center > .center_box > .content_box > .contents > .info_box > .img_box
-	{
-	width: 350px;
+/* img_box 시작 */
+main > .list .contents > .img_box {
+	z-index: 5;
+	width: 370px;
 }
 
-main > section.center > .center_box > .content_box > .contents > .info_box > .img_box > img
-	{
-	border-radius: 10px;
-	width: 100%;
-}
-/* info_box 끝 */
-
-main > section.center > .center_box > .content_box > .contents > .reaction_box {
-	width: 100%;
-	height: 50px;
+main > .list .contents > .img_box > .detail_box {
+	width: 50px;
 }
 
-main > section.center > .center_box > .content_box > .content_box > .contents > .reply_box
-	{
+main > .list .contents > .img_box > a > img {
+	justify-content: center;
+	align-items: center;
 	width: 100%;
-	height: 200px;
+	height: 100%;
+	transition: .3s;
+}
+
+main > .list .contents > .img_box:hover > a > img {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+
+main > .list .contents > .img_box > img {
+	z-index: 5;
+	width: 100%;
+}
+/* img_box 끝 */
+
+main > .list .contents > .reaction_box > .like_btn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
 }
 
 /* 리액션 박스 시작 */
-main > section.center > .center_box > .center_box > .content_box > .contents > .reaction_box > button > i
-	{
-	font-size: 25px;
+main > .list .contents > .reaction_box > button > i {
+	color: var(--primary-font-color);	
 }
 
 /* 리액션 박스 끝 */
 
-
-
-
-
-
+/* 콘텐츠 끝 */
 
 
 /* Member 박스 시작 */
 main > section.center > .memberForm > form {
-	background-color: white; 
-	padding : 50px 0 100px 0;
+	background-color: white;
+	padding: 50px 0 100px 0;
 	border-radius: 10px;
 	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
 	padding: 50px 0 100px 0;
@@ -382,10 +419,6 @@ main > section.center > .memberForm .input_box {
 	width: 300px;
 }
 
-.memberForm * {
-/* 	border: 1px solid red; */
-}
-
 .input_box > label, .input_box > input, .input_box > button {
 	border-radius: 10px;
 	font-family: "Pretendard-Regular", "sans";
@@ -393,7 +426,6 @@ main > section.center > .memberForm .input_box {
 	padding: 20px 0 10px 0;
 	width: 100%;
 }
-
 
 main > section.center > .memberForm .input_box > input {
 	padding: 15px 0 15px 7px;
@@ -430,3 +462,8 @@ main > section.center > .memberForm .input_box > button:active {
 /* member box 끝 */
 
 /* SECTION CENTER 끝*/
+
+/* 반응형 시작 */
+/* @media screen and (max-width: 1220px){ */
+
+/* } */

@@ -45,7 +45,7 @@
 			form.submit();
 	});
 </script>
-
+<section class="center">
 <c:set var="pageTitle" value="Member Join"/>
 		<div class="memberForm">
 			<form action="../member/doJoin" method="POST" id="signUpForm">
@@ -75,4 +75,5 @@
 				</div>
 			</form>
 		</div>
+</section>
 <%@ include file="../common/foot.jspf"%>

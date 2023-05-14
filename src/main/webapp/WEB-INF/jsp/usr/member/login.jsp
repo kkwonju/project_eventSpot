@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="LOGIN" />
 <%@ include file="../common/head.jspf"%>
+
 <script type="text/javascript">
 	$(window).on('pageshow', function(event) {
 		  // 페이지가 보여질 때 submit 버튼 활성화
@@ -27,28 +28,28 @@
 			form.submit();
 	});
 </script>
-
-<c:set var="pageTitle" value="Member Join" />
-<div class="memberForm">
-	<form action="../member/doLogin" method="POST" id="loginForm">
-		<h1>로그인</h1>
-		<div class="input_box flex fd-c flex-ai-c">
-			<label for="loginId">
-				<span>아이디</span>
-			</label>
-			<input required type="text" name="loginId" placeholder="아이디를 입력하세요"
-				id="loginId" />
-			<label for="loginPw">
-				<span>비밀번호</span>
-			</label>
-			<input required type="password" name="loginPw"
-				placeholder="비밀번호를 입력하세요" id="loginPw" />
-			<button id="submit_btn" type="submit">로그인</button>
-			<div>
-				<a class="find_btn" href="../member/findLoginId">아이디 찾기</a>
-				<a class="find_btn" href="../member/findLoginPw">비밀번호 찾기</a>
+ <section class="center">
+	<div class="memberForm">
+		<form action="../member/doLogin" method="POST" id="loginForm">
+			<h1>로그인</h1>
+			<div class="input_box flex fd-c flex-ai-c">
+				<label for="loginId">
+					<span>아이디</span>
+				</label>
+				<input required type="text" name="loginId" placeholder="아이디를 입력하세요"
+					id="loginId" />
+				<label for="loginPw">
+					<span>비밀번호</span>
+				</label>
+				<input required type="password" name="loginPw"
+					placeholder="비밀번호를 입력하세요" id="loginPw" />
+				<button id="submit_btn" type="submit">로그인</button>
+				<div>
+					<a class="find_btn" href="../member/findLoginId">아이디 찾기</a>
+					<a class="find_btn" href="../member/findLoginPw">비밀번호 찾기</a>
+				</div>
 			</div>
-		</div>
-	</form>
-</div>
+		</form>
+	</div>
+ </section>
 <%@ include file="../common/foot.jspf"%>
