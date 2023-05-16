@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="SIGN UP"/>
 <%@ include file="../common/head.jspf"%>
 
 <script type="text/javascript">
@@ -48,7 +47,6 @@
 	}
 </script>
 <section class="center">
-<c:set var="pageTitle" value="Member Join"/>
 		<div class="memberForm">
 			<form action="../member/doJoin" method="POST" id="signUpForm" onsubmit="submitJoinForm(this); return false;">
 				<h1>회원가입</h1>

@@ -97,7 +97,7 @@ function Theme__applyTo(themeName) {
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a href="#">PROFILE</a>
+											<a href="../member/profile">PROFILE</a>
 										</li>
 										<li>
 											<a href="../member/doLogout">LOGOUT</a>

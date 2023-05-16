@@ -131,6 +131,8 @@ label[for] {
 }
 /* 라이브러리 끝 */
 
+
+
 /* CSS 변수 설정 */
 html {
 	--primary-bgc: white;
@@ -166,14 +168,13 @@ main {
 	min-width: 1220px;
 }
 
-/* SECTION ghost 시작 */
-/* main  >  section.ghost { */
-/* 	width: 300px; */
-/* 	height: 100%; */
-/* } */
-/* SECTION ghost 끝 */
-
-/* SECTION SIDE 시작 */
+/* ################### SECTION SIDE 시작 ################### */
+/*
+	1. 좌측면 고정 메뉴바
+		- 로고
+		- 메뉴
+		- 히든 메뉴
+*/
 main > .side {
 	position: fixed;
 	width: 300px;
@@ -190,7 +191,7 @@ main > .side > .side_box {
 	border: 2px solid var(--primary-color);
 }
 
-/* 로고박스 시작 */
+/* 로고 BOX 시작 */
 main > .side > .side_box > .logo_box > a {
 	padding: 30px 0 20px 0;
 	height: 100px;
@@ -212,9 +213,9 @@ html main > .side > .side_box > .logo_box > a > #logo_img {
 	height: 100px;
 	width: 100px;
 }
-/* 로고 박스 끝  */
+/* 로고 BOX 끝  */
 
-/* 메뉴 박스 시작 */
+/* 메뉴 BOX 시작 */
 main > .side .menu_box > ul {
 	flex-direction: column;
 	text-align: center;
@@ -242,7 +243,7 @@ main > .side .menu_box ul > li:hover > a {
 	color: var(--primary-rev-color);
 }
 
-/* 검색 박스 */
+/* 검색 BOX 시작 */
 main > .side .menu_box .search_box {
 	display: none;
 	justify-content: center;
@@ -271,9 +272,9 @@ main > .side .menu_box .search_box input {
 main > .side .menu_box .search_box input:focus {
 	outline: 1px solid var(--primary-color);
 }
+/* 검색 BOX 끝 */
 
-
-/* hidden_menu 시작 */
+/* 숨겨진 메뉴 BOX 시작 */
 
 main > .side .menu_box > ul > .menu_btn {
 	position: absolute;
@@ -311,7 +312,8 @@ main > .side .menu_box > ul > .menu_btn.active > .hidden_menu {
 	opacity: 1;
 	height: 200px;
 }
-/* hidden_menu 끝 */
+/* 숨겨진 메뉴 BOX 끝 */
+/* 메뉴 BOX 끝 */
 
 /* 다크모드 */
 .darkMode {
@@ -323,7 +325,13 @@ main > .side .menu_box > ul > .menu_btn.active > .hidden_menu {
 
 
 
-/* SECTION CENTER 시작 */
+/* ################### SECTION CENTER 시작 ################### */
+/*
+	1. 중앙
+	2. 이벤트 리스트
+		- 이벤트
+	3. 
+*/
 main > section.center {
 	background-color: var(--primary-bgc);
 	height: 100vh;
@@ -350,7 +358,6 @@ main > .list > .center_box > .content_box {
 	width: 100%;
 }
 
-/* 콘텐츠 시작 */
 main > .list .contents {
 	width: 370px;
 	height: 100%;
@@ -365,14 +372,15 @@ main > .list .contents > * {
 	padding: 2px 0;
 }
 
-/* location_box 시작 */
+/* 장소 BOX 시작 */
 main > .list .contents > .location_box {
 	padding: 15px 0 0 5px;
 	font-size: 0.95rem;
 }
-/* location_box 끝 */
+/* 장소 BOX 끝 */
 
-/* img_box 시작 */
+
+/* 이미지 BOX 시작 */
 main > .list .contents > .img_box {
 	z-index: 5;
 	width: 370px;
@@ -400,8 +408,12 @@ main > .list .contents > .img_box:hover > a > img {
 main > .list .contents > .img_box > img {
 	width: 100%;
 }
-/* img_box 끝 */
+/* 이미지 BOX 끝 */
 
+/* 댓글 BOX 시작 */
+
+
+/* 리액션 BOX 시작 */
 main > .list .contents > .reaction_box > .like_btn {
 	font-size: 20px;
 	cursor: pointer;
@@ -409,18 +421,19 @@ main > .list .contents > .reaction_box > .like_btn {
 	border: none;
 }
 
-/* 리액션 박스 시작 */
 main > .list .contents > .reaction_box > button > i {
 	color: var(--primary-font-color);	
 }
-
-/* 리액션 박스 끝 */
-
-/* 콘텐츠 끝 */
+/* 리액션 BOX 끝 */
 
 
-/* Member 박스 시작 */
-main > section.center > .memberForm > form {
+
+/* ################### Member 박스 시작 ################### */
+/*
+	1. 회원가입
+	2. 로그인
+*/
+main > section.center > .memberForm > form{
 	background-color: white;
 	padding: 50px 0 100px 0;
 	border-radius: 10px;
@@ -494,6 +507,43 @@ main > section.center > .memberForm .input_box > button:active {
 }
 
 /* member box 끝 */
+
+/* profile 시작 */
+main > .center > .memberForm > .profile {
+	font-family:"Pretendard-Regular", "sans";
+	background-color: white;
+	padding: 50px 0 100px 0;
+	border-radius: 10px;
+	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
+	padding: 50px 0 100px 5px;
+}
+
+main .profile > .updateDate {
+	text-align: right;
+	margin: 0;
+	padding-right: 5px;
+}
+
+main .profile > ul {
+	padding: 0 10px;
+}
+
+main .profile > ul > li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.3rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+main .profile > ul > li > div > p {
+	font-size: 1.1rem;
+}
+
+/* profile 끝 */
+
+
+
 
 /* SECTION CENTER 끝*/
 

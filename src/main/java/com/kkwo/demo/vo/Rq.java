@@ -1,6 +1,9 @@
 package com.kkwo.demo.vo;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
@@ -8,6 +11,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import com.kkwo.demo.service.MemberService;
+import com.kkwo.demo.util.Ut;
 
 import lombok.Getter;
 
@@ -22,16 +26,17 @@ public class Rq {
 	private Member loginedMember;
 
 	private HttpServletRequest req;
+	private HttpServletResponse resp;
 	private HttpSession session;
 
-	public Rq(HttpServletRequest req, MemberService memberService) {
+	public Rq(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
 		this.req = req;
+		this.resp = resp;
 		this.session = req.getSession();
 		
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 		Member loginedMember = null;
-		
 		
 		if(session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
@@ -62,5 +67,18 @@ public class Rq {
 		req.setAttribute("resultMsg", resultMsg);
 		req.setAttribute("replaceUri", replaceUri);
 		return "usr/common/js";
+	}
+
+	public void printJsReplace(String resultMsg, String replaceUri) {
+		resp.setContentType("text/html; charset=UTF-8");
+		print(Ut.jsReplace(resultMsg, replaceUri));
+	}
+	
+	public void print(String str) {
+		try {
+			resp.getWriter().append(str);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
