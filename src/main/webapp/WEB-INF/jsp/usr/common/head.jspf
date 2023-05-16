@@ -73,29 +73,37 @@ function Theme__applyTo(themeName) {
 						</li>
 						<li class="search_box">
 							<form action="../event/doSearch">
-								<input name="searchKeyword" autocomplete="off" type="text" placeholder="검색어를 입력하세요"/>
+								<input name="searchKeyword" autocomplete="off" type="text"
+									placeholder="검색어를 입력하세요" />
 							</form>
 						</li>
 						<li>
 							<a href="#">COLLECT</a>
 						</li>
-						<li>
-							<a href="#">PROFILE</a>
-						</li>
+
 						<li class="menu_btn">
 							<a class="bars">
 								<i class="fas fa-sharp fa-regular fa-bars"></i>
 							</a>
 							<ul class="hidden_menu">
-								<li>
-									<a href="../member/join">SIGN UP</a>
-								</li>
-								<li>
-									<a href="../member/login">LOGIN</a>
-								</li>
-								<li>
-									<a href="../member/doLogout">LOGOUT</a>
-								</li>
+								<c:choose>
+									<c:when test="${!rq.logined}">
+										<li>
+											<a href="../member/join">SIGN UP</a>
+										</li>
+										<li>
+											<a href="../member/login">LOGIN</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<a href="#">PROFILE</a>
+										</li>
+										<li>
+											<a href="../member/doLogout">LOGOUT</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 								<li>
 									<a class="darkMode" href="javascript:Theme__toggle();">DARK MODE</a>
 								</li>
