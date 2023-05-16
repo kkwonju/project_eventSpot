@@ -14,7 +14,7 @@
 					</div>
 					<div class="img_box flex">
 						<a class="detail_btn flex">
-							<img src="/resource/image/image_23.jpg" alt="image" />
+							<img src="/resource/image/image_20.jpg" alt="image" />
 						</a>
 					</div>
 					<div class="reaction_box">

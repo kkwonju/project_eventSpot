@@ -3,12 +3,16 @@ package com.kkwo.demo.vo;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 import com.kkwo.demo.service.MemberService;
 
 import lombok.Getter;
 
-/* 사용자의 요청과 응답 처리, session 관리 */
-
+@Component
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Rq {
 	@Getter
 	private boolean isLogined;
@@ -37,7 +41,7 @@ public class Rq {
 		
 		this.isLogined = isLogined;
 		this.loginedMemberId = loginedMemberId;
-		this.loginedMember = loginedMember;;
+		this.loginedMember = loginedMember;
 	}
 	
 	public void login(Member member) {

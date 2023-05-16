@@ -17,6 +17,8 @@ import com.kkwo.demo.vo.Rq;
 public class UsrMemberController {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private Rq rq;
 
 	public UsrMemberController(MemberService memberService) {
 		this.memberService = memberService;
@@ -30,7 +32,6 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
 	public String doJoin(HttpServletRequest req, String loginId, String loginPw, String nickname, String email) {
-		Rq rq = new Rq(req, memberService);
 
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("이미 로그인 중입니다");
@@ -67,7 +68,6 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody
 	public String doLogin(HttpServletRequest req, String loginId, String loginPw) {
-		Rq rq = new Rq(req, memberService);
 
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("이미 로그인 중입니다");
@@ -96,7 +96,6 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
 	public String doLogout(HttpServletRequest req) {
-		Rq rq = new Rq(req, memberService);
 
 		if (!rq.isLogined()) {
 			return Ut.jsHistoryBack("로그아웃 상태입니다");
