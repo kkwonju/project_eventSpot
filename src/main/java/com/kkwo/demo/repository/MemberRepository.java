@@ -1,5 +1,7 @@
 package com.kkwo.demo.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kkwo.demo.vo.Member;
@@ -16,5 +18,9 @@ public interface MemberRepository {
 	Member getMemberByLoginId(String loginId);
 
 	Member getMemberByEmail(String email);
+
+	List<Member> getMembers();
+
+	int deleteMember(int id);
 
 }

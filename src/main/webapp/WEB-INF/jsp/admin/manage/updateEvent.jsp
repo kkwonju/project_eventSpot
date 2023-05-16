@@ -81,9 +81,10 @@
 </style>
 <section class="addEventForm_box">
 	<h1>이벤트 업데이트</h1>
-	<form action="admin/manage/addEvent" method="post">
+	<form action="/admin/manage/updateEvent" method="post">
 		<div class="addEventForm flex">
 			<div class="info_box flex fd-c">
+				<input type="hidden" name="id" value="${event.id}"/>
 				<label for="beginDt">시작 날짜</label>
 				<input required name="beginDt" type="date" value="${event.beginDt}"/>
 				<label for="endDt">종료 날짜</label>
@@ -113,7 +114,7 @@
 			<div class="image_box flex fd-c">
 				<div class="input_img">
 					<label for="image_input">Click here &nbsp;<i class="fa-regular fa-image" style="color: #000000;"></i></label>
-					<input required name="eventImg" type="file" accept="image/*" id="image_input"/>
+					<input name="eventImg" type="file" accept="image/*" id="image_input"/>
 				</div>
 				<div class="preview">
 					<img id="preview_img" src="#" alt="" />

@@ -16,11 +16,11 @@ import com.kkwo.demo.vo.ResultData;
 import ch.qos.logback.core.joran.conditional.IfAction;
 
 @Controller
-public class AdminEventController {
+public class AdmEventController {
 	@Autowired
 	private EventService eventService;
 
-	public AdminEventController(EventService eventService) {
+	public AdmEventController(EventService eventService) {
 		this.eventService = eventService;
 	}
 	
@@ -77,7 +77,7 @@ public class AdminEventController {
 		return "admin/manage/updateEvent";
 	}
 	
-	@RequestMapping("/admin/event/updateEvent")
+	@RequestMapping("/admin/manage/updateEvent")
 	@ResponseBody
 	public String updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
 			String detail, int duration) {
@@ -112,18 +112,17 @@ public class AdminEventController {
 		if (result == -1) {
 			return Ut.jsHistoryBack("이벤트 업데이트 실패");
 		}
-		return Ut.jsReplace(Ut.f("%d번 이벤트 업데이트 성공", id), "/");
+		return Ut.jsReplace(Ut.f("%d번 이벤트 업데이트 성공", id), "/admin/manage/eventList");
 	}
 
-	@RequestMapping("/admin/event/deleteEvent")
+	@RequestMapping("/admin/manage/deleteEvent")
 	@ResponseBody
 	public String deleteEvent(int id) {
-		
 		int result = eventService.deleteEvent(id);
 		
 		if (result == -1) {
 			return Ut.jsHistoryBack("이벤트 삭제 실패");
 		}
-		return Ut.jsReplace(Ut.f("%d번 이벤트 삭제 성공", id), "/");
+		return Ut.jsReplace(Ut.f("%d번 이벤트 삭제 성공", id), "/admin/manage/eventList");
 	}
 }

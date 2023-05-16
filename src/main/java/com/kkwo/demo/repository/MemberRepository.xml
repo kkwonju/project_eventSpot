@@ -36,5 +36,14 @@
 		email = #{email};
 	</insert>
 	
-	
+	<select id="getMembers" resultType="Member">
+		SELECT *
+		FROM `member`
+		ORDER BY id DESC;
+	</select>
+
+	<delete id="deleteMember">
+		DELETE FROM `member`
+		WHERE id = #{id};
+	</delete>	
 </mapper>

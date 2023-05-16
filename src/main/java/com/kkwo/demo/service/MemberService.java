@@ -1,5 +1,7 @@
 package com.kkwo.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +63,19 @@ public class MemberService {
 	
 	public Member getMemberByEmail(String email) {
 		return memberRepository.getMemberByEmail(email);
+	}
+
+	public List<Member> getMembers() {
+		return memberRepository.getMembers();
+	}
+
+	public int deleteMember(int id) {
+		int affectedRow = memberRepository.deleteMember(id);
+		
+		if(affectedRow != 1) {
+			return -1;
+		}
+		
+		return affectedRow;
 	}
 }
