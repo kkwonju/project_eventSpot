@@ -132,7 +132,7 @@ label[for] {
 /* 라이브러리 끝 */
 
 /* CSS 변수 설정 */
-html[data-theme="light"] {
+html {
 	--primary-bgc: white;
 	--primary-bgc-2: #F2B3B9;
 	--primary-color: #F2B3B9;
@@ -206,7 +206,7 @@ html[data-theme="dark"] main > .side > .side_box > .logo_box > a > #logo_img {
 	z-index: 10;
 }
 
-html[data-theme="light"] main > .side > .side_box > .logo_box > a > #logo_img {
+html main > .side > .side_box > .logo_box > a > #logo_img {
 	background-image: url('/resource/image/light_logo.png');
 	background-size: cover;
 	height: 100px;
@@ -241,6 +241,37 @@ main > .side .menu_box ul > li:hover > a {
 	background-color: var(--primary-color);
 	color: var(--primary-rev-color);
 }
+
+/* 검색 박스 */
+main > .side .menu_box .search_box {
+	display: none;
+	justify-content: center;
+	
+}
+
+main > .side .menu_box .search_box > form {
+	width: 100%;
+}
+
+main > .side .menu_box .search_btn.active + .search_box {
+	display: flex;
+}
+
+
+main > .side .menu_box .search_box input {
+	width: 272px;
+	border: none;
+	height: 100%;
+	text-align: center;
+	font-size: 1rem;
+	font-family: 'GmarketSansMedium', 'sans';
+	background-color: var(--primary-color);
+}
+
+main > .side .menu_box .search_box input:focus {
+	outline: 1px solid var(--primary-color);
+}
+
 
 /* hidden_menu 시작 */
 
@@ -396,6 +427,10 @@ main > section.center > .memberForm > form {
 	border-radius: 10px;
 	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
 	padding: 50px 0 100px 0;
+}
+
+main > section.center > .memberForm.loginForm {
+	transform: translateY(calc(50% - 200px));
 }
 
 html[data-theme="dark"]  main > section.center > .memberForm > form {

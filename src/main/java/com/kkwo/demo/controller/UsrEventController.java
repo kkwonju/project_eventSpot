@@ -12,6 +12,7 @@ import com.kkwo.demo.service.EventService;
 import com.kkwo.demo.util.Ut;
 import com.kkwo.demo.vo.Event;
 import com.kkwo.demo.vo.ResultData;
+import com.kkwo.demo.vo.Rq;
 
 import ch.qos.logback.core.joran.conditional.IfAction;
 
@@ -32,7 +33,7 @@ public class UsrEventController {
 		return "usr/event/list";
 	}
 	
-	/** 이벤트 보여주기 */
+	/** 게시물 보여주기 */
 	@RequestMapping("/usr/event/detail")
 	public String showEventDetail(Model model, int id) {
 		if(Ut.isEmpty(id)) {

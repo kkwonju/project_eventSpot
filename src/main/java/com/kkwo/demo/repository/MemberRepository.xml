@@ -32,7 +32,7 @@
 		updateDate = NOW(),
 		loginId = #{loginId},
 		loginPw = #{loginPw},
-		nickName = #{nickname},
+		nickname = #{nickname},
 		email = #{email};
 	</insert>
 	

@@ -47,4 +47,16 @@ public class Rq {
 	public void logout() {
 		session.removeAttribute("loginedMemberId");
 	}
+	
+	public String jsHistoryBackOnView(String resultMsg) {
+		req.setAttribute("resultMsg", resultMsg);
+		req.setAttribute("historyBack", true);
+		return "usr/common/js";
+	}
+	
+	public String jsReplaceOnView(String resultMsg, String replaceUri) {
+		req.setAttribute("resultMsg", resultMsg);
+		req.setAttribute("replaceUri", replaceUri);
+		return "usr/common/js";
+	}
 }
