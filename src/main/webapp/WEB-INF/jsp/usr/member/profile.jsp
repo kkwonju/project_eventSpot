@@ -4,33 +4,19 @@
 <%@ include file="../common/head.jspf"%>
 
 <section class="center">
-	<div class="memberForm">
-		<div class="profile">
-			<h1>PROFILE</h1>
-			<ul class="">
-				<li>
-					<div>
-						아이디
-						<p>${member.loginId}</p>
-					</div>
-				</li>
-				<li>
-					<div>
-						닉네임
-						<p>${member.nickname}</p>
-					</div>
-					<a href="">수정</a>
-				</li>
-				<li>
-					<div>
-						이메일
-						<p>${member.email}</p>
-					</div>
-				</li>
-			</ul>
-			<p class="updateDate">sign in : ${member.regDate}</p>
-			<p class="updateDate">last update : ${member.updateDate}</p>
+	<div class="profile_box">
+		<div class="id_card flex">
+			<div class="profile_img">
+				<div class="img"></div>
+			</div>
+			<div class="profile_info">
+				<div class="nickname">${member.nickname}</div>
+				<div>${member.loginId }</div>
+				<div>${member.regDate}</div>
+				<div>${member.email}</div>
+			</div>
 		</div>
+		<div class="bhd_idCard"><a href="../member/modify">MODIFY > </a></div>
 	</div>
 </section>
 <%@ include file="../common/foot.jspf"%>

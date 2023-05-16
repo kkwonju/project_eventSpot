@@ -34,6 +34,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 
 
 /* 노말라이즈 */
@@ -433,6 +440,7 @@ main > .list .contents > .reaction_box > button > i {
 	1. 회원가입
 	2. 로그인
 */
+
 main > section.center > .memberForm > form{
 	background-color: white;
 	padding: 50px 0 100px 0;
@@ -509,36 +517,74 @@ main > section.center > .memberForm .input_box > button:active {
 /* member box 끝 */
 
 /* profile 시작 */
-main > .center > .memberForm > .profile {
-	font-family:"Pretendard-Regular", "sans";
+
+main .profile_box {
+	margin: 0 auto;
+	width: 600px;
+}
+
+main .id_card {
+	z-index: 2;
+	position: absolute;
+	top: calc(50% - 200px);
+	height: 300px;
+	width: 500px;
+	font-family:"TheJamsil5Bold", "sans";
 	background-color: white;
-	padding: 50px 0 100px 0;
 	border-radius: 10px;
 	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
-	padding: 50px 0 100px 5px;
+	transition: .4s;
 }
 
-main .profile > .updateDate {
-	text-align: right;
-	margin: 0;
-	padding-right: 5px;
+html[data-theme="dark"]  main .id_card {
+	box-shadow: 4px 4px 5px 0 grey;
 }
 
-main .profile > ul {
-	padding: 0 10px;
+.profile_box:hover > .id_card {
+	opacity: 0.95;
+	transform: translate(-35px, -35px);
+	perspective: 100px;
 }
 
-main .profile > ul > li {
+.bhd_idCard {
+	z-index: 1;
+	top: calc(50% - 200px);
+	background-color: #A6A6A6;
+	border-radius: 10px;
+	position: absolute;
+	height: 295px;
+	width: 495px;
+}
+
+.bhd_idCard > a {
+	box-sizing: border-box;
+	padding: 0 10px 6px 0;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 1.3rem;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	height: 100%;
+	color: white;
+	justify-content: flex-end;
+	align-items: flex-end;
 }
 
-main .profile > ul > li > div > p {
-	font-size: 1.1rem;
+.profile_img {
+	flex-grow: 6;
+	border-radius: 10px;
+	background-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--primary-bgc-2));
 }
+
+
+.profile_info {
+	flex-grow: 1;
+	font-size: 0.9rem;
+	box-sizing: border;
+	padding: 210px 0 0 0;
+}
+
+.nickname {
+  font-size: 2rem;
+  font-family: "TheJamsil5Bold", "sans";
+}
+
 
 /* profile 끝 */
 
