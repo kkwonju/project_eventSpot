@@ -182,14 +182,14 @@ main {
 		- 메뉴
 		- 히든 메뉴
 */
-main > .side {
+.side {
 	position: fixed;
 	width: 300px;
 	height: 100%;
 	background-color: var(--primary-bgc);
 }
 
-main > .side > .side_box {
+.side > .side_box {
 	position: relative;
 	flex-direction: column;
 	border-radius: 10px;
@@ -199,14 +199,14 @@ main > .side > .side_box {
 }
 
 /* 로고 BOX 시작 */
-main > .side > .side_box > .logo_box > a {
+.side > .side_box > .logo_box > a {
 	padding: 30px 0 20px 0;
 	height: 100px;
 	text-align: center;
 	justify-content: center;
 }
 
-html[data-theme="dark"] main > .side > .side_box > .logo_box > a > #logo_img {
+html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
 	background-image: url('/resource/image/dark_logo.png');
 	background-size: cover;
 	height: 100px;
@@ -214,7 +214,7 @@ html[data-theme="dark"] main > .side > .side_box > .logo_box > a > #logo_img {
 	z-index: 10;
 }
 
-html main > .side > .side_box > .logo_box > a > #logo_img {
+html .side > .side_box > .logo_box > a > #logo_img {
 	background-image: url('/resource/image/light_logo.png');
 	background-size: cover;
 	height: 100px;
@@ -223,18 +223,18 @@ html main > .side > .side_box > .logo_box > a > #logo_img {
 /* 로고 BOX 끝  */
 
 /* 메뉴 BOX 시작 */
-main > .side .menu_box > ul {
+.side .menu_box > ul {
 	flex-direction: column;
 	text-align: center;
 	width: 100%;
 	height: 100%;
 }
 
-main > .side .menu_box ul > li {
+.side .menu_box ul > li {
 	height: 60px;
 }
 
-main > .side .menu_box ul > li > a {
+.side .menu_box ul > li > a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -245,28 +245,28 @@ main > .side .menu_box ul > li > a {
 	font-size: 20px;
 }
 
-main > .side .menu_box ul > li:hover > a {
+.side .menu_box ul > li:hover > a {
 	background-color: var(--primary-color);
 	color: var(--primary-rev-color);
 }
 
 /* 검색 BOX 시작 */
-main > .side .menu_box .search_box {
+.side .menu_box .search_box {
 	display: none;
 	justify-content: center;
 	
 }
 
-main > .side .menu_box .search_box > form {
+.side .menu_box .search_box > form {
 	width: 100%;
 }
 
-main > .side .menu_box .search_btn.active + .search_box {
+.side .menu_box .search_btn.active + .search_box {
 	display: flex;
 }
 
 
-main > .side .menu_box .search_box input {
+.side .menu_box .search_box input {
 	width: 272px;
 	border: none;
 	height: 100%;
@@ -276,14 +276,14 @@ main > .side .menu_box .search_box input {
 	background-color: var(--primary-color);
 }
 
-main > .side .menu_box .search_box input:focus {
+.side .menu_box .search_box input:focus {
 	outline: 1px solid var(--primary-color);
 }
 /* 검색 BOX 끝 */
 
 /* 숨겨진 메뉴 BOX 시작 */
 
-main > .side .menu_box > ul > .menu_btn {
+.side .menu_box > ul > .menu_btn {
 	position: absolute;
 	background-color: var(--primary-bgc);
 	width: 100%;
@@ -291,23 +291,23 @@ main > .side .menu_box > ul > .menu_btn {
 	transition: bottom 1s;
 }
 
-main > .side .menu_box > ul > .menu_btn.active {
+.side .menu_box > ul > .menu_btn.active {
 	bottom: 200px;
 }
 
-main > .side .menu_box > ul > .menu_btn > a {
+.side .menu_box > ul > .menu_btn > a {
 	cursor: pointer;
 }
 
-main > .side .menu_box > ul > .menu_btn.active > a {
+.side .menu_box > ul > .menu_btn.active > a {
 	background-color: var(--primary-color);
 }
 
-main > .side .menu_box > ul > .menu_btn.active > a > i, main > .side .menu_box > ul > .menu_btn:hover > a > i {
+.side .menu_box > ul > .menu_btn.active > a > i, main > .side .menu_box > ul > .menu_btn:hover > a > i {
 	color: var(--primary-rev-color);
 }
 
-main > .side .menu_box > ul > .menu_btn > .hidden_menu {
+.side .menu_box > ul > .menu_btn > .hidden_menu {
 	background-color: var(--primary-bgc);
 	opacity: 0;
 	height: 200px;
@@ -315,7 +315,7 @@ main > .side .menu_box > ul > .menu_btn > .hidden_menu {
 	transition: opacity .5s .1s;
 }
 
-main > .side .menu_box > ul > .menu_btn.active > .hidden_menu {
+.side .menu_box > ul > .menu_btn.active > .hidden_menu {
 	opacity: 1;
 	height: 200px;
 }
@@ -339,20 +339,20 @@ main > .side .menu_box > ul > .menu_btn.active > .hidden_menu {
 		- 이벤트
 	3. 
 */
-main > section.center {
+.center {
 	background-color: var(--primary-bgc);
 	height: 100vh;
 	flex-grow: 2;
 }
 
-main > section.center.list {
+.center.list {
 	font-family:"Pretendard-Regular", "sans";
 	flex-direction: column;
 	height: 100%;
 	color: var(--primary-font-color);
 }
 
-main > section.center > .center_box {
+.center > .center_box {
 	
 	background-color: var(--primary-bgc);;
 	flex-direction: column;
@@ -360,12 +360,12 @@ main > section.center > .center_box {
 	width: 600px;
 }
 
-main > .list > .center_box > .content_box {
+.list > .center_box > .content_box {
 	margin: 30px 0;
 	width: 100%;
 }
 
-main > .list .contents {
+.list .contents {
 	width: 370px;
 	height: 100%;
 	border-left: none;
@@ -375,12 +375,12 @@ main > .list .contents {
 	flex-direction: column;
 }
 
-main > .list .contents > * {
+.list .contents > * {
 	padding: 2px 0;
 }
 
 /* 장소 BOX 시작 */
-main > .list .contents > .location_box {
+.list .contents > .location_box {
 	padding: 15px 0 0 5px;
 	font-size: 0.95rem;
 }
@@ -388,16 +388,16 @@ main > .list .contents > .location_box {
 
 
 /* 이미지 BOX 시작 */
-main > .list .contents > .img_box {
+.list .contents > .img_box {
 	z-index: 5;
 	width: 370px;
 }
 
-main > .list .contents > .img_box > .detail_box {
+.list .contents > .img_box > .detail_box {
 	width: 50px;
 }
 
-main > .list .contents > .img_box > a > img {
+.list .contents > .img_box > a > img {
 	justify-content: center;
 	align-items: center;
 	width: 340px;
@@ -405,14 +405,14 @@ main > .list .contents > .img_box > a > img {
 	transition: .3s;
 }
 
-main > .list .contents > .img_box:hover > a > img {
+.list .contents > .img_box:hover > a > img {
 	opacity: 0.7;
 	box-shadow: 0 0 1px 1px white;
 	cursor: pointer;
 }
 
 
-main > .list .contents > .img_box > img {
+.list .contents > .img_box > img {
 	width: 100%;
 }
 /* 이미지 BOX 끝 */
@@ -421,18 +421,71 @@ main > .list .contents > .img_box > img {
 
 
 /* 리액션 BOX 시작 */
-main > .list .contents > .reaction_box > .like_btn {
+.list .contents > .reaction_box > .like_btn {
 	font-size: 20px;
 	cursor: pointer;
 	background-color: transparent;
 	border: none;
 }
 
-main > .list .contents > .reaction_box > button > i {
+.list .contents > .reaction_box > button > i {
 	color: var(--primary-font-color);	
 }
 /* 리액션 BOX 끝 */
 
+/* 상세보기 팝업 시작 */
+.detail_bg {
+	display: none;
+	z-index: 20;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 99vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.detail {
+	display: none;
+	z-index: 30;
+	position: fixed;
+	top: calc(50% - 300px);
+	left: calc(50% - 350px);
+	width: 700px;
+	height: 600px;
+}
+
+.detail > div {
+	color: var(--primary-font-color);
+	background-color: var(--primary-bgc);
+	width: 100%;
+	height: 100%;
+}
+
+.detail .dt_content {
+	width: 400px;
+}
+
+.detail .dt_content > .dt_img > img {
+	width: 400px;
+}
+
+.detail .dt_reply {
+	width: 300px;
+	padding: 5px;
+	overflow: auto;
+}
+
+.detail .dt_reply::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+.detail .input_reply > form > input {
+	width: 300px;
+}
+
+/* 상세보기 팝업 끝 */
 
 
 /* ################### Member 박스 시작 ################### */
@@ -441,7 +494,7 @@ main > .list .contents > .reaction_box > button > i {
 	2. 로그인
 */
 
-main > section.center > .memberForm > form{
+.center > .memberForm > form{
 	background-color: white;
 	padding: 50px 0 100px 0;
 	border-radius: 10px;
@@ -449,7 +502,7 @@ main > section.center > .memberForm > form{
 	padding: 50px 0 100px 0;
 }
 
-main > section.center > .memberForm.loginForm {
+.center > .memberForm.loginForm {
 	transform: translateY(calc(50% - 200px));
 }
 
@@ -457,18 +510,18 @@ html[data-theme="dark"]  main > section.center > .memberForm > form {
 	box-shadow: inset 3px 3px 5px 4px rgba(0, 0, 0, 0.5);
 }
 
-main > section.center > .memberForm h1 {
+.center > .memberForm h1 {
 	text-align: center;
 	font-size: 30px;
 }
 
-main > section.center > .memberForm {
+.center > .memberForm {
 	margin: 0 auto;
 	width: 600px;
 	padding-top: 50px;
 }
 
-main > section.center > .memberForm .input_box {
+.center > .memberForm .input_box {
 	margin-left: auto;
 	margin-right: auto;
 	width: 300px;
@@ -482,24 +535,24 @@ main > section.center > .memberForm .input_box {
 	width: 100%;
 }
 
-main > section.center > .memberForm .input_box > input {
+.center > .memberForm .input_box > input {
 	padding: 15px 0 15px 7px;
 	font-size: 15px;
 }
 
-main > section.center > .memberForm .input_box > input:focus {
+.center > .memberForm .input_box > input:focus {
 	scale: 1.05;
 }
 
-main > section.center > .memberForm .input_box > div {
+.center > .memberForm .input_box > div {
 	margin-top: 20px;
 }
 
-main > section.center > .memberForm .input_box > div > .find_btn {
+.center > .memberForm .input_box > div > .find_btn {
 	padding: 0 20px;
 }
 
-main > section.center > .memberForm .input_box > button {
+.center > .memberForm .input_box > button {
 	margin-top: 40px;
 	padding: 15px;
 	width: 314px;
@@ -510,7 +563,7 @@ main > section.center > .memberForm .input_box > button {
 	transition: .2s;
 }
 
-main > section.center > .memberForm .input_box > button:active {
+.center > .memberForm .input_box > button:active {
 	scale: 0.9;
 }
 
@@ -518,12 +571,12 @@ main > section.center > .memberForm .input_box > button:active {
 
 /* profile 시작 */
 
-main .profile_box {
+.center .profile_box {
 	margin: 0 auto;
 	width: 600px;
 }
 
-main .id_card {
+.center .id_card {
 	z-index: 2;
 	position: absolute;
 	top: calc(50% - 200px);
@@ -585,8 +638,8 @@ html[data-theme="dark"]  main .id_card {
   font-family: "TheJamsil5Bold", "sans";
 }
 
-
 /* profile 끝 */
+
 
 
 

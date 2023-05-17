@@ -29,3 +29,6 @@ $('#image_input').on('change', function(e) {
 	
 	reader.readAsDataURL(file);
 });
+
+
+
