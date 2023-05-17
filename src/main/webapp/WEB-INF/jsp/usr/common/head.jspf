@@ -77,10 +77,14 @@ function Theme__applyTo(themeName) {
 									placeholder="검색어를 입력하세요" />
 							</form>
 						</li>
+						<c:if test="${rq.logined}">
+							<li>
+								<a href="#">COLLECT</a>
+							</li>
+						</c:if>
 						<li>
-							<a href="#">COLLECT</a>
+							<a href="#">SCHEDULE</a>
 						</li>
-
 						<li class="menu_btn">
 							<a class="bars">
 								<i class="fas fa-sharp fa-regular fa-bars"></i>

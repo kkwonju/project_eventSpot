@@ -142,28 +142,26 @@ label[for] {
 
 /* CSS 변수 설정 */
 html {
-	--primary-bgc: white;
-	--primary-bgc-2: #F2B3B9;
-	--primary-color: #F2B3B9;
-	--primary-font-color: black;
-	--primary-rev-color: white;
+	--primary-w-b: white;
+	--primary-Main-black: #F2B3B9;
+	--primary-Main-white: black;
+	--primary-b-w: black;
 }
 
 
 /* html[data-theme="dark"] { */
-/* 	--primary-bgc: #032940; */
-/* 	--primary-bgc-2: #032940; */
-/* 	--primary-color: white; */
-/* 	--primary-font-color: white; */
-/* 	--primary-rev-color: #032940; */
+/* 	--primary-w-b: #032940; */
+/* 	--primary-Main-black: #032940; */
+/* 	--primary-Main-white: white; */
+/* 	--primary-b-w: white; */
+/* 	--primary-w-b: #032940; */
 /* } */
 
 html[data-theme="dark"] {
-	--primary-bgc: black;
-	--primary-bgc-2: black;
-	--primary-color: white;
-	--primary-font-color: white;
-	--primary-rev-color: black;
+	--primary-w-b: black;
+	--primary-Main-black: black;
+	--primary-Main-white: white;
+	--primary-b-w: white;
 }
 
 html, body {
@@ -186,7 +184,7 @@ main {
 	position: fixed;
 	width: 300px;
 	height: 100%;
-	background-color: var(--primary-bgc);
+	background-color: var(--primary-w-b);
 }
 
 .side > .side_box {
@@ -195,7 +193,7 @@ main {
 	border-radius: 10px;
 	margin: 10px;
 	height: 100%;
-	border: 2px solid var(--primary-color);
+	border: 2px solid var(--primary-Main-white);
 }
 
 /* 로고 BOX 시작 */
@@ -205,21 +203,21 @@ main {
 	text-align: center;
 	justify-content: center;
 }
-
-html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
-	background-image: url('/resource/image/dark_logo.png');
+html .side > .side_box > .logo_box > a > #logo_img {
+	background-image: url('/resource/image/light_logo.png');
 	background-size: cover;
 	height: 100px;
 	width: 100px;
 	z-index: 10;
 }
 
-html .side > .side_box > .logo_box > a > #logo_img {
-	background-image: url('/resource/image/light_logo.png');
-	background-size: cover;
-	height: 100px;
-	width: 100px;
+html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
+	background-image: url('/resource/image/dark_logo.png');
+/* 	background-size: cover; */
+/* 	height: 100px; */
+/* 	width: 100px; */
 }
+
 /* 로고 BOX 끝  */
 
 /* 메뉴 BOX 시작 */
@@ -241,13 +239,13 @@ html .side > .side_box > .logo_box > a > #logo_img {
 	width: 100%;
 	height: 100%;
 	transition: .2s;
-	color: var(--primary-color);
+	color: var(--primary-Main-white);
 	font-size: 20px;
 }
 
 .side .menu_box ul > li:hover > a {
-	background-color: var(--primary-color);
-	color: var(--primary-rev-color);
+	background-color: var(--primary-Main-white);
+	color: var(--primary-w-b);
 }
 
 /* 검색 BOX 시작 */
@@ -273,11 +271,11 @@ html .side > .side_box > .logo_box > a > #logo_img {
 	text-align: center;
 	font-size: 1rem;
 	font-family: 'GmarketSansMedium', 'sans';
-	background-color: var(--primary-color);
+	background-color: var(--primary-Main-white);
 }
 
 .side .menu_box .search_box input:focus {
-	outline: 1px solid var(--primary-color);
+	outline: 1px solid var(--primary-Main-white);
 }
 /* 검색 BOX 끝 */
 
@@ -285,7 +283,7 @@ html .side > .side_box > .logo_box > a > #logo_img {
 
 .side .menu_box > ul > .menu_btn {
 	position: absolute;
-	background-color: var(--primary-bgc);
+	background-color: var(--primary-w-b);
 	width: 100%;
 	bottom: 10px;
 	transition: bottom 1s;
@@ -300,15 +298,15 @@ html .side > .side_box > .logo_box > a > #logo_img {
 }
 
 .side .menu_box > ul > .menu_btn.active > a {
-	background-color: var(--primary-color);
+	background-color: var(--primary-Main-white);
 }
 
 .side .menu_box > ul > .menu_btn.active > a > i, main > .side .menu_box > ul > .menu_btn:hover > a > i {
-	color: var(--primary-rev-color);
+	color: var(--primary-w-b);
 }
 
 .side .menu_box > ul > .menu_btn > .hidden_menu {
-	background-color: var(--primary-bgc);
+	background-color: var(--primary-w-b);
 	opacity: 0;
 	height: 200px;
 	width: 100%;
@@ -340,38 +338,45 @@ html .side > .side_box > .logo_box > a > #logo_img {
 	3. 
 */
 .center {
-	background-color: var(--primary-bgc);
+	background-color: var(--primary-w-b);
 	height: 100vh;
 	flex-grow: 2;
+}
+
+/* body::-webkit-scrollbar { */
+/* 	width: 0; */
+/* 	height: 0; */
+/* 	background-color: black; */
+/* } */
+
+html[data-theme="dark"] .center {
+	 background: linear-gradient(to right, black 70%, grey);
 }
 
 .center.list {
 	font-family:"Pretendard-Regular", "sans";
 	flex-direction: column;
 	height: 100%;
-	color: var(--primary-font-color);
+	color: var(--primary-b-w);
 }
 
 .center > .center_box {
-	
-	background-color: var(--primary-bgc);;
+	background-color: var(--primary-w-b);;
 	flex-direction: column;
 	padding-top: 10px;
 	width: 600px;
 }
 
 .list > .center_box > .content_box {
-	margin: 30px 0;
+	margin-bottom: 30px;
 	width: 100%;
 }
 
 .list .contents {
+	border-bottom: 1px solid white;
 	width: 370px;
 	height: 100%;
-	border-left: none;
-/* 	border-radius: 0 10px 10px 10px; */
 	padding: 10px;
-	box-shadow: 0 2px 0 0 white;
 	flex-direction: column;
 }
 
@@ -429,7 +434,7 @@ html .side > .side_box > .logo_box > a > #logo_img {
 }
 
 .list .contents > .reaction_box > button > i {
-	color: var(--primary-font-color);	
+	color: var(--primary-b-w);	
 }
 /* 리액션 BOX 끝 */
 
@@ -442,7 +447,8 @@ html .side > .side_box > .logo_box > a > #logo_img {
 	left: 0;
 	width: 99vw;
 	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.3);
+	
 }
 
 .detail {
@@ -453,18 +459,26 @@ html .side > .side_box > .logo_box > a > #logo_img {
 	top: calc(50% - 300px);
 	left: calc(50% - 350px);
 	width: 700px;
-	height: 600px;
+	height: 539px;
 }
 
 .detail > div {
-	color: var(--primary-font-color);
-	background-color: var(--primary-bgc);
+	color: var(--primary-b-w);
+	background-color: var(--primary-w-b);
 	width: 100%;
 	height: 100%;
 }
 
 .detail .dt_content {
-	width: 390px;
+	width: 100%;
+}
+
+.detail .dt_content > .dt_location {
+	justify-content: space-between;
+	padding: 0 10px;
+}
+.detail .dt_content > .dt_img {
+	width: 100%;
 }
 
 .detail .dt_content > .dt_img > img {
@@ -484,16 +498,19 @@ html .side > .side_box > .logo_box > a > #logo_img {
 
 .input_reply textarea {
 	font-family: 'Pretendard-Regular', 'sans';
-	background-color: var(--primary-bgc);
-	color: var(--primary-font-color);
+	background-color: var(--primary-w-b);
+	color: var(--primary-b-w);
 	width: 260px;
 	font-size: 1.1rem;
+	flex-grow: 1;
 }
 
 .input_reply button {
+	font-family: 'Pretendard-Regular', 'sans';
 	border: none;
-	background-color: var(--primary-color);
-	width: 45px;
+	background-color: var(--primary-b-w);
+	color: var(--primary-w-b);
+	flex-grow: 1;
 }
 
 /* 상세보기 팝업 끝 */
@@ -568,7 +585,7 @@ html[data-theme="dark"]  main > section.center > .memberForm > form {
 	padding: 15px;
 	width: 314px;
 	border: none;
-	background-color: var(--primary-bgc-2);
+	background-color: var(--primary-Main-black);
 	color: white;
 	cursor: pointer;
 	transition: .2s;
@@ -600,10 +617,6 @@ html[data-theme="dark"]  main > section.center > .memberForm > form {
 	transition: .4s;
 }
 
-html[data-theme="dark"]  main .id_card {
-	box-shadow: 4px 4px 5px 0 grey;
-}
-
 .profile_box:hover > .id_card {
 	opacity: 0.95;
 	transform: translate(-35px, -35px);
@@ -633,7 +646,7 @@ html[data-theme="dark"]  main .id_card {
 .profile_img {
 	flex-grow: 6;
 	border-radius: 10px;
-	background-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--primary-bgc-2));
+	background-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--primary-Main-black));
 }
 
 

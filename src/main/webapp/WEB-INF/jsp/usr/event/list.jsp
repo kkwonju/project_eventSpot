@@ -31,7 +31,7 @@
 					<div class="reaction_box">
 						<button class="like_btn">
 							<i class="fa-regular fa-bookmark"></i>
-							<!-- 							<i class="fa-solid fa-bookmark"></i> -->
+<!-- 							<i class="fa-solid fa-bookmark"></i> -->
 						</button>
 						+1.2k
 					</div>
@@ -47,15 +47,18 @@
 			<div class="detail" id="detail_${loop.index}">
 				<div class="flex">
 					<div class="dt_content">
-						<div class="dt_location">${event.location}</div>
+						<div class="dt_location flex">
+							${event.location}
+							<a href="#">예매</a>
+						</div>
 						<div class="dt_img">
 							<img src="/resource/image/image_${event.imgId}.jpg" alt="" />
 						</div>
-						<div>
-							${event.title}
-							<br />
-							${event.detail}
-						</div>
+<!-- 						<div> -->
+<%-- 							${event.title} --%>
+<!-- 							<br /> -->
+<%-- 							${event.detail} --%>
+<!-- 						</div> -->
 					</div>
 					<div class="reply_box flex fd-c">
 						<div class="dt_reply">
@@ -96,13 +99,11 @@
 							<div>열 둘 번째 댓글입니다</div>
 							<hr />
 						</div>
-						<hr />
-						<hr />
 						<div class="input_reply">
 							<form action="">
 								<div class="flex">
 									<textarea name="" id="" style="resize: none;"></textarea>
-									<button>Reply</button>
+									<button>게시</button>
 								</div>
 							</form>
 						</div>

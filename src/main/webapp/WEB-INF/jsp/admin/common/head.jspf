@@ -62,6 +62,9 @@
 					<a href="/admin/manage/memberList">MEMBER</a>
 				</li>
 				<li>
+					<a href="/admin/manage/schedule">SCHEDULE</a>
+				</li>
+				<li>
 					<a href="/admin/manage/managerPage">MANAGER</a>
 				</li>
 			</ul>

@@ -4,15 +4,15 @@
 <c:set var="pageTitle" value="main" />
 <%@ include file="../common/head.jspf"%>
 <style>
-.eventList_box {
+.scheduleList_box {
 	padding-top: 20px;
 }
 
-.eventList_box>h1 {
+.scheduleList_box > h1 {
 	text-align: center;
 }
 
-.eventList_box>a {
+.scheduleList_box > a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -25,79 +25,61 @@
 	margin-bottom: 10px;
 }
 
-.eventList_box>a:active {
+.scheduleList_box>a:active {
 	scale: 0.9;
 }
 
-.eventList .event img {
-	width: 60px;
-}
-
-.eventList .event img:hover {
+.scheduleList .schedule img:hover {
 	scale: 2.5;
 }
 
-.eventList>ul {
+.scheduleList>ul {
 	font-size: 1.3rem;
 }
 
-.eventList ul>li {
+.scheduleList ul>li {
 	text-align: center;
 	border: 1px solid black;
-	width: calc(100%/ 12);
+	width: calc(100%/ 8);
 }
 
-.event>ul>li {
+.schedule>ul>li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 40px;
 }
-
 </style>
-<section class="eventList_box">
-	<h1>이벤트 리스트</h1>
-	<a href="/admin/manage/showAddEvent">추가</a>
-	<div class="eventList">
+<section class="scheduleList_box">
+	<h1>일정 목록</h1>
+	<a href="/admin/manage/showAddSchedule">추가</a>
+	<div class="scheduleList">
 		<ul class="flex">
 			<li>No.</li>
-			<li>Img.</li>
 			<li>등록 날짜</li>
 			<li>수정 날짜</li>
-			<li>시작일</li>
-			<li>종료일</li>
-			<li>장르</li>
-			<li>장소</li>
-			<li>제목</li>
-			<li>내용</li>
-			<li>진행 시간</li>
-			<li>조회수</li>
+			<li>이벤트 ID</li>
+			<li>공연일</li>
+			<li>시작 시간</li>
 			<li>수정</li>
 			<li>삭제</li>
 		</ul>
-		<c:forEach var="event" items="${events}">
-			<div class="event">
+		<c:forEach var="schedule" items="${scheduleList}">
+			<div class="schedule">
 				<ul class="flex">
-					<li>${event.id}</li>
+					<li>${schedule.id}</li>
+					<li>${schedule.regDate}</li>
+					<li>${schedule.updateDate}</li>
+					<li>${schedule.eventId}</li>
+					<li>${schedule.eventDate}</li>
+					<li>${schedule.startTime}</li>
 					<li>
-						<img src="/resource/image/image_${event.imgId}.jpg" alt="" />
-					</li>
-					<li>${event.regDate}</li>
-					<li>${event.updateDate}</li>
-					<li>${event.beginDt}</li>
-					<li>${event.endDt}</li>
-					<li>${event.genreId}</li>
-					<li>${event.location}</li>
-					<li>${event.title}</li>
-					<li>${event.detail}</li>
-					<li>${event.duration}</li>
-					<li>${event.hitCount}</li>
-					<li>
-						<a href="/admin/manage/showUpdateEvent?id=${event.id}">
+						<a href="/admin/manage/showUpdateSchedule?id=${schedule.id}">
 							<i class="fa-regular fa-pen-to-square" style="color: #000000;"></i>
 						</a>
 					</li>
 					<li>
-						<a href="/admin/manage/deleteEvent?id=${event.id}"
+						<a href="/admin/manage/deleteSchedule?id=${schedule.id}"
 							onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">
 							<i class="fa-regular fa-trash-can" style="color: #000000;"></i>
 						</a>

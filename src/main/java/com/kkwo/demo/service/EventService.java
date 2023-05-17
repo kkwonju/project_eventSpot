@@ -17,19 +17,23 @@ public class EventService {
 		this.eventRepository = eventRepository;
 	}
 	
+	/** 마지막 입력된 id 가져오기 */
 	private int getLastInsertId() {
 		int id = eventRepository.getLastInsertId();
 		return id;
 	}
 
+	/** 이벤트 목록 가져오기 */
 	public List<Event> getEvents() {
 		return eventRepository.getEvents();
 	}
-
+	
+	/** 이벤트 가져오기 */
 	public Event getEvent(int id) {
 		return eventRepository.getEvent(id);
 	}
-
+	
+	/** 이벤트 추가 */
 	public int addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
 			int duration) {
 
@@ -43,6 +47,7 @@ public class EventService {
 		return eventId;
 	}
 
+	/** 이벤트 삭제 */
 	public int deleteEvent(int id) {
 		int affectedRow = eventRepository.deleteEvent(id);
 		
@@ -52,7 +57,8 @@ public class EventService {
 		
 		return affectedRow;
 	}
-
+	
+	/** 이벤트 수정 */
 	public int updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
 			String detail, int duration) {
 		
@@ -63,5 +69,4 @@ public class EventService {
 		}
 		return affectedRow;
 	}
-
 }
