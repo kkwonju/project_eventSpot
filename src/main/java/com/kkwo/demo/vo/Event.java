@@ -17,6 +17,7 @@ public class Event {
 	private String location;
 	private String title;
 	private String detail;
+	private int imgId;
 	private int duration;
 	private int hitCount;
 }

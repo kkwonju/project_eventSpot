@@ -3,6 +3,8 @@ DROP DATABASE IF EXISTS eventSpot_db;
 CREATE DATABASE eventSpot_db;
 USE eventSpot_db;
 
+###################################
+
 # `event` 테이블 추가
 CREATE TABLE `event`(
     id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -14,9 +16,61 @@ CREATE TABLE `event`(
     location VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
     detail TEXT NOT NULL,
+    imgId INT NOT NULL,
     duration INT DEFAULT 0 COMMENT '단위 (분)',
     hitCount INT UNSIGNED DEFAULT 0
 );
+
+# event 테스트 데이터 생성
+INSERT INTO `event`
+SET regDate = NOW(),
+updateDate = NOW(),
+beginDt = "2023-07-01",
+endDt = "2023-07-01",
+genreId = 1003,
+location = "충남대학교 정심화홀",
+title = "김창옥 토크콘서트 시즌 3",
+detail = "2023년 7월 1일 (토요일) 오후 1시, 6시",
+imgId = 23,
+duration = 120;
+
+INSERT INTO `event`
+SET regDate = NOW(),
+updateDate = NOW(),
+beginDt = "2023-05-19",
+endDt = "2023-05-21",
+genreId = 1002,
+location = "대전예술의전당 아트홀",
+title = "뮤지컬 〈캣츠〉 오리지널 내한－대전（Musical CATS）",
+detail = "2023년 5월 19일(금) 오후 7시 30분",
+imgId = 14,
+duration = 160;
+
+INSERT INTO `event`
+SET regDate = NOW(),
+updateDate = NOW(),
+beginDt = "2023-06-01",
+endDt = "22023-07-30",
+genreId = 1001,
+location = "대전 상상아트홀",
+title = "NEW달을 품은 슈퍼맨",
+detail = "평일 19시 30분 / 주말,공휴일 16시 (월요일 공연 없음)",
+imgId = 20,
+duration = 110;
+
+INSERT INTO `event`
+SET regDate = NOW(),
+updateDate = NOW(),
+beginDt = "2023-06-02",
+endDt = "2023-06-02",
+genreId = 1005,
+location = "대전시립연정국악원 작은마당",
+title = "피아니스트 강미연 리사이틀",
+detail = "2023년 6월 2일 금요일 오후 7시 30분",
+imgId = 78,
+duration = 90;
+
+###################################
 
 # genre 테이블 추가
 CREATE TABLE genre(
@@ -26,7 +80,12 @@ CREATE TABLE genre(
     `name` CHAR(50)
 ) AUTO_INCREMENT = 1001;
 
-# genre 테스트 데이터 생성
+# genre 데이터 생성
+INSERT INTO genre
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '기타';
+
 INSERT INTO genre
 SET regDate = NOW(),
 updateDate = NOW(),
@@ -57,50 +116,8 @@ SET regDate = NOW(),
 updateDate = NOW(),
 `name` = '레저';
 
-# event 테스트 데이터 생성
-INSERT INTO `event`
-SET regDate = NOW(),
-updateDate = NOW(),
-beginDt = "2023-05-06",
-endDt = "2023-05-07",
-genreId = 1001,
-location = "대전 평송청소년문화센터 대극장",
-title = "[대전] 가족 뮤지컬 <슈퍼히어로의 똥 닦는 법>",
-detail = "가족 뮤지컬",
-duration = 65;
 
-INSERT INTO `event`
-SET regDate = NOW(),
-updateDate = NOW(),
-beginDt = "2023-05-10",
-endDt = "2023-05-20",
-genreId = 1005,
-location = "대전 예술의 전당",
-title = "피카소 전시회",
-detail = "전시",
-duration = 30;
-
-INSERT INTO `event`
-SET regDate = NOW(),
-updateDate = NOW(),
-beginDt = "2023-06-05",
-endDt = "2023-06-05",
-genreId = 1002,
-location = "충남대학교",
-title = "싸이 흠뻑쇼",
-detail = "콘서트",
-duration = 150;
-
-INSERT INTO `event`
-SET regDate = NOW(),
-updateDate = NOW(),
-beginDt = "2023-07-01",
-endDt = "2023-07-03",
-genreId = 1003,
-location = "대전 신세계백화점",
-title = "김종욱찾기",
-detail = "연극",
-duration = 100;
+###################################
 
 # member 테이블 추가
 CREATE TABLE `member`(
@@ -113,8 +130,8 @@ CREATE TABLE `member`(
     nickname CHAR(50) NOT NULL,
     email CHAR(50) NOT NULL UNIQUE,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴 여부 (0 유지, 1 탈퇴)',
-    delDate DATETIME COMMENT '탈퇴 날짜',
-    CONSTRAINT check_password_length CHECK (LENGTH(loginPw) >= 6)
+    delDate DATETIME COMMENT '탈퇴 날짜'
+    #CONSTRAINT check_password_length CHECK (LENGTH(loginPw) >= 6)
 );
 
 # member 테스트 데이터 생성
@@ -142,6 +159,53 @@ loginId = 'test3',
 loginPw = 'pwpwpw2',
 nickname = '명수',
 email = 'myungsu@naver.com';
+
+###################################
+
+CREATE TABLE reply(
+    id INT
+
+);
+
+###################################
+
+# eventSchedule 테이블 추가
+CREATE TABLE eventSchedule(
+    id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    eventId INT NOT NULL,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    eventDate DATE NOT NULL ,
+    startTime TIME NOT NULL,
+    endTime TIME NOT NULL
+);
+
+# eventSchedule 테스트 데이터 생성
+INSERT INTO eventSchedule
+SET regDate = NOW(),
+updateDate = NOW(),
+eventId = 1,
+eventDate = '2023-05-06',
+startTime = '12:00:00',
+endTime = '13:30:00';
+
+INSERT INTO eventSchedule
+SET regDate = NOW(),
+updateDate = NOW(),
+eventId = 2,
+eventDate = '2023-05-10',
+startTime = '12:00:00',
+endTime = '20:00:00';
+
+INSERT INTO eventSchedule
+SET regDate = NOW(),
+updateDate = NOW(),
+eventId = 1,
+eventDate = '2023-05-06',
+startTime = '12:00:00',
+endTime = '13:30:00';
+
+###################################
 
 SELECT LAST_INSERT_ID();
 

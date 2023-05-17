@@ -446,6 +446,7 @@ html .side > .side_box > .logo_box > a > #logo_img {
 }
 
 .detail {
+	font-family: 'Pretendard-Regular', 'sans';
 	display: none;
 	z-index: 30;
 	position: fixed;
@@ -463,16 +464,16 @@ html .side > .side_box > .logo_box > a > #logo_img {
 }
 
 .detail .dt_content {
-	width: 400px;
+	width: 390px;
 }
 
 .detail .dt_content > .dt_img > img {
-	width: 400px;
+	width: 390px;
 }
 
 .detail .dt_reply {
 	width: 300px;
-	padding: 5px;
+	padding-left: 5px;
 	overflow: auto;
 }
 
@@ -481,8 +482,18 @@ html .side > .side_box > .logo_box > a > #logo_img {
 	height: 0;
 }
 
-.detail .input_reply > form > input {
-	width: 300px;
+.input_reply textarea {
+	font-family: 'Pretendard-Regular', 'sans';
+	background-color: var(--primary-bgc);
+	color: var(--primary-font-color);
+	width: 260px;
+	font-size: 1.1rem;
+}
+
+.input_reply button {
+	border: none;
+	background-color: var(--primary-color);
+	width: 45px;
 }
 
 /* 상세보기 팝업 끝 */

@@ -25,7 +25,7 @@
 					<div class="location_box">${event.location}</div>
 					<div class="img_box flex">
 						<a class="detail_btn flex" href="javascript:popup(${loop.index});">
-							<img src="/resource/image/image_20.jpg" alt="image" />
+							<img src="/resource/image/image_${event.imgId}.jpg" alt="image" />
 						</a>
 					</div>
 					<div class="reaction_box">
@@ -38,7 +38,6 @@
 					<div class="reply_box pl-5">
 						kkwo
 						<div>첫 번째 댓글입니다</div>
-						<hr />
 						kkwo2
 						<div>두 번째 댓글입니다</div>
 					</div>
@@ -50,7 +49,12 @@
 					<div class="dt_content">
 						<div class="dt_location">${event.location}</div>
 						<div class="dt_img">
-							<img src="/resource/image/image_20.jpg" alt="" />
+							<img src="/resource/image/image_${event.imgId}.jpg" alt="" />
+						</div>
+						<div>
+							${event.title}
+							<br />
+							${event.detail}
 						</div>
 					</div>
 					<div class="reply_box flex fd-c">
@@ -97,8 +101,8 @@
 						<div class="input_reply">
 							<form action="">
 								<div class="flex">
-									<textarea name="" id="" style="resize: none; width: 260px;"></textarea>
-									<button>게시</button>
+									<textarea name="" id="" style="resize: none;"></textarea>
+									<button>Reply</button>
 								</div>
 							</form>
 						</div>
