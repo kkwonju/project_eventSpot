@@ -14,4 +14,6 @@ public class Schedule {
 	private int eventId;
 	private String eventDate;
 	private String startTime;
+	
+	private String eventTitle;
 }

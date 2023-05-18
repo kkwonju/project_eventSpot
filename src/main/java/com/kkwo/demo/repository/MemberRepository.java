@@ -23,4 +23,6 @@ public interface MemberRepository {
 
 	int deleteMember(int id);
 
+	List<Member> getForPrintMembers(String searchKeyword);
+
 }

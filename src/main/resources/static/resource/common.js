@@ -15,24 +15,23 @@ $('.search_btn').click(function() {
 	}
 });
 
-$('.center').click(function(){
+$('.center').click(function() {
 	$('.search_btn').removeClass('active');
 })
 
 $('#image_input').on('change', function(e) {
 	const file = e.target.files[0];
 	const reader = new FileReader();
-	reader.onload = function(e){
+	reader.onload = function(e) {
 		$('#preview_img').attr('src', e.target.result);
 		$('#fileName').text(file.name);
 	}
-	
+
 	reader.readAsDataURL(file);
 });
 
-var $SK_var = $('#input_keyword').val().trim();
+var $searchKeyword = $('#input_keyword').val().trim();
 
-if($SK_var != ''){
+if ($searchKeyword != '') {
 	$('.search_btn').addClass('active');
-	$('#input_keyword').focus();
 }

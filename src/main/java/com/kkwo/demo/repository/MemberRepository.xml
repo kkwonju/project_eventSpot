@@ -42,6 +42,19 @@
 		ORDER BY id DESC;
 	</select>
 
+	<select id="getForPrintMembers" resultType="Member">
+		SELECT *
+		FROM `member`
+		<where>
+			<if test="searchKeyword != ''">
+				loginId LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR nickname LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR email LIKE CONCAT('%', #{searchKeyword}, '%')
+			</if>
+		</where>
+		ORDER BY id DESC;
+	</select>
+	
 	<delete id="deleteMember">
 		DELETE FROM `member`
 		WHERE id = #{id};

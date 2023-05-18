@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="main" />
+<c:set var="searchTypeCode" value="schedule"/>
 <%@ include file="../common/head.jspf"%>
 <style>
 .scheduleList_box {
@@ -20,9 +20,6 @@
 	height: 40px;
 	border: 1px solid black;
 	border-radius: 10px;
-	margin-left: auto;
-	margin-right: 10px;
-	margin-bottom: 10px;
 }
 
 .scheduleList_box>a:active {

@@ -31,7 +31,9 @@ public class UsrEventController {
 	public String showEventlist(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
 //		List<Event> events = eventService.getEvents();
 		List<Event> events = eventService.getForPrintEvents(searchKeyword);
+		int eventsCnt = events.size();
 		model.addAttribute("events", events);
+		model.addAttribute("eventsCnt", eventsCnt);
 		return "usr/event/list";
 	}
 	

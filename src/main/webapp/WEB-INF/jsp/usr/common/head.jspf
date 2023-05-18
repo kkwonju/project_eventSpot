@@ -69,7 +69,13 @@ function Theme__applyTo(themeName) {
 							<a href="/">HOME</a>
 						</li>
 						<li class="search_btn">
-							<a>SEARCH</a>
+							<a>
+								SEARCH
+								<c:if
+									test="${param.searchKeyword != null and param.searchKeyword != '' and !empty events}">
+									<div class="eventsCnt">(${eventsCnt})</div>
+								</c:if>
+							</a>
 						</li>
 						<li class="search_box">
 							<form action="../event/list">

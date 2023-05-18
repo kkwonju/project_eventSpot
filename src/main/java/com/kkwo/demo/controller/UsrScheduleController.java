@@ -20,8 +20,8 @@ public class UsrScheduleController {
 	}
 	@RequestMapping("/usr/event/schedule")
 	public String showSchedule(Model model) {
-		List<Schedule> schedule = ScheduleService.getSchedule();
-		model.addAttribute("schedule", schedule);
+		List<Schedule> scheduleList = ScheduleService.getScheduleList();
+		model.addAttribute("scheduleList", scheduleList);
 		return "usr/event/schedule";
 	}
 }

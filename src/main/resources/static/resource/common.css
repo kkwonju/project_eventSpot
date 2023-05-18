@@ -1,24 +1,6 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: 'SUITE-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2')
-		format('woff2');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'neurimboGothicRegular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2')
-		format('woff2');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
 	font-family: 'Pretendard-Regular';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
@@ -27,25 +9,9 @@
 	font-style: normal;
 }
 
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-
-
 /* 노말라이즈 */
 html {
-	font-family: "SUITE-Regular", sans;
+	font-family: "Pretendard-Regular", sans;
 }
 
 body, ul, li {
@@ -173,8 +139,8 @@ main {
 	min-width: 1220px;
 }
 
-/* ################### SECTION SIDE 시작 ################### */
-/*
+/* 
+	################### SECTION SIDE 시작 ################### 
 	1. 좌측면 고정 메뉴바
 		- 로고
 		- 메뉴
@@ -270,7 +236,7 @@ html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
 	height: 100%;
 	text-align: center;
 	font-size: 1rem;
-	font-family: 'GmarketSansMedium', 'sans';
+/* 	font-family: 'Pretendard-Regular', 'sans'; */
 	color: var(--primary-w-b);
 	background-color: var(--primary-Main-white);
 }
@@ -331,8 +297,8 @@ html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
 
 
 
-/* ################### SECTION CENTER 시작 ################### */
-/*
+/* 
+	################### SECTION CENTER 시작 ###################
 	1. 중앙
 	2. 이벤트 리스트
 		- 이벤트
@@ -356,7 +322,7 @@ html[data-theme="dark"] .center {
 }
 
 .center.list {
-	font-family:"Pretendard-Regular", "sans";
+/* 	font-family:"Pretendard-Regular", "sans"; */
 	flex-direction: column;
 	height: 100%;
 	color: var(--primary-b-w);
@@ -454,7 +420,7 @@ html[data-theme="dark"] .center {
 }
 
 .detail {
-	font-family: 'Pretendard-Regular', 'sans';
+/* 	font-family: 'Pretendard-Regular', 'sans'; */
 	display: none;
 	z-index: 30;
 	position: fixed;
@@ -499,7 +465,7 @@ html[data-theme="dark"] .center {
 }
 
 .input_reply textarea {
-	font-family: 'Pretendard-Regular', 'sans';
+/* 	font-family: 'Pretendard-Regular', 'sans'; */
 	background-color: var(--primary-w-b);
 	color: var(--primary-b-w);
 	width: 260px;
@@ -508,7 +474,7 @@ html[data-theme="dark"] .center {
 }
 
 .input_reply button {
-	font-family: 'Pretendard-Regular', 'sans';
+/* 	font-family: 'Pretendard-Regular', 'sans'; */
 	border: none;
 	background-color: var(--primary-b-w);
 	color: var(--primary-w-b);
@@ -519,7 +485,7 @@ html[data-theme="dark"] .center {
 
 /* 리스트 검색 결과 없을 때 시작 */
 .no_events {
-	font-family: 'Pretendard-Regular', 'sans';
+/* 	font-family: 'Pretendard-Regular', 'sans'; */
 	opacity: 0.6;
 	position: absolute;
 	font-size: 2rem;
@@ -528,11 +494,18 @@ html[data-theme="dark"] .center {
 	color: grey;
 }
 
-/* 리스트 검색 결과 없을 때 끝 */
+/* 검색 결과 갯수 */
+.eventsCnt {
+	position: fixed;
+	top: 241px;
+	left: 192px;
+	z-index: 20;
+	font-size: 1.15rem;
+}
 
 
-/* ################### Member 박스 시작 ################### */
-/*
+/* 
+	################### Member 박스 시작 ################### 
 	1. 회원가입
 	2. 로그인
 */
@@ -572,7 +545,7 @@ html[data-theme="dark"]  main > section.center > .memberForm > form {
 
 .input_box > label, .input_box > input, .input_box > button {
 	border-radius: 10px;
-	font-family: "Pretendard-Regular", "sans";
+/* 	font-family: "Pretendard-Regular", "sans"; */
 	font-size: 18px;
 	padding: 20px 0 10px 0;
 	width: 100%;
@@ -625,7 +598,7 @@ html[data-theme="dark"]  main > section.center > .memberForm > form {
 	top: calc(50% - 200px);
 	height: 300px;
 	width: 500px;
-	font-family:"TheJamsil5Bold", "sans";
+/* 	font-family:"Pretendard-Regular", "sans"; */
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
@@ -674,18 +647,13 @@ html[data-theme="dark"]  main > section.center > .memberForm > form {
 
 .nickname {
   font-size: 2rem;
-  font-family: "TheJamsil5Bold", "sans";
+/*   font-family: "Pretendard-Regular", "sans"; */
 }
 
 /* profile 끝 */
 
-
-
-
-
 /* SECTION CENTER 끝*/
 
-/* 반응형 시작 */
-/* @media screen and (max-width: 1220px){ */
 
-/* } */
+/* ################### manage 시작 ################### */
+

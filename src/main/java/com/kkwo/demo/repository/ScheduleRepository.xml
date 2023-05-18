@@ -8,8 +8,24 @@
 		SELECT LAST_INSERT_ID();
 	</select>
 	
-	<select id="getSchedule" resultType="Schedule">
+	<select id="getScheduleList" resultType="Schedule">
 		SELECT *
-		FROM `schedule`;
+		FROM `schedule`
+		ORDER BY eventDate, startTime;
+	</select>
+	
+		<select id="getForPrintScheduleList" resultType="Schedule">
+		SELECT S.*, E.title AS eventTitle
+		FROM `schedule` S
+		INNER JOIN `event` E
+		ON S.eventId = E.id
+		<where>
+			<if test="searchKeyword != ''">
+				E.title LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR S.eventDate LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR S.startTime LIKE CONCAT('%', #{searchKeyword}, '%')
+			</if>
+		</where>
+		ORDER BY eventDate, startTime;
 	</select>
 </mapper>

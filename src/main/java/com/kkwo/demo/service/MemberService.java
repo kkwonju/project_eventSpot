@@ -69,6 +69,10 @@ public class MemberService {
 		return memberRepository.getMembers();
 	}
 
+	public List<Member> getForPrintMembers(String searchKeyword) {
+		return memberRepository.getForPrintMembers(searchKeyword);
+	}
+	
 	public int deleteMember(int id) {
 		int affectedRow = memberRepository.deleteMember(id);
 		
@@ -78,4 +82,6 @@ public class MemberService {
 		
 		return affectedRow;
 	}
+
+
 }

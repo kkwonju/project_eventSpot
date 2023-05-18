@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="main" />
+<c:set var="searchTypeCode" value="event" />
 <%@ include file="../common/head.jspf"%>
 <style>
 .eventList_box {
@@ -52,7 +52,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 </style>
 <section class="eventList_box">
 	<h1>이벤트 리스트</h1>

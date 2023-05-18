@@ -9,6 +9,8 @@ import com.kkwo.demo.vo.Schedule;
 @Mapper
 public interface ScheduleRepository {
 	
-	List<Schedule> getSchedule();
+	List<Schedule> getScheduleList();
+
+	List<Schedule> getForPrintScheduleList(String searchKeyword);
 	
 }

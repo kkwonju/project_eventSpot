@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../common/head.jspf"%>
-
 <script>
 	function popup(index) {
 
@@ -17,6 +16,8 @@
 		})
 	}
 </script>
+
+
 <section class="center list flex">
 	<div class="center_box con">
 		<c:forEach var="event" items="${events}" varStatus="loop">

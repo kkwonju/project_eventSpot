@@ -17,7 +17,11 @@ public class ScheduleService {
 		this.scheduleRepository = scheduleRepository;
 	}
 
-	public List<Schedule> getSchedule() {
-		return scheduleRepository.getSchedule();
+	public List<Schedule> getScheduleList() {
+		return scheduleRepository.getScheduleList();
+	}
+
+	public List<Schedule> getForPrintScheduleList(String searchKeyword) {
+		return scheduleRepository.getForPrintScheduleList(searchKeyword);
 	}
 }

@@ -21,7 +21,7 @@ public class AdmScheduleController {
 	
 	@RequestMapping("/admin/manage/schedule")
 	public String showSchedule(Model model) {
-		List<Schedule> scheduleList = ScheduleService.getSchedule();
+		List<Schedule> scheduleList = ScheduleService.getScheduleList();
 		model.addAttribute("scheduleList", scheduleList);
 		return "admin/manage/schedule";
 	}

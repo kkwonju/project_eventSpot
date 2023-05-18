@@ -22,7 +22,7 @@
 	}
 	
 	.top_bar {
-		
+		margin-bottom: 50px;
 	}
 	
 	.top_bar > ul {
