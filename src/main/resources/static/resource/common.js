@@ -30,5 +30,9 @@ $('#image_input').on('change', function(e) {
 	reader.readAsDataURL(file);
 });
 
+var $SK_var = $('#input_keyword').val().trim();
 
-
+if($SK_var != ''){
+	$('.search_btn').addClass('active');
+	$('#input_keyword').focus();
+}

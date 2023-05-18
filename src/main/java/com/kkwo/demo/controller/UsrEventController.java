@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kkwo.demo.service.EventService;
@@ -27,8 +28,9 @@ public class UsrEventController {
 	
 	/** 메인페이지, 리스트 */
 	@RequestMapping("/usr/event/list")
-	public String showEventlist(Model model) {
-		List<Event> events = eventService.getEvents();
+	public String showEventlist(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
+//		List<Event> events = eventService.getEvents();
+		List<Event> events = eventService.getForPrintEvents(searchKeyword);
 		model.addAttribute("events", events);
 		return "usr/event/list";
 	}

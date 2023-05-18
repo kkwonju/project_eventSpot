@@ -160,6 +160,38 @@ loginPw = 'pwpwpw2',
 nickname = '명수',
 email = 'myungsu@naver.com';
 
+# eventSchedule 테이블 추가
+CREATE TABLE `schedule`(
+    id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    eventId INT NOT NULL,
+    eventDate DATE NOT NULL ,
+    startTime TIME NOT NULL
+);
+
+# eventSchedule 테스트 데이터 생성
+INSERT INTO `schedule`
+SET regDate = NOW(),
+updateDate = NOW(),
+eventId = 1,
+eventDate = '2023-05-06',
+startTime = '13:30:00';
+
+INSERT INTO `schedule`
+SET regDate = NOW(),
+updateDate = NOW(),
+eventId = 2,
+eventDate = '2023-05-10',
+startTime = '16:00:00';
+
+INSERT INTO `schedule`
+SET regDate = NOW(),
+updateDate = NOW(),
+eventId = 1,
+eventDate = '2023-05-06',
+startTime = '17:30:00';
+
 ###################################
 
 CREATE TABLE reply(
@@ -168,42 +200,6 @@ CREATE TABLE reply(
 );
 
 ###################################
-
-# eventSchedule 테이블 추가
-CREATE TABLE eventSchedule(
-    id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    eventId INT NOT NULL,
-    regDate DATETIME NOT NULL,
-    updateDate DATETIME NOT NULL,
-    eventDate DATE NOT NULL ,
-    startTime TIME NOT NULL,
-    endTime TIME NOT NULL
-);
-
-# eventSchedule 테스트 데이터 생성
-INSERT INTO eventSchedule
-SET regDate = NOW(),
-updateDate = NOW(),
-eventId = 1,
-eventDate = '2023-05-06',
-startTime = '12:00:00',
-endTime = '13:30:00';
-
-INSERT INTO eventSchedule
-SET regDate = NOW(),
-updateDate = NOW(),
-eventId = 2,
-eventDate = '2023-05-10',
-startTime = '12:00:00',
-endTime = '20:00:00';
-
-INSERT INTO eventSchedule
-SET regDate = NOW(),
-updateDate = NOW(),
-eventId = 1,
-eventDate = '2023-05-06',
-startTime = '12:00:00',
-endTime = '13:30:00';
 
 ###################################
 

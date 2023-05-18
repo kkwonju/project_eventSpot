@@ -72,9 +72,9 @@ function Theme__applyTo(themeName) {
 							<a>SEARCH</a>
 						</li>
 						<li class="search_box">
-							<form action="../event/doSearch">
-								<input name="searchKeyword" autocomplete="off" type="text"
-									placeholder="검색어를 입력하세요" />
+							<form action="../event/list">
+								<input id="input_keyword" name="searchKeyword" autocomplete="off" type="text"
+									placeholder="검색어를 입력하세요" value="${param.searchKeyword}"/>
 							</form>
 						</li>
 						<c:if test="${rq.logined}">

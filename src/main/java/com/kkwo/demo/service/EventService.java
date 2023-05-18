@@ -28,6 +28,14 @@ public class EventService {
 		return eventRepository.getEvents();
 	}
 	
+	/**
+	 조건에 만족하는 이벤트 목록 가져오기
+	 	1. searchKeyword ( 검색어와 부분 일치하는 )
+	 */
+	public List<Event> getForPrintEvents(String searchKeyword) {
+		return eventRepository.getForPrintEvents(searchKeyword);
+	}
+	
 	/** 이벤트 가져오기 */
 	public Event getEvent(int id) {
 		return eventRepository.getEvent(id);
@@ -69,4 +77,5 @@ public class EventService {
 		}
 		return affectedRow;
 	}
+
 }

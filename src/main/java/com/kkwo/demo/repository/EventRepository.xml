@@ -15,6 +15,19 @@
 		id DESC;
 	</select>
 	
+	<select id="getForPrintEvents" resultType="Event">
+		SELECT *
+		FROM `event`
+		<where>
+			<if test="searchKeyword != ''">
+				title LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR detail LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR `location` LIKE CONCAT('%', #{searchKeyword}, '%')
+			</if>
+		</where>
+		ORDER BY id DESC;
+	</select>
+	
 	<select id="getEvent" resultType="Event">
 		SELECT *
 		FROM `event`
