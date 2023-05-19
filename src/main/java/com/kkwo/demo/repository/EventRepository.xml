@@ -10,14 +10,14 @@
 
 	<select id="getEvents" resultType="Event">
 		SELECT *
-		FROM `event`
+		FROM TB_EVENT
 		ORDER BY
 		id DESC;
 	</select>
 	
 	<select id="getForPrintEvents" resultType="Event">
 		SELECT *
-		FROM `event`
+		FROM TB_EVENT
 		<where>
 			<if test="searchKeyword != ''">
 				title LIKE CONCAT('%', #{searchKeyword}, '%')
@@ -30,12 +30,12 @@
 	
 	<select id="getEvent" resultType="Event">
 		SELECT *
-		FROM `event`
+		FROM TB_EVENT
 		WHERE id = #{id};
 	</select>
 	
 	<insert id="addEvent">
-		INSERT INTO `event`
+		INSERT INTO TB_EVENT
 		SET regDate = NOw(),
 		updateDate = now(),
 		beginDt = #{beginDt},
@@ -47,8 +47,8 @@
 		duration = #{duration};
 	</insert>
 	
-	<update id="updateEvent">
-		UPDATE `event`
+	<update id="modifyEvent">
+		UPDATE TB_EVENT
 		SET updateDate = NOW(),
 		beginDt = #{beginDt},
 		endDt = #{endDt},
@@ -61,7 +61,7 @@
 	</update>
 	
 	<delete id="deleteEvent">
-		DELETE FROM `event`
+		DELETE FROM TB_EVENT
 		WHERE id = #{id};
 	</delete>
 </mapper>

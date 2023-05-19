@@ -13,6 +13,9 @@ public class EventService {
 	@Autowired
 	private EventRepository eventRepository;
 	
+	// 이벤트 서비스 클래스
+	
+	// EventRepository 객체를 주입받는 생성자
 	public EventService(EventRepository eventRepository) {
 		this.eventRepository = eventRepository;
 	}
@@ -67,10 +70,10 @@ public class EventService {
 	}
 	
 	/** 이벤트 수정 */
-	public int updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
+	public int modifyEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
 			String detail, int duration) {
 		
-		int affectedRow =  eventRepository.updateEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
+		int affectedRow =  eventRepository.modifyEvent(id, beginDt, endDt, genreId, location, title, detail, duration);
 		
 		if(affectedRow != 1) {
 			return -1;

@@ -10,14 +10,14 @@
 	
 	<select id="getScheduleList" resultType="Schedule">
 		SELECT *
-		FROM `schedule`
+		FROM TB_SCHEDULE
 		ORDER BY eventDate, startTime;
 	</select>
 	
 		<select id="getForPrintScheduleList" resultType="Schedule">
 		SELECT S.*, E.title AS eventTitle
-		FROM `schedule` S
-		INNER JOIN `event` E
+		FROM TB_SCHEDULE S
+		INNER JOIN TB_EVENT E
 		ON S.eventId = E.id
 		<where>
 			<if test="searchKeyword != ''">

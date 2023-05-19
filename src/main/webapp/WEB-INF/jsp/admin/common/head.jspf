@@ -53,7 +53,7 @@
 		<nav class="top_bar">
 			<ul>
 				<li>
-					<a href="/admin/home/main">HOME</a>
+					<a href="/admin/home/search">SEARCH</a>
 				</li>
 				<li>
 					<a href="/admin/manage/eventList">EVENT</a>

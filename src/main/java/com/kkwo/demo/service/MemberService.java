@@ -14,10 +14,16 @@ public class MemberService {
 	@Autowired
 	private MemberRepository memberRepository;
 	
+	// 회원 서비스 클래스
+	
+	// MemberRepository 객체를 주입받는 생성자
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
 
+	/** 
+	 * 
+	 *  */
 	public ResultData doJoinMember(String loginId, String loginPw, String nickname, String email) {
 		Member member = getMemberByLoginId(loginId);
 		if(member != null) {

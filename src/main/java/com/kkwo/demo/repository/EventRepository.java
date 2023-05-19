@@ -20,7 +20,7 @@ public interface EventRepository {
 
 	public int deleteEvent(int id);
 
-	public int updateEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
+	public int modifyEvent(int id, String beginDt, String endDt, int genreId, String location, String title,
 			String detail, int duration);
 
 	public int getLastInsertId();

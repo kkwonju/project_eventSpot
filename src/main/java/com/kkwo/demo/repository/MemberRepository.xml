@@ -10,24 +10,24 @@
 
 	<select id="getMemberById" resultType="Member">
 		SELECT *
-		FROM `member`
+		FROM TB_MEMBER
 		WHERE id = #{id};
 	</select>
 
 	<select id="getMemberByLoginId" resultType="Member">
 		SELECT *
-		FROM `member`
+		FROM TB_MEMBER
 		WHERE loginId = #{loginId};
 	</select>
 	
 	<select id="getMemberByEmail" resultType="Member">
 		SELECT *
-		FROM `member`
+		FROM TB_MEMBER
 		WHERE email = #{email};
 	</select>
 
 	<insert id="doJoinMember">
-		INSERT INTO `member`
+		INSERT INTO TB_MEMBER
 		SET regDate = NOW(),
 		updateDate = NOW(),
 		loginId = #{loginId},
@@ -38,13 +38,13 @@
 	
 	<select id="getMembers" resultType="Member">
 		SELECT *
-		FROM `member`
+		FROM TB_MEMBER
 		ORDER BY id DESC;
 	</select>
 
 	<select id="getForPrintMembers" resultType="Member">
 		SELECT *
-		FROM `member`
+		FROM TB_MEMBER
 		<where>
 			<if test="searchKeyword != ''">
 				loginId LIKE CONCAT('%', #{searchKeyword}, '%')
@@ -56,7 +56,7 @@
 	</select>
 	
 	<delete id="deleteMember">
-		DELETE FROM `member`
+		DELETE FROM TB_MEMBER
 		WHERE id = #{id};
 	</delete>	
 </mapper>

@@ -91,7 +91,7 @@
 					<li>${event.duration}</li>
 					<li>${event.hitCount}</li>
 					<li>
-						<a href="/admin/manage/showUpdateEvent?id=${event.id}">
+						<a href="/admin/manage/showModifyEvent?id=${event.id}">
 							<i class="fa-regular fa-pen-to-square" style="color: #000000;"></i>
 						</a>
 					</li>
