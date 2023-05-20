@@ -9,20 +9,28 @@ import com.kkwo.demo.vo.Member;
 @Mapper
 public interface MemberRepository {
 
+	// INSERT
 	int doJoinMember(String loginId, String loginPw, String nickname, String email);
 
+	// SELECT
 	int getLastInsertId();
 
+	// SELECT
 	Member getMemberById(int id);
 
+	// SELECT
 	Member getMemberByLoginId(String loginId);
 
+	// SELECT
 	Member getMemberByEmail(String email);
 
+	// SELECT
 	List<Member> getMembers();
 
+	// DELETE
 	int deleteMember(int id);
 
+	// SELECT
 	List<Member> getForPrintMembers(String searchKeyword);
 
 }

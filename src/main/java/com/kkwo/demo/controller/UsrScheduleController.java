@@ -23,13 +23,12 @@ public class UsrScheduleController {
 	}
 	
 	/**
-	 * 스케쥴 리스트를 보여주는 메서드;
-	 * 모든 스케쥴을 담은 리스트를 모델에 추가하고 사용자용 스케쥴 리스트 페이지를 반환한다
+	 * @return 사용자용 스케쥴 리스트 페이지 반환
 	 * */
-	@RequestMapping("/usr/event/schedule")
+	@RequestMapping("/usr/schedule/list")
 	public String showSchedule(Model model) {
 		List<Schedule> scheduleList = ScheduleService.getScheduleList();
 		model.addAttribute("scheduleList", scheduleList);
-		return "usr/event/schedule";
+		return "usr/schedule/list";
 	}
 }

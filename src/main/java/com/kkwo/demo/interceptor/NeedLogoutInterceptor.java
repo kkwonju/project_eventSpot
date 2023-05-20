@@ -15,9 +15,16 @@ public class NeedLogoutInterceptor implements HandlerInterceptor {
 	private Rq rq;
 
 	// 로그아웃이 필요한 페이지에 접근하기 전 실행되는 인터셉터 클래스
-	
-	
-	// 로그아웃 여부를 체크하여 처리를 결정하는 메서드
+
+	/**
+	 * 로그아웃 여부를 체크하여 처리를 결정하는 메서드
+	 * 
+	 * @param req     HttpServletRequest
+	 * @param resp    HttpServletResponse
+	 * @param handler Object 타입
+	 * 
+	 * @return 성공 : 다음 단계 실행, 실패 : 실행 중단 (페이지 이동)
+	 */
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 

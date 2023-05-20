@@ -21,22 +21,21 @@ import ch.qos.logback.core.joran.conditional.IfAction;
 public class UsrEventController {
 	@Autowired
 	private EventService eventService;
-	
+
 	// 사용자 이벤트 컨트롤러 클래스
-	
+
 	// EventService 객체를 주입받는 생성자
 	public UsrEventController(EventService eventService) {
 		this.eventService = eventService;
 	}
-	
+
 	/**
-	 * 이벤트 리스트를 보여주는 메서드;
-	 * searchkeyword를 받아 Event 테이블을 조회한다
-	 * 조회된 데이터를 담은 리스트와 해당 리스트의 길이를 모델에 추가한다
-	 * 사용자용 이벤트 리스트 페이지를 반환한다
+	 * TB_EVENT / 조회
 	 * 
-	 * @param 검색어 (기본값 : "")
-	 * */
+	 * @param searchKeyword 검색어 (기본값 : "")
+	 * 
+	 * @return 사용자용 이벤트 리스트 페이지 반환
+	 */
 	@RequestMapping("/usr/event/list")
 	public String showEventlist(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
 		List<Event> events = eventService.getForPrintEvents(searchKeyword);
@@ -45,7 +44,7 @@ public class UsrEventController {
 		model.addAttribute("eventsCnt", eventsCnt);
 		return "usr/event/list";
 	}
-	
+
 //	@RequestMapping("/usr/event/detail")
 //	public String showEventDetail(Model model, int id) {
 //		if(Ut.isEmpty(id)) {

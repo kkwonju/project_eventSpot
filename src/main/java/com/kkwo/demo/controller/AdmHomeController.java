@@ -36,7 +36,8 @@ public class AdmHomeController {
 	/**
 	 * TB_EVENT, TB_MEMBER, TB_SCHEDULE / 조회
 	 * 
-	 * @param 검색어 (기본값 = "");
+	 * @param searchKeyword 검색어 (기본값 = "");
+	 * 
 	 * @return (검색어) 있을 때 : 검색창과 조회된 리스트 반환, 없을 때 : 검색창만 반환
 	 */
 	@RequestMapping("/admin/home/search")

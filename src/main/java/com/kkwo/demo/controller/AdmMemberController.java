@@ -19,17 +19,17 @@ public class AdmMemberController {
 	private MemberService memberService;
 
 	// 관리자 회원 컨트롤러 클래스
-	
+
 	// MemberService 객체를 주입받는 생성자
 	public AdmMemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
-	
+
 	/**
 	 * TB_MEMBER / 조회
 	 * 
-	 * @return 관리자용 이벤트 리스트 페이지 반환 
-	 * */
+	 * @return 관리자용 이벤트 리스트 페이지 반환
+	 */
 	@RequestMapping("/admin/manage/memberList")
 	public String showMemberList(Model model) {
 		List<Member> members = memberService.getMembers();
@@ -38,13 +38,14 @@ public class AdmMemberController {
 	}
 
 	/**
-	 * 회원을 삭제하는 메서드;
-	 * 삭제할 회원의 id를 받아 삭제를 시도한다
-	 * 시도 결과에 따라 다른 javascript 코드를 반환한다
-	 *  
-	 * @param 삭제할 회원 id
+	 * 회원 삭제 핸들러 메서드
+	 * 
+	 * TB_MEMBER / 삭제
+	 * 
+	 * @param id 삭제할 회원 ID
+	 * 
 	 * @return 성공 : location.replace(replaceUri); 실패 : history.back();
-	 * */
+	 */
 	@RequestMapping("/admin/manage/deleteMember")
 	@ResponseBody
 	public String deleteMember(int id) {
