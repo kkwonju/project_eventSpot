@@ -4,7 +4,7 @@
 <%@ include file="../common/head.jspf"%>
 
  <section class="center">
-	<div class="memberForm loginForm">
+	<div class="member_box login_form">
 		<form action="../member/doLogin" method="POST" id="loginForm">
 			<h1>로그인</h1>
 			<div class="input_box flex fd-c flex-ai-c">

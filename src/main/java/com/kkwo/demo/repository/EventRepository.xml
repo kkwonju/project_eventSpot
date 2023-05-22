@@ -28,7 +28,7 @@
 		ORDER BY id DESC;
 	</select>
 	
-	<select id="getEvent" resultType="Event">
+	<select id="getEventById" resultType="Event">
 		SELECT *
 		FROM TB_EVENT
 		WHERE id = #{id};

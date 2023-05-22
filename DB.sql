@@ -149,7 +149,7 @@ SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test2',
 loginPw = 'pwpwpw1',
-nickname = '준하',
+nickname = 'junha123',
 email = 'junha0414@naver.com';
 
 INSERT INTO TB_MEMBER
@@ -157,7 +157,7 @@ SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test3',
 loginPw = 'pwpwpw2',
-nickname = '명수',
+nickname = 'myungsu01',
 email = 'myungsu@naver.com';
 
 # TB_SCHEDULE 테이블 추가
@@ -194,10 +194,53 @@ startTime = '17:30:00';
 
 ###################################
 
+# TB_REPLY 테이블 생성
 CREATE TABLE TB_REPLY(
-    id INT
-
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    relTypeCode CHAR(50) NOT NULL COMMENT '관련 데이터 타입 코드',
+    relId INT(10) NOT NULL COMMENT '관련 데이터 번호',
+    `body` TEXT NOT NULL
 );
+
+# reply 테스트 데이터
+# 2번 회원이 2번 글에 댓글
+INSERT INTO TB_REPLY
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'event',
+relId = 2,
+`body` = 'ㅋㅋㅋㅋㅋㅋㅋ';
+
+# 2번 회원이 2번 글에 댓글
+INSERT INTO TB_REPLY
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'event',
+relId = 2,
+`body` = 'replyreplyreply';
+
+# 3번 회원이 2번 글에 댓글
+INSERT INTO TB_REPLY
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'event',
+relId = 2,
+`body` = '👍👍';
+
+# 3번 회원이 3번 글에 댓글
+INSERT INTO TB_REPLY
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+relTypeCode = 'event',
+relId = 3,
+`body` = 'wowwowowowow';
 
 ###################################
 

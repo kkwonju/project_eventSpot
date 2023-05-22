@@ -60,7 +60,8 @@ function Theme__applyTo(themeName) {
 			<div class="side_box flex">
 				<div class="logo_box">
 					<a class="flex" href="/">
-						<div id="logo_img"></div>
+<!-- 						<div id="logo_img"></div> -->
+						<div class="logo_text">Ready? &nbsp;&nbsp;&nbsp;&nbsp;Ready</div>
 					</a>
 				</div>
 				<div class="menu_box">
@@ -68,18 +69,17 @@ function Theme__applyTo(themeName) {
 						<li>
 							<a href="/">HOME</a>
 						</li>
-						<li class="search_btn">
-							<a>
+						<li class="js_search_toggle_box">
+							<a class="js_search_toggle">
 								SEARCH
-								<c:if
-									test="${param.searchKeyword != null and param.searchKeyword != '' and !empty events}">
+								<c:if test="${param.searchKeyword != null and param.searchKeyword != '' and !empty events}">
 									<div class="eventsCnt">(${eventsCnt})</div>
 								</c:if>
 							</a>
 						</li>
-						<li class="search_box">
+						<li class="js_search_box">
 							<form action="../event/list">
-								<input id="input_keyword" name="searchKeyword" autocomplete="off" type="text"
+								<input id="js_input_searchKeyword" name="searchKeyword" autocomplete="off" type="text"
 									placeholder="검색어를 입력하세요" value="${param.searchKeyword}"/>
 							</form>
 						</li>
@@ -91,11 +91,11 @@ function Theme__applyTo(themeName) {
 						<li>
 							<a href="#">SCHEDULE</a>
 						</li>
-						<li class="menu_btn">
-							<a class="bars">
+						<li class="js_menu_toggle_box">
+							<a class="js_menu_toggle">
 								<i class="fas fa-sharp fa-regular fa-bars"></i>
 							</a>
-							<ul class="hidden_menu">
+							<ul class="usr_menu">
 								<c:choose>
 									<c:when test="${!rq.logined}">
 										<li>

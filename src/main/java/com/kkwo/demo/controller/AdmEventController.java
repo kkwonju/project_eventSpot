@@ -113,7 +113,7 @@ public class AdmEventController {
 	@RequestMapping("/admin/manage/showModifyEvent")
 	public String showModifyEventForm(Model model, int id) {
 
-		Event event = eventService.getEvent(id);
+		Event event = eventService.getEventById(id);
 
 		model.addAttribute("event", event);
 

@@ -16,7 +16,7 @@ public interface EventRepository {
 	public List<Event> getForPrintEvents(String searchKeyword);
 	
 	// SELECT
-	public Event getEvent(int id);
+	public Event getEventById(int id);
 
 	// INSERT
 	public int addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,

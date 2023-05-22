@@ -53,8 +53,8 @@ public class EventService {
 	 * 
 	 * @return Event 객체
 	 */
-	public Event getEvent(int id) {
-		return eventRepository.getEvent(id);
+	public Event getEventById(int id) {
+		return eventRepository.getEventById(id);
 	}
 
 	/**

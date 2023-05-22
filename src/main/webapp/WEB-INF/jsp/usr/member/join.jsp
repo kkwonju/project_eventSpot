@@ -47,7 +47,7 @@
 	}
 </script>
 <section class="center">
-		<div class="memberForm">
+		<div class="member_box join_form">
 			<form action="../member/doJoin" method="POST" id="signUpForm" onsubmit="submitJoinForm(this); return false;">
 				<h1>회원가입</h1>
 				<div class="input_box flex fd-c flex-ai-c">
