@@ -12,6 +12,8 @@ import com.kkwo.demo.vo.Member;
 import com.kkwo.demo.vo.ResultData;
 import com.kkwo.demo.vo.Rq;
 
+import ch.qos.logback.core.joran.conditional.IfAction;
+
 @Controller
 public class UsrMemberController {
 	@Autowired
@@ -50,9 +52,6 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doJoin(String loginId, String loginPw, String nickname, String email) {
 
-		if (rq.isLogined()) {
-			return Ut.jsHistoryBack("이미 로그인 중입니다");
-		}
 		if (Ut.isEmpty(loginId)) {
 			return Ut.jsHistoryBack("로그인 아이디를 입력하세요");
 		}
@@ -97,9 +96,6 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doLogin(String loginId, String loginPw) {
 
-		if (rq.isLogined()) {
-			return Ut.jsHistoryBack("이미 로그인 중입니다");
-		}
 		if (Ut.isEmpty(loginId)) {
 			return Ut.jsHistoryBack("로그인 아이디를 입력하세요");
 		}
@@ -131,10 +127,6 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doLogout() {
 
-		if (!rq.isLogined()) {
-			return Ut.jsHistoryBack("로그아웃 상태입니다");
-		}
-
 		// session에 member.id 삭제
 		rq.logout();
 
@@ -149,5 +141,32 @@ public class UsrMemberController {
 		Member member = rq.getLoginedMember();
 		model.addAttribute("member", member);
 		return "usr/member/profile";
+	}
+
+	@RequestMapping("/usr/member/modify")
+	public String showModifyPage() {
+		return "usr/member/modify";
+	}
+	
+	@RequestMapping("/usr/member/doModify")
+	@ResponseBody
+	public String doModify(String nickname, String loginPw) {
+		
+		if (Ut.isEmpty(nickname)) {
+			return Ut.jsHistoryBack("닉네임을 입력해주세요");
+		}
+		if (Ut.isEmpty(loginPw)) {
+			loginPw = null;
+		}
+		
+		ResultData memberModifyRd = memberService.doModify(rq.getLoginedMemberId(), nickname, loginPw);
+		
+		if(memberModifyRd.isFail()) {
+			return Ut.jsHistoryBack(memberModifyRd.getResultMsg());
+		}
+		
+		Member member = memberService.getMemberById(rq.getLoginedMemberId());
+		
+		return Ut.jsReplace("회원정보 수정됌", "../member/myPage");
 	}
 }

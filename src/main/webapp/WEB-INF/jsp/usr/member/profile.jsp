@@ -12,7 +12,7 @@
 			<div class="profile_info">
 				<div class="nickname">${member.nickname}</div>
 				<div>${member.loginId }</div>
-				<div>${member.regDate}</div>
+				<div>${member.regDate.substring(2,10)}</div>
 				<div>${member.email}</div>
 			</div>
 		</div>

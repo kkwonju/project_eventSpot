@@ -71,6 +71,10 @@ public class MemberService {
 		return memberRepository.getMemberByEmail(email);
 	}
 
+	public Member getMemberByNickname(String nickname) {
+		return memberRepository.getMemberByNickname(nickname);
+	}
+	
 	public List<Member> getMembers() {
 		return memberRepository.getMembers();
 	}
@@ -89,5 +93,19 @@ public class MemberService {
 		return affectedRow;
 	}
 
+	public ResultData doModify(int id, String newNickname, String newLoginPw) {
+		Member member = getMemberById(id);
+		
+		if(member == null) {
+			return ResultData.buildResultData("F-1", "탈퇴했거나 가입하지 않은 회원입니다");
+		}
+		
+		int affectRow = memberRepository.doModify(id, newNickname, newLoginPw);
+		
+		if(affectRow != 1) {
+			return ResultData.buildResultData("F-2", "수정 실패");
+		}
 
+		return ResultData.buildResultData("S-1", "회원정보를 수정했습니다");
+	}
 }

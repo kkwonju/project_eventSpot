@@ -6,16 +6,34 @@
 <script>
 	function getReplyList(eventId) {
 		var action = "/usr/reply/list";
-	
+
 		$.get(action, {
 			relTypeCode : 'event',
 			relId : eventId,
-		}, function(data){
+		}, function(data) {
 			var replies = data.data1;
-		}, 'json')
+			displayReplies(replies); // 댓글 데이터를 화면에 출력하는 함수 호출
+		}, 'json');
+	}
+
+	function displayReplies(replies) {
+		var replyContainer = $('.dt_reply'); // 댓글이 출력될 컨테이너 요소 선택
+
+		// 기존 댓글 삭제
+		replyContainer.empty();
+
+		// 새로운 댓글 출력
+		$.each(replies, function(index, reply) {
+			var replyHtml = '<div class="reply_content">'
+					+ '<span class="reply_writer">' + reply.extra__writer
+					+ '</span> <span class="reply_body">' + reply.body
+					+ '</span>' + '<div class="reply_add">' + '<span>'
+					+ reply.regDate.substring(5, 10) + '</span>'
+					+ '<a href="#"> reply</a>' + '</div>' + '</div>';
+			replyContainer.append(replyHtml);
+		});
 	}
 </script>
-
 
 <section class="center list">
 	<div class="center_box con">
@@ -25,8 +43,7 @@
 					<div class="contents flex">
 						<div class="location_box">${event.location}</div>
 						<div class="img_box flex">
-							<a class="detail_btn flex"
-								href="javascript:popup(${loop.index});">
+							<a class="detail_btn flex" href="javascript:popup(${loop.index});" onclick="getReplyList(${event.id});">
 								<img src="/resource/image/image_${event.imgId}.jpg" alt="image" />
 							</a>
 						</div>
@@ -40,8 +57,8 @@
 						<div class="reply_box pl-5">
 							<c:forEach var="reply" items="${replies}" begin="0" end="1">
 								<div class="reply_content">
-									<span class="reply_writer">${reply.extra__writer}</span>
-									<span class="reply_body">${reply.body}</span>
+									<span class="reply_writer">${reply.extra__writer}</span> <span
+										class="reply_body">${reply.body}</span>
 								</div>
 							</c:forEach>
 						</div>
@@ -66,24 +83,11 @@
 							<%-- </c:if> --%>
 							<div class="dt_location flex">${event.location}</div>
 							<div class="dt_content_body">${event.title}</div>
-							<a href="javascript:getReplyList(${event.id})">댓글가져와</a>
-							<div class="dt_reply">
-								<c:forEach var="reply" items="${replies}">
-									<div class="reply_content">
-										<span class="reply_writer">${reply.extra__writer}</span>
-										<span class="reply_body">${reply.body}</span>
-										<div class="reply_add">
-											<span>${reply.regDate.substring(5, 10)}</span>
-											<a>reply</a>
-										</div>
-									</div>
-								</c:forEach>
-							</div>
+							<div class="dt_reply"></div>
 							<div class="dt_reply_edit">
 								<form action="">
 									<div class="flex flex-ai-c">
-										<input type="hidden" name="memberId"
-											value="${rq.loginedMemberId}" />
+										<input type="hidden" name="memberId" value="${rq.loginedMemberId}" />
 										<textarea autofocus autocomplete="off" name="body"
 											style="resize: none;" placeholder="댓글달기"></textarea>
 										<button>게시</button>

@@ -33,4 +33,9 @@ public interface MemberRepository {
 	// SELECT
 	List<Member> getForPrintMembers(String searchKeyword);
 
+	// UPDATE
+	int doModify(int id, String nickname, String loginPw);
+
+	// SELECT
+	Member getMemberByNickname(String nickname);
 }

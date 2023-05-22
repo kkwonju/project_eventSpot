@@ -17,11 +17,12 @@
 }
 
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
+    font-family: 'MBC1961GulimM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
+
 /* 노말라이즈 */
 html {
 	font-family: "Pretendard-Regular", sans;
@@ -271,7 +272,6 @@ html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
 	height: 100%;
 	text-align: center;
 	font-size: 1rem;
-/* 	font-family: 'Pretendard-Regular', 'sans'; */
 	color: var(--primary-w-b);
 	background-color: var(--primary-Main-white);
 }
@@ -439,7 +439,8 @@ html[data-theme="dark"] .center {
 	left: 0;
 	width: 99vw;
 	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(5px);
 	
 }
 
@@ -548,8 +549,6 @@ html[data-theme="dark"] .center {
 	color: var(--primary-b-w);	
 }
 
-
-
 .detail_box .dt_reply_box {
 	position: relative;
 }
@@ -651,7 +650,6 @@ html[data-theme="dark"]  main > section.center > .member_box > form {
 
 .input_box > label, .input_box > input, .input_box > button {
 	border-radius: 10px;
-/* 	font-family: "Pretendard-Regular", "sans"; */
 	font-size: 18px;
 	padding: 20px 0 10px 0;
 	width: 100%;
@@ -704,7 +702,6 @@ html[data-theme="dark"]  main > section.center > .member_box > form {
 	top: calc(50% - 200px);
 	height: 300px;
 	width: 500px;
-/* 	font-family:"Pretendard-Regular", "sans"; */
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
@@ -745,18 +742,65 @@ html[data-theme="dark"]  main > section.center > .member_box > form {
 
 
 .profile_info {
+	font-family: 'MBC1961GulimM', 'sans';
 	flex-grow: 1;
 	font-size: 0.9rem;
 	box-sizing: border;
-	padding: 210px 0 0 0;
+	padding: 190px 0 0 0;
 }
 
 .nickname {
   font-size: 2rem;
-/*   font-family: "Pretendard-Regular", "sans"; */
+}
+/* profile 끝 */
+
+/* modify 시작 */
+.profile_modify {
+	font-family: 'MBC1961GulimM', 'sans';
+	flex-grow: 1;
+	box-sizing: border;
 }
 
-/* profile 끝 */
+.profile_modify > form > div > * {
+	font-size: 18px;
+	padding: 10px;
+	border: none;
+}
+
+.profile_modify > form > div > input:focus {
+	outline: 2px solid var(--primary-Main-black);
+}
+
+.profile_modify > form {
+	height: 100%;
+}
+
+.profile_modify > form > div {
+	position: relative;
+	height: 100%;
+}
+
+.submit_btn {
+	font-family: 'MBC1961GulimM', 'sans';
+	cursor: pointer;
+	background-color: white;
+	transition: .5s;
+	text-align: left;
+}
+
+.none {
+	z-index: 2;
+	position: absolute;
+	top: calc(50% - 200px);
+	height: 300px;
+	width: 500px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.5);
+	transition: .4s;
+}
+
+/* modify 끝 */
 
 /* SECTION CENTER 끝*/
 

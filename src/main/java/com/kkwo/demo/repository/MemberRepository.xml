@@ -25,6 +25,12 @@
 		FROM TB_MEMBER
 		WHERE email = #{email};
 	</select>
+	
+	<select id="getMemberByNickname" resultType="Member">
+		SELECT *
+		FROM TB_MEMBER
+		WHERE nickname = #{nickname}
+	</select>
 
 	<insert id="doJoinMember">
 		INSERT INTO TB_MEMBER
@@ -58,5 +64,15 @@
 	<delete id="deleteMember">
 		DELETE FROM TB_MEMBER
 		WHERE id = #{id};
-	</delete>	
+	</delete>
+	
+	<update id="doModify">
+		UPDATE FROM TB_MEMBER
+		SET
+		<if test="loginPw != null">
+			loginPw = #{loginPw},
+		</if>
+		nickname = #{nickname}
+		WHERE id = #{id}
+	</update>
 </mapper>
