@@ -1,6 +1,8 @@
 package com.kkwo.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,32 +32,48 @@ public class UsrReplyController {
 		this.eventService = eventService;
 	}
 
+	
+	
 	@RequestMapping("/usr/reply/doWrite")
 	@ResponseBody
-	public String doWrite(String relTypeCode, int relId, String body, String replaceUri) {
-
-		if (Ut.isEmpty(relTypeCode)) {
-			return Ut.jsHistoryBack("relTypeCode을(를) 입력해주세요");
-		}
-
-		if (Ut.isEmpty(relId)) {
-			return Ut.jsHistoryBack("relId을(를) 입력해주세요");
-		}
-
-		if (Ut.isEmpty(body)) {
-			return Ut.jsHistoryBack("내용을 입력해주세요");
-		}
-
+	public Map doWrite(String relTypeCode, int relId, String body) {
+		
 		ResultData writeReplyRd = replyService.writeReply(relTypeCode, relId, body, rq.getLoginedMemberId());
-
-		int id = (int) writeReplyRd.getData1();
-
-		if (Ut.isEmpty(replaceUri)) {
-			replaceUri = Ut.f("../article/detail?id=%d", relId);
-		}
-
-		return Ut.jsReplace(Ut.f("%d번 댓글이 생성되었습니다", id), replaceUri);
+		
+		List<Reply> replyList = replyService.getForPrintReplies(rq.getLoginedMemberId(), relTypeCode, relId);
+		
+		Map<String, Object> rd = new HashMap<>();
+		
+		rd.put("replyList", replyList);
+		return rd;
 	}
+	
+//	@RequestMapping("/usr/reply/doWrite")
+//	@ResponseBody
+//	public String doWrite(String relTypeCode, int relId, String body, String replaceUri) {
+//
+//		if (Ut.isEmpty(relTypeCode)) {
+//			return Ut.jsHistoryBack("relTypeCode을(를) 입력해주세요");
+//		}
+//
+//		if (Ut.isEmpty(relId)) {
+//			return Ut.jsHistoryBack("relId을(를) 입력해주세요");
+//		}
+//
+//		if (Ut.isEmpty(body)) {
+//			return Ut.jsHistoryBack("내용을 입력해주세요");
+//		}
+//
+//		ResultData writeReplyRd = replyService.writeReply(relTypeCode, relId, body, rq.getLoginedMemberId());
+//
+//		int id = (int) writeReplyRd.getData1();
+//
+//		if (Ut.isEmpty(replaceUri)) {
+//			replaceUri = Ut.f("../article/detail?id=%d", relId);
+//		}
+//
+//		return Ut.jsReplace(Ut.f("%d번 댓글이 생성되었습니다", id), replaceUri);
+//	}
 	
 	/* 댓글 수정 폼 */
 	@RequestMapping("/usr/reply/modify")

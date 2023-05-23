@@ -130,4 +130,8 @@ public class EventService {
 		return affectedRow;
 	}
 
+	public List<Event> getEvents2(int offset, int limit) {
+		return eventRepository.getEvents2(offset, limit);
+	}
+
 }

@@ -3,6 +3,7 @@ package com.kkwo.demo.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.kkwo.demo.vo.Event;
 
@@ -32,5 +33,11 @@ public interface EventRepository {
 	// SELECT
 	public int getLastInsertId();
 
-	
+	@Select("""
+			SELECT *
+			FROM TB_EVENT
+			ORDER BY id DESC
+			LIMIT #{offset}, #{limit}
+			""")
+	public List<Event> getEvents2(int offset, int limit);
 }

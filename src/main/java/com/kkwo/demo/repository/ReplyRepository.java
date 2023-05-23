@@ -16,8 +16,8 @@ public interface ReplyRepository {
 	@Select("""
 			<script>
 				SELECT R.*, M.nickname AS extra__writer
-				FROM reply AS R
-				INNER JOIN `member` AS M
+				FROM TB_REPLY AS R
+				INNER JOIN TB_MEMBER AS M
 				ON R.memberId = M.id
 				WHERE R.relId = #{relId}
 				AND R.relTypeCode = #{relTypeCode}
@@ -27,7 +27,7 @@ public interface ReplyRepository {
 
 	@Insert("""
 			<script>
-				INSERT INTO reply
+				INSERT INTO TB_REPLY
 				SET regDate = NOW(),
 				updateDate = NOw(),
 				memberId = #{actorId},
@@ -44,7 +44,7 @@ public interface ReplyRepository {
 	@Select("""
 			<script>
 				SELECT *
-				FROM reply
+				FROM TB_REPLY
 				WHERE id = #{id}
 			</script>
 			""")
@@ -52,7 +52,7 @@ public interface ReplyRepository {
 
 	@Delete("""
 			<script>
-				DELETE FROM reply
+				DELETE FROM TB_REPLY
 				WHERE id = #{id}
 			</script>
 			""")
@@ -60,8 +60,8 @@ public interface ReplyRepository {
 
 	@Select("""
 				SELECT R.*, M.nickname AS extra__writer
-				FROM reply AS R
-				INNER JOIN `member` AS M
+				FROM TB_REPLY AS R
+				INNER JOIN TB_MEMBER AS M
 				ON R.memberId = M.id
 				WHERE R.id = #{id}
 			""")
@@ -69,7 +69,7 @@ public interface ReplyRepository {
 
 	@Update("""
 			<script>
-				UPDATE reply
+				UPDATE TB_REPLY
 				<set>
 					<if test="body != null and body != ''">
 						`body` = #{body},

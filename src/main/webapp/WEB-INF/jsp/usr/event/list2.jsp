@@ -16,24 +16,6 @@
 		}, 'json');
 	}
 	
-	function writeReply(form, index) {
-		
-		var relId = form.relId.value;
-		var body = form.body.value;
-		var action = "../reply/doWrite";
-		
-		$.get(action, {
-			relTypeCode : 'event',
-			relId : relId,
-			body : body,
-		}, function(data) {
-			var replyList = data.replyList;
-			displayReplies(replyList); // 댓글 데이터를 화면에 출력하는 함수 호출
-			$('#dt_reply_' + index).scrollTop($('#dt_reply_' + index)[0].scrollHeight);
-			$('#reply_body_' + index).val("");
-		}, 'json');
-	};
-	
 	function displayReplies(replies) {
 		var replyContainer = $('.dt_reply'); // 댓글이 출력될 컨테이너 요소 선택
 
@@ -51,7 +33,6 @@
 			replyContainer.append(replyHtml);
 		});
 	}
-
 </script>
 
 <section class="center list">
@@ -62,8 +43,7 @@
 					<div class="contents flex">
 						<div class="location_box">${event.location}</div>
 						<div class="img_box flex">
-							<a class="detail_btn flex"
-								href="javascript:popup(${loop.index});"
+							<a class="detail_btn flex" href="javascript:popup(${loop.index});"
 								onclick="getReplyList(${event.id});">
 								<img src="/resource/image/image_${event.imgId}.jpg" alt="image" />
 							</a>
@@ -78,8 +58,8 @@
 						<div class="reply_box pl-5">
 							<c:forEach var="reply" items="${replyList}" begin="0" end="1">
 								<div class="reply_content">
-									<span class="reply_writer">${reply.extra__writer}</span>
-									<span class="reply_body">${reply.body}</span>
+									<span class="reply_writer">${reply.extra__writer}</span> <span
+										class="reply_body">${reply.body}</span>
 								</div>
 							</c:forEach>
 						</div>
@@ -104,14 +84,12 @@
 							<%-- </c:if> --%>
 							<div class="dt_location flex">${event.location}</div>
 							<div class="dt_content_body">${event.title}</div>
-							<div class="dt_reply" id="dt_reply_${loop.index}"></div>
+							<div class="dt_reply"></div>
 							<div class="dt_reply_edit">
-								<form name="reply_form" method="POST" onsubmit="writeReply(this, ${loop.index}); return false;">
+								<form action="">
 									<div class="flex flex-ai-c">
-										<input id="reply_memberId_${loop.index}" type="hidden" name="memberId"
-											value="${rq.loginedMemberId}" />
-										<input id="reply_relId_${loop.index}" type="hidden" name="relId" value="${event.id}" />
-										<textarea id="reply_body_${loop.index}" autofocus autocomplete="off" name="body"
+										<input type="hidden" name="memberId" value="${rq.loginedMemberId}" />
+										<textarea autofocus autocomplete="off" name="body"
 											style="resize: none;" placeholder="댓글달기"></textarea>
 										<button>게시</button>
 									</div>
@@ -129,4 +107,5 @@
 		</c:if>
 	</div>
 </section>
+
 <%@ include file="../common/foot.jspf"%>

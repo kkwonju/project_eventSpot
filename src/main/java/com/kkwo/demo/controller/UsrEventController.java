@@ -52,4 +52,20 @@ public class UsrEventController {
 		model.addAttribute("repliesCnt", repliesCnt);
 		return "usr/event/list";
 	}
+	
+//	@RequestMapping("/usr/event/list2")
+//	public String showEventlist2(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
+//		List<Event> events = eventService.getEvents2(0, 2);
+//		int eventsCnt = events.size();
+//		model.addAttribute("events", events);
+//		model.addAttribute("eventsCnt", eventsCnt);
+//		return "usr/event/list2";
+//	}
+//	
+//	@RequestMapping("/loadMoreEvents")
+//	public List<Event> loadMorePosts(@RequestParam("offset") int offset, @RequestParam("limit") int limit) {
+//	    // offset과 limit을 기반으로 새로운 게시물을 가져오는 로직을 구현합니다.
+//	    List<Event> events = eventService.getEvents2(offset, limit);
+//	    return events;
+//	}
 }
