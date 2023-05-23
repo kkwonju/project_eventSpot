@@ -60,8 +60,8 @@ function Theme__applyTo(themeName) {
 			<div class="side_box flex">
 				<div class="logo_box">
 					<a class="flex" href="/">
-<!-- 						<div id="logo_img"></div> -->
-						<div class="logo_text">Ready? &nbsp;&nbsp;&nbsp;&nbsp;Ready</div>
+						<div id="logo_img"></div>
+<!-- 						<div class="logo_text">Ready? &nbsp;&nbsp;&nbsp;&nbsp;Ready</div> -->
 					</a>
 				</div>
 				<div class="menu_box">
@@ -89,7 +89,7 @@ function Theme__applyTo(themeName) {
 							</li>
 						</c:if>
 						<li>
-							<a href="#">SCHEDULE</a>
+							<a href="/usr/schedule/list">SCHEDULE</a>
 						</li>
 						<li class="js_menu_toggle_box">
 							<a class="js_menu_toggle">

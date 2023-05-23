@@ -126,7 +126,8 @@ label[for] {
 /* CSS 변수 설정 */
 html {
 	--primary-w-b: white;
-	--primary-Main-black: #F2B3B9;
+/* 	--primary-Main-black: #F2B3B9; */
+	--primary-Main-black: #F24987;
 	--primary-Main-white: black;
 	--primary-b-w: black;
 	--primary-g-w: gray;
@@ -206,18 +207,16 @@ main {
 }
 
 html .side > .side_box > .logo_box > a > #logo_img {
-	background-image: url('/resource/image/light_logo.png');
+	background-image: url('/resource/image/logo_1.png');
 	background-size: cover;
-	height: 100px;
-	width: 100px;
+	  background-position: center;
+	height: 120px;
+	width: 200px;
 	z-index: 10;
 }
 
 html[data-theme="dark"] .side > .side_box > .logo_box > a > #logo_img {
-	background-image: url('/resource/image/dark_logo.png');
-/* 	background-size: cover; */
-/* 	height: 100px; */
-/* 	width: 100px; */
+	background-image: url('/resource/image/logo_2.png');
 }
 
 /* 로고 BOX 끝  */
@@ -418,7 +417,7 @@ html[data-theme="dark"] .center {
 
 
 /* 리액션 BOX 시작 */
-.list .contents > .reaction_box > .like_btn {
+.list .contents > .reaction_box > .js_collect_btn {
 	font-size: 20px;
 	cursor: pointer;
 	background-color: transparent;
@@ -428,6 +427,15 @@ html[data-theme="dark"] .center {
 .list .contents > .reaction_box > button > i {
 	color: var(--primary-b-w);	
 }
+
+.list .contents > .reaction_box > button > .selected {
+	display: none;
+}
+
+.list .contents > .reaction_box > button:active {
+	scale: 0.9;
+}
+
 /* 리액션 BOX 끝 *
 
 /* 상세보기 팝업 시작 */
@@ -504,17 +512,20 @@ html[data-theme="dark"] .center {
 }
 
 .dt_reply_box > .dt_reply_edit {
+	border-top: 1px solid grey;
 	height: 10%;
 }
 
 .dt_reply_edit textarea {
 	font-family: 'Pretendard-Regular', 'sans';
-	height: 30px;
+	font-size: 1rem;
+	height: 40px;
 	flex-grow: 2;
 	outline: none;
 	border: none;
 	background-color: var(--primary-w-b);
 	color: var(--primary-b-w);
+	overflow: hidden;
 }
 
 .dt_reply_edit button {

@@ -1,6 +1,17 @@
 package com.kkwo.demo.vo;
 
+import java.util.Map;
+
+import com.kkwo.demo.util.Ut;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 
 public class ResultData {
 	@Getter
@@ -11,6 +22,14 @@ public class ResultData {
 	private String data1Name;
 	@Getter
 	private Object data1;
+	
+	private Map<String, Object> body;
+
+	public ResultData(String resultCode, String resultMsg, Object... args) {
+		this.resultCode = resultCode;
+		this.resultMsg = resultMsg;
+		this.body = Ut.mapOf(args);
+	}
 
 	/**
 	 * ResultData 구성, 데이터 정보를 볼 수 있도록

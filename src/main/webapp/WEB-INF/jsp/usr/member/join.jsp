@@ -54,7 +54,7 @@
 					<label for="loginId">
 						<span>아이디</span>
 					</label>
-						<input type="text" name="loginId" placeholder="아이디를 입력하세요" id="loginId"/>
+						<input type="text" autocomplete="off" name="loginId" placeholder="아이디를 입력하세요" id="loginId"/>
 					<label for="loginPw">
 						<span>비밀번호</span>
 					</label>
@@ -66,11 +66,11 @@
 					<label for="nickname">
 						<span>닉네임</span>
 					</label>
-						<input type="text" name="nickname" placeholder="닉네임을 입력하세요"  id="nickname"/>
+						<input type="text" autocomplete="off" name="nickname" placeholder="닉네임을 입력하세요"  id="nickname"/>
 					<label for="email">
 						<span>이메일</span>
 					</label>
-						<input type="email" name="email" placeholder="이메일을 입력하세요"  id="email"/>
+						<input type="email" autocomplete="off" name="email" placeholder="이메일을 입력하세요"  id="email"/>
 					<button id="submit_btn" type="submit">가입</button>
 				</div>
 			</form>

@@ -20,6 +20,9 @@
 	height: 40px;
 	border: 1px solid black;
 	border-radius: 10px;
+	margin-left: auto;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 .scheduleList_box>a:active {

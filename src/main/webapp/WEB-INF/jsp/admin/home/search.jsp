@@ -15,21 +15,15 @@
 	font-size: 1.1rem;
 }
 
-.input_placeholder {
-	position: absolute;
-	background-color: white;
-	top: -10px;
-	left: 10px;
-	padding: 0 4px;
-	border-radius: 5px;
-	color: grey;
-}
 
 .foundList-box {
 	width: 80%;
 	margin: 0 auto;
 	height: 300px;
-	border: 1px solid red;
+}
+
+.found_item_box {
+	height: 50px;
 }
 </style>
 <!--
@@ -41,10 +35,9 @@
 -->
 
 <form action="/admin/home/search">
-	<div class="adm-search-box flex flex-jc-c flex-ai-c bd-red">
-		<input class="sk_input" name="searchKeyword" type="text"
+	<div class="adm-search-box flex flex-jc-c flex-ai-c">
+		<input class="sk_input" autocomplete="off" name="searchKeyword" type="text"
 			value="${param.searchKeyword }" />
-		<span class="input_placeholder">Search</span>
 		<button type="submit">검색</button>
 	</div>
 </form>
@@ -52,39 +45,42 @@
 	test="${param.searchKeyword != null and param.searchKeyword != ''}">
 	<div class="foundList-box">
 		<div class="foundList-title">
+			<hr />
 			<h1>이벤트 리스트</h1>
 		</div>
 		<div class="foundList-contents">
 			<c:forEach var="event" items="${events}">
-				<div class="found_item_box bd-blue">${event.title}</div>
+				<div class="found_item_box">${event.title}</div>
 			</c:forEach>
 		</div>
 		<div class="foundList-add">
 			<a href="#">더보기 &gt;</a>
 		</div>
-		<hr />
+		
 	</div>
 	<div class="foundList-box">
 		<div class="foundList-title">
+			<hr />
 			<h1>회원 리스트</h1>
 		</div>
 		<div class="foundList-contents">
 			<c:forEach var="member" items="${members}" begin="0" end="4">
-				<div class="found_item_box bd-blue">${member.nickname}</div>
+				<div class="found_item_box">${member.nickname}</div>
 			</c:forEach>
 		</div>
 		<div class="foundList-add">
 			<a href="#">더보기 &gt;</a>
 		</div>
-		<hr />
+		
 	</div>
 	<div class="foundList-box">
 		<div class="foundList-title">
+			<hr />
 			<h1>일정 리스트</h1>
 		</div>
 		<div class="foundList-contents">
 			<c:forEach var="schedule" items="${scheduleList}">
-				<div class="found_item_box bd-blue">${schedule.eventTitle}</div>
+				<div class="found_item_box">${schedule.eventTitle}</div>
 			</c:forEach>
 		</div>
 		<div class="foundList-add">

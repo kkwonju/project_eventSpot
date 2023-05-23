@@ -37,7 +37,7 @@ public class UsrMemberController {
 	}
 
 	/**
-	 * 회원가입 메서드
+	 * 회원가입 핸들러 메서드
 	 * 
 	 * TB_MEMBER / 등록, 조회
 	 * 
@@ -85,7 +85,7 @@ public class UsrMemberController {
 	}
 
 	/**
-	 * 로그인 메서드
+	 * 로그인 핸들러 메서드
 	 * 
 	 * TB_MEMBER / 조회
 	 * 
@@ -119,7 +119,7 @@ public class UsrMemberController {
 	}
 
 	/**
-	 * 로그아웃 메서드
+	 * 로그아웃 핸들러 메서드
 	 * 
 	 * @return 성공 : location.replace(replaceUri); 실패 : history.back();
 	 */
@@ -143,30 +143,39 @@ public class UsrMemberController {
 		return "usr/member/profile";
 	}
 
+	/**
+	 * @return 사용자용 회원정보 수정 페이지 반환
+	 */
 	@RequestMapping("/usr/member/modify")
 	public String showModifyPage() {
 		return "usr/member/modify";
 	}
-	
+
+	/**
+	 * @param nickname 새 닉네임
+	 * @param loginPw 새 비밀번호
+	 * 
+	 * @return 성공 : location.replace(replaceUri); 실패 : history.back();
+	 */
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
 	public String doModify(String nickname, String loginPw) {
-		
+
 		if (Ut.isEmpty(nickname)) {
 			return Ut.jsHistoryBack("닉네임을 입력해주세요");
 		}
 		if (Ut.isEmpty(loginPw)) {
 			loginPw = null;
 		}
-		
+
 		ResultData memberModifyRd = memberService.doModify(rq.getLoginedMemberId(), nickname, loginPw);
-		
-		if(memberModifyRd.isFail()) {
+
+		if (memberModifyRd.isFail()) {
 			return Ut.jsHistoryBack(memberModifyRd.getResultMsg());
 		}
-		
+
 		Member member = memberService.getMemberById(rq.getLoginedMemberId());
-		
-		return Ut.jsReplace("회원정보 수정됌", "../member/myPage");
+
+		return Ut.jsReplace("회원정보가 수정되었습니다", "../member/profile");
 	}
 }

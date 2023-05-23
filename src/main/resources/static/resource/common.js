@@ -1,3 +1,4 @@
+// 메뉴 토글 눌렀을때 활성화 상태면 비활성화 아니면 활성화
 $('.js_menu_toggle').click(function() {
 	if ($('.js_menu_toggle_box').hasClass('active')) {
 		$('.js_menu_toggle_box').removeClass('active');
@@ -6,6 +7,7 @@ $('.js_menu_toggle').click(function() {
 	}
 });
 
+// 검색 토글 누르면 검색 박스 활성화, 이외 비활성화
 $('.js_search_toggle').click(function() {
 	if ($('.js_search_toggle_box').hasClass('active')) {
 		$('.js_search_toggle_box').removeClass('active');
@@ -15,10 +17,12 @@ $('.js_search_toggle').click(function() {
 	}
 });
 
+// 사이드 메뉴 밖 누르면 검색어 active 취소
 $('.center').click(function() {
 	$('.js_search_toggle_box').removeClass('active');
 })
 
+// 이벤트 업로드 파일 미리보기
 $('#image_input').on('change', function(e) {
 	const file = e.target.files[0];
 	const reader = new FileReader();
@@ -30,27 +34,41 @@ $('#image_input').on('change', function(e) {
 	reader.readAsDataURL(file);
 });
 
+// 검색어 값이 있다면 active 유지
 var $searchKeyword = $('#js_input_searchKeyword').val().trim();
 
 if ($searchKeyword != '') {
 	$('.js_search_toggle_box').addClass('active');
 }
 
+// 상세보기 팝업
 function popup(index) {
-
-	$('.detail_bg').show();
+	$('#detail_bg_' + index).show();
 	$('#detail_' + index).show();
 	$('body').css('overflow', 'hidden');
 
-	$('.detail_bg').on('click', function() {
-		$('.detail_bg').css('display', 'none');
+	$('#detail_bg_' + index).on('click', function() {
+		$('#detail_bg_' + index).css('display', 'none');
 		$('#detail_' + index).css('display', 'none');
 		$('body').css('overflow', 'auto');
 	})
 
 	$('.exit_btn').on('click', function() {
-		$('.detail_bg').css('display', 'none');
+		$('#detail_bg_' + index).css('display', 'none');
 		$('#detail_' + index).css('display', 'none');
 		$('body').css('overflow', 'auto');
 	})
 }
+
+// Collect 버튼 클릭 시 아이콘 변환
+//function changeIcon(index){
+//	if($('.js_collect_btn').hasClass('active')) {
+//		$('.js_collect_btn').removeClass('active');
+//		$('.selected').hide();
+//		$('.unselected').show();
+//	} else {
+//		$('.js_collect_btn').addClass('active');
+//		$('.selected').show();
+//		$('.unselected').hide();		
+//	}
+//}

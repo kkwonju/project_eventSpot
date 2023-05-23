@@ -43,11 +43,11 @@ public class UsrEventController {
 	@RequestMapping("/usr/event/list")
 	public String showEventlist(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
 		List<Event> events = eventService.getForPrintEvents(searchKeyword);
-		List<Reply> replies = replyService.getReplies();
+		List<Reply> replyList = replyService.getReplies();
 		int eventsCnt = events.size();
-		int repliesCnt = replies.size();
+		int repliesCnt = replyList.size();
 		model.addAttribute("events", events);
-//		model.addAttribute("replies", replies);
+		model.addAttribute("replyList", replyList);
 		model.addAttribute("eventsCnt", eventsCnt);
 		model.addAttribute("repliesCnt", repliesCnt);
 		return "usr/event/list";

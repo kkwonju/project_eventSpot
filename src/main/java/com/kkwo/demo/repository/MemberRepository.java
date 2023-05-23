@@ -34,7 +34,7 @@ public interface MemberRepository {
 	List<Member> getForPrintMembers(String searchKeyword);
 
 	// UPDATE
-	int doModify(int id, String nickname, String loginPw);
+	int doModify(int id, String newNickname, String newLoginPw);
 
 	// SELECT
 	Member getMemberByNickname(String nickname);

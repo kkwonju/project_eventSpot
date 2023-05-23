@@ -1,25 +1,28 @@
 package com.kkwo.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.kkwo.demo.service.EventService;
+import com.kkwo.demo.service.GenFileService;
 import com.kkwo.demo.util.Ut;
 import com.kkwo.demo.vo.Event;
-import com.kkwo.demo.vo.ResultData;
-
-import ch.qos.logback.core.joran.conditional.IfAction;
 
 @Controller
 public class AdmEventController {
 	@Autowired
 	private EventService eventService;
-
+	@Autowired
+	private GenFileService genFileService;
+	
 	// 관리자 이벤트 컨트롤러 클래스
 
 	// EventService 객체를 주입받는 생성자
@@ -54,7 +57,7 @@ public class AdmEventController {
 	@RequestMapping("/admin/manage/addEvent")
 	@ResponseBody
 	public String addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
-			int duration) {
+			int duration, MultipartRequest multipartRequest) {
 
 		// 유효성 검사
 		if (Ut.isEmpty(beginDt)) {
@@ -85,6 +88,17 @@ public class AdmEventController {
 		if (eventId == -1) {
 			return Ut.jsHistoryBack("이벤트 추가 실패");
 		}
+		
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				genFileService.save(multipartFile, eventId);
+			}
+		}
+		
 		return Ut.jsReplace(Ut.f("%d번 이벤트를 추가했습니다", eventId), "/admin/manage/eventList");
 	}
 
