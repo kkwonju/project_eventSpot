@@ -70,6 +70,31 @@ detail = "2023년 6월 2일 금요일 오후 7시 30분",
 imgId = 78,
 duration = 90;
 
+INSERT INTO TB_EVENT
+SET regDate = NOW(),
+updateDate = NOW(),
+beginDt = "2023-09-02",
+endDt = "2023-09-02",
+genreId = 1005,
+location = "대전예술의전당 아트홀",
+title = "2023 일리야 라쉬코프스키, 라흐마니노프 3개의 피아노협주곡",
+detail = "2023년 9월 2일(토) 오후 5시",
+imgId = 43,
+duration = 150;
+
+INSERT INTO TB_EVENT
+SET regDate = NOW(),
+updateDate = NOW(),
+beginDt = "2023-06-02",
+endDt = "2023-06-03",
+genreId = 1005,
+location = "대전예술의전당 아트홀",
+title = "대전시립무용단 제73회 정기공연 춤극 ＂로미오와 줄리엣－유성과 예랑＂",
+detail = "2023년 6월 2일 금 19시 30분
+2023년 6월 3일 토 17시",
+imgId = 83,
+duration = 70;
+
 ###################################
 
 # TB_GENRE 테이블 추가
@@ -142,23 +167,23 @@ loginId = 'admin1',
 loginPw = 'admin123',
 authLevel = 7,
 nickname = 'kkwo',
-email = 'leeplus0414@naver.com';
+email = 'kkwo@naver.com';
 
 INSERT INTO TB_MEMBER
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test2',
-loginPw = 'pwpwpw1',
-nickname = 'junha123',
-email = 'junha0414@naver.com';
+loginPw = 'test2',
+nickname = 'java001',
+email = 'java0414@naver.com';
 
 INSERT INTO TB_MEMBER
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test3',
-loginPw = 'pwpwpw2',
-nickname = 'myungsu01',
-email = 'myungsu@naver.com';
+loginPw = 'test3',
+nickname = 'spring404',
+email = 'spring@naver.com';
 
 # TB_SCHEDULE 테이블 추가
 CREATE TABLE TB_SCHEDULE(
@@ -212,8 +237,17 @@ SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
 relTypeCode = 'event',
-relId = 2,
-`body` = 'ㅋㅋㅋㅋㅋㅋㅋ';
+relId = FLOOR(1 + RAND() * 6),
+`body` = CONCAT(SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', FLOOR(1 + RAND() * 52), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1));
 
 # 2번 회원이 2번 글에 댓글
 INSERT INTO TB_REPLY
@@ -221,8 +255,17 @@ SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
 relTypeCode = 'event',
-relId = 2,
-`body` = 'replyreplyreply';
+relId = FLOOR(1 + RAND() * 6),
+`body` = CONCAT(SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', FLOOR(1 + RAND() * 52), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1));
 
 # 3번 회원이 2번 글에 댓글
 INSERT INTO TB_REPLY
@@ -230,8 +273,17 @@ SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 1,
 relTypeCode = 'event',
-relId = 2,
-`body` = '👍👍';
+relId = FLOOR(1 + RAND() * 6),
+`body` = CONCAT(SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', FLOOR(1 + RAND() * 52), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1));
 
 # 3번 회원이 3번 글에 댓글
 INSERT INTO TB_REPLY
@@ -239,8 +291,19 @@ SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 3,
 relTypeCode = 'event',
-relId = 3,
-`body` = 'wowwowowowow';
+relId = FLOOR(1 + RAND() * 6),
+`body` = CONCAT(SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', FLOOR(1 + RAND() * 52), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1),
+                SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1));
+
+
 
 ###################################
 
