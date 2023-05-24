@@ -1,19 +1,20 @@
 package com.kkwo.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.swing.ListModel;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kkwo.demo.service.EventService;
 import com.kkwo.demo.service.ReplyService;
 import com.kkwo.demo.vo.Event;
-import com.kkwo.demo.vo.Reply;
+import com.kkwo.demo.vo.ResultData;
 import com.kkwo.demo.vo.Rq;
 
 @Controller
@@ -42,25 +43,33 @@ public class UsrEventController {
 	 */
 	@RequestMapping("/usr/event/list")
 	public String showEventlist(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
-		List<Event> events = eventService.getForPrintEvents(searchKeyword);
-		List<Reply> replyList = replyService.getReplies();
-		int eventsCnt = events.size();
-		int repliesCnt = replyList.size();
-		model.addAttribute("events", events);
-		model.addAttribute("replyList", replyList);
-		model.addAttribute("eventsCnt", eventsCnt);
-		model.addAttribute("repliesCnt", repliesCnt);
+//		List<Event> events = eventService.getForPrintEvents(searchKeyword);
+//		List<Reply> replyList = replyService.getReplies();
+//		int eventsCnt = events.size();
+//		int repliesCnt = replyList.size();
+//		model.addAttribute("events", events);
+//		model.addAttribute("replyList", replyList);
+//		model.addAttribute("eventsCnt", eventsCnt);
+//		model.addAttribute("repliesCnt", repliesCnt);
 		return "usr/event/list";
 	}
 	
-//	@RequestMapping("/usr/event/list2")
-//	public String showEventlist2(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
-//		List<Event> events = eventService.getEvents2(0, 2);
-//		int eventsCnt = events.size();
-//		model.addAttribute("events", events);
-//		model.addAttribute("eventsCnt", eventsCnt);
-//		return "usr/event/list2";
-//	}
+	@RequestMapping("/usr/event/getEventList")
+	@ResponseBody
+	public ResultData getEventList() {
+		List<Event> events = eventService.getEvents();
+		
+		return ResultData.buildResultData("S-1", "", "events", events);
+	}
+	
+	@RequestMapping("/usr/event/list2")
+	public String showEventlist2(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
+		List<Event> events = eventService.getEvents2(0, 2);
+		int eventsCnt = events.size();
+		model.addAttribute("events", events);
+		model.addAttribute("eventsCnt", eventsCnt);
+		return "usr/event/list2";
+	}
 //	
 //	@RequestMapping("/loadMoreEvents")
 //	public List<Event> loadMorePosts(@RequestParam("offset") int offset, @RequestParam("limit") int limit) {

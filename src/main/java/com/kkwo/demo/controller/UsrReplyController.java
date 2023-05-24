@@ -32,22 +32,20 @@ public class UsrReplyController {
 		this.eventService = eventService;
 	}
 
-	
-	
 	@RequestMapping("/usr/reply/doWrite")
 	@ResponseBody
 	public Map doWrite(String relTypeCode, int relId, String body) {
-		
+
 		ResultData writeReplyRd = replyService.writeReply(relTypeCode, relId, body, rq.getLoginedMemberId());
-		
+
 		List<Reply> replyList = replyService.getForPrintReplies(rq.getLoginedMemberId(), relTypeCode, relId);
-		
+
 		Map<String, Object> rd = new HashMap<>();
-		
+
 		rd.put("replyList", replyList);
 		return rd;
 	}
-	
+
 //	@RequestMapping("/usr/reply/doWrite")
 //	@ResponseBody
 //	public String doWrite(String relTypeCode, int relId, String body, String replaceUri) {
@@ -74,7 +72,7 @@ public class UsrReplyController {
 //
 //		return Ut.jsReplace(Ut.f("%d번 댓글이 생성되었습니다", id), replaceUri);
 //	}
-	
+
 	/* 댓글 수정 폼 */
 	@RequestMapping("/usr/reply/modify")
 	public String showModify(Model model, int id) {
@@ -90,12 +88,12 @@ public class UsrReplyController {
 		if (actorCanModifyRd.isFail()) {
 			return rq.jsHistoryBackOnView(actorCanModifyRd.getResultMsg());
 		}
-		
+
 		Event event = eventService.getEventById(reply.getRelId());
 
 		model.addAttribute("reply", reply);
 		model.addAttribute("event", event);
-		
+
 		return "usr/reply/modify";
 	}
 
@@ -117,14 +115,14 @@ public class UsrReplyController {
 		}
 
 		ResultData replyModifyRd = replyService.modifyReply(id, body);
-		
+
 		if (Ut.isEmpty(replaceUri)) {
 			replaceUri = Ut.f("../article/detail?id=%d", reply.getRelId());
 		}
 
 		return Ut.jsReplace(replyModifyRd.getResultMsg(), replaceUri);
 	}
-	
+
 	@RequestMapping("/usr/reply/delete")
 	@ResponseBody
 	public String doDelete(int id, String replaceUri) {
@@ -140,9 +138,9 @@ public class UsrReplyController {
 		}
 
 		ResultData deleteReplyRd = replyService.deleteReply(id);
-		
-		if(Ut.isEmpty(replaceUri)) {
-			switch(reply.getRelTypeCode()) {
+
+		if (Ut.isEmpty(replaceUri)) {
+			switch (reply.getRelTypeCode()) {
 			case "article":
 				replaceUri = Ut.f("../article/detail?id=%d", reply.getRelId());
 				break;
@@ -150,11 +148,11 @@ public class UsrReplyController {
 		}
 		return Ut.jsReplace(Ut.f("%d번 댓글을 삭제했습니다", id), replaceUri);
 	}
-	
+
 	@RequestMapping("/usr/reply/list")
 	@ResponseBody
 	public ResultData list(String relTypeCode, int relId) {
 		List<Reply> replies = replyService.getRepliesByRel(relTypeCode, relId);
-		return ResultData.buildResultData("S-1","리스트를 불러옵니다", "replies", replies);
+		return ResultData.buildResultData("S-1", "리스트를 불러옵니다", "replies", replies);
 	}
 }

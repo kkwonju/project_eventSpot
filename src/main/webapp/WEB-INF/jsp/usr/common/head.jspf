@@ -9,49 +9,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${pageTitle}</title>
 <!-- 제이쿼리 불러오기 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- common.css 불러오기 -->
 <link rel="stylesheet" href="/resource/common.css" />
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <script>
-function Theme__toggle() {
-	theme = localStorage.getItem("theme") ?? "light";
-
-	if( theme == 'light'){
-		localStorage.setItem("theme","dark");
-		Theme__applyTo('dark');
-	}
-	else {
-	    localStorage.setItem("theme", "light");
-	    Theme__applyTo('light');
-	}
-
 	function Theme__applyTo(themeName) {
 		  $('html').attr('data-theme', themeName);
 	}
-
+	
 	function Theme__init() {
-	  const theme = localStorage.getItem("theme") ?? "light";
-	  Theme__applyTo(theme);
+		const theme = localStorage.getItem("theme") ?? "light";
+		Theme__applyTo(theme);
 	}
-	Theme__init();
-// 	location.reload();
-}
-
-function Theme__applyTo(themeName) {
-	  $('html').attr('data-theme', themeName);
+	
+	function Theme__toggle() {
+		theme = localStorage.getItem("theme") ?? "light";
+	
+		if( theme == 'light'){
+			localStorage.setItem("theme","dark");
+			Theme__applyTo('dark');
+		}
+		else {
+		    localStorage.setItem("theme", "light");
+		    Theme__applyTo('light');
+		}
+	
+		Theme__applyTo(themeName);
+	
+		Theme__init();
+	// 	location.reload();
 	}
-
-	function Theme__init() {
-	  const theme = localStorage.getItem("theme") ?? "light";
-	  Theme__applyTo(theme);
-	}
+	
 	Theme__init();
 </script>
 
 <!-- common.js 불러오기 -->
+<script src="/resource/elements.js"></script>
 <script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
@@ -61,7 +58,7 @@ function Theme__applyTo(themeName) {
 				<div class="logo_box">
 					<a class="flex" href="/">
 						<div id="logo_img"></div>
-<!-- 						<div class="logo_text">Ready? &nbsp;&nbsp;&nbsp;&nbsp;Ready</div> -->
+						<!-- 						<div class="logo_text">Ready? &nbsp;&nbsp;&nbsp;&nbsp;Ready</div> -->
 					</a>
 				</div>
 				<div class="menu_box">
@@ -72,15 +69,17 @@ function Theme__applyTo(themeName) {
 						<li class="js_search_toggle_box">
 							<a class="js_search_toggle">
 								SEARCH
-								<c:if test="${param.searchKeyword != null and param.searchKeyword != '' and !empty events}">
+								<c:if
+									test="${param.searchKeyword != null and param.searchKeyword != '' and !empty events}">
 									<div class="eventsCnt">(${eventsCnt})</div>
 								</c:if>
 							</a>
 						</li>
 						<li class="js_search_box">
 							<form action="../event/list">
-								<input id="js_input_searchKeyword" name="searchKeyword" autocomplete="off" type="text"
-									placeholder="검색어를 입력하세요" value="${param.searchKeyword}"/>
+								<input id="js_input_searchKeyword" name="searchKeyword"
+									autocomplete="off" type="text" placeholder="검색어를 입력하세요"
+									value="${param.searchKeyword}" />
 							</form>
 						</li>
 						<c:if test="${rq.logined}">
@@ -115,7 +114,8 @@ function Theme__applyTo(themeName) {
 									</c:otherwise>
 								</c:choose>
 								<li>
-									<a class="darkMode" href="javascript:Theme__toggle();">DARK MODE</a>
+									<a class="darkMode" href="javascript:Theme__toggle();">DARK
+										MODE</a>
 								</li>
 							</ul>
 						</li>
