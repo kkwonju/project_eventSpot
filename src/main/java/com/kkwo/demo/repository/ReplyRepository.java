@@ -23,7 +23,7 @@ public interface ReplyRepository {
 				AND R.relTypeCode = #{relTypeCode}
 			</script>
 			""")
-	public List<Reply> getForPrintReplies(int actorId, String relTypeCode, int relId);
+	public List<Reply> getForPrintReplies(String relTypeCode, int relId);
 
 	@Insert("""
 			<script>

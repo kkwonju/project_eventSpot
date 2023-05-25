@@ -1,80 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../common/head.jspf"%>
 
 <section class="center list">
-	<div class="center_box con"></div>
+		<div class="center_box con" id="center_box"></div>
 </section>
 
 <script>
-// 	function checkVisible( element, check = 'above' ) {
-// 	    const viewportHeight = $(window).height(); // Viewport Height
-// 	    const scrolltop = $(window).scrollTop(); // Scroll Top
-// 	    const y = $(element).offset().top;
-// 	    const elementHeight = $(element).height();   
-	    
-// 	    // 반드시 요소가 화면에 보여야 할경우
-// 	    if (check == "visible") 
-// 	    	return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
-	        
-// 	    // 화면에 안보여도 요소가 위에만 있으면 (페이지를 로드할때 스크롤이 밑으로 내려가 요소를 지나쳐 버릴경우)
-// 	    if (check == "above") 
-// 	    	return ((y < (viewportHeight + scrolltop)));
-// 	}
-	
-// 	// 리소스가 로드 되면 함수 실행을 멈출지 말지 정하는 변수
-// 	let isVisible = false;
-	
-// 	// 이벤트에 등록할 함수
-// 	const func = function () {
-// 	    if ( !isVisible && checkVisible('.center_box') ) {
-	        
-// 	        isVisible = true;
-// 	    }
-	    
-// 	    // 만일 리소스가 로드가 되면 더이상 이벤트 스크립트가 있을 필요가 없으니 삭제
-// 	    isVisible && window.removeEventListener('scroll', func);
-// 	}
-	
-// 	// 스크롤 이벤트 등록
-// 	window.addEventListener('scroll', func);
+	var isExecuted = false;
 
-
-
-
-	function getReplyList() {
+	// 댓글 불러오기
+	function getReplyList(eventId) {
 		var action = "/usr/reply/list";
 	
 		$.get(action, {
 			relTypeCode : 'event',
-			relId : 1,
+			relId : eventId,
 		}, function(data) {
 			var replies = data.data1;
 			displayReplies(replies); // 댓글 데이터를 화면에 출력하는 함수 호출
 		}, 'json');
 	}
 	
-	function getEventList(){}
-	var action = "/usr/event/getEventList";
+	// 이벤트 불러오기
+	function getEventList(){
+		var action = "/usr/event/getEventList";
 	
-	$.ajax({
-		  url: action, // 요청을 보낼 URL
-		  method: 'GET', // HTTP 요청 메서드 (GET, POST, 등)
-		  data: {}, // 요청에 포함될 데이터 (객체 형태)
-		  success: function(data) {
-		    // 성공적으로 요청을 받았을 때 실행될 함수
-		    // 응답 데이터는 'response' 매개변수로 전달됨
-		    var events = data.data1;
-		    displayEvent(events);
-		  },
-		  error: function(xhr, status, error) {
-		    // 요청이 실패했을 때 실행될 함수
-		    // 에러 정보는 'xhr', 'status', 'error' 매개변수로 전달됨
-		    console.log("실패", error);
-		  }
-	});
-	
+		$.ajax({
+			  url: action, // 요청을 보낼 URL
+			  method: 'GET', // HTTP 요청 메서드 (GET, POST, 등)
+			  data: {}, // 요청에 포함될 데이터 (객체 형태)
+			  success: function(data) {
+			    // 성공적으로 요청을 받았을 때 실행될 함수
+			    // 응답 데이터는 'response' 매개변수로 전달됨
+			    var events = data.data1;
+			    displayEvent(events);
+			    isExecuted = false;
+			  },
+			  error: function(xhr, status, error) {
+			    // 요청이 실패했을 때 실행될 함수
+			    // 에러 정보는 'xhr', 'status', 'error' 매개변수로 전달됨
+			    console.log("실패", error);
+			  }
+		});
+	};
+
+	// 이벤트 보여주기
 	function displayEvent(events){
 		var eventsContainer = $('.center_box.con');
 		
@@ -116,11 +88,12 @@
 				+	'<a href="http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42061&RegionName=%B4%EB%C0%FC" target="_blank" class="side_btn reservation_btn">예매</a>'
 				+	'<div class="dt_location flex">' + event.location + '</div>'
 				+	'<div class="dt_content_body">' + event.title + '</div>'
+					// 댓글 삽입부
 				+	'<div class="dt_reply"></div>'
 				+	'<div class="dt_reply_edit">'
 				+	'<form action="">'
 				+	'<div class="flex flex-ai-c">'
-				+	'<input type="hidden" name="memberId" value="${rq.loginedMemberId}" />'
+				+	'<input type="hidden" name="memberId" value="rq.loginedMemberId" />'
 				+	'<textarea autofocus autocomplete="off" name="body" style="resize: none;" placeholder="댓글달기"></textarea>'
 				+	'<button>게시</button>'
 				+	'</div>'
@@ -134,13 +107,11 @@
 					+	'<span>NO RESULTS FOUND</span>'
 					+	'</div>'
 			}
-			
 			eventsContainer.append(listEventHtml);
 		});
 	}
 
-
-	
+	// 댓글 보여주기
 	function displayReplies(replies) {
 		var replyContainer = $('.dt_reply'); // 댓글이 출력될 컨테이너 요소 선택
 	
@@ -149,12 +120,47 @@
 	
 		// 새로운 댓글 출력
 		$.each(replies, function(index, reply) {
+			var replyHtml = '<div class="reply_content">'
+				+ '<span class="reply_writer">' + reply.extra__writer
+				+ '</span> <span class="reply_body">' + reply.body
+				+ '</span>' + '<div class="reply_add">' + '<span>'
+				+ reply.regDate.substring(5, 10) + '</span>'
+				+ '<a href="#"> reply</a>' + '</div>' + '</div>';
 			replyContainer.append(replyHtml);
 		});
 	}
 	
 	getEventList();
-	getEventList();
+	
+// 	var divElement = document.getElementById('center_box'); // 대상 div 요소의 ID를 설정해주세요
+// 	var divHeight = divElement.offsetHeight;
+// 	console.log("div 요소의 높이: " + divHeight + "px");
+	
+	
+	window.addEventListener('scroll', function() {
+		// 엘리먼트 지정
+		var divElement = document.getElementById('center_box'); // 대상 div 요소의 ID를 설정해주세요
+		// 화면 높이 지정
+		var windowHeight = window.innerHeight;
+		// 스크롤된 Y 좌표 지정
+		var scrollPosition = window.scrollY || window.pageYOffset;
+
+		// 엘리먼트의 top 위치값
+		var elementOffsetTop = divElement.offsetTop;
+		// 엘리먼트의 높이 (정수값)
+		var elementHeight = divElement.offsetHeight;
+		
+		// 엘리먼트의 중간값 = 엘리먼트 top + 엘리먼트 높이 - 200px;
+		var elementMiddle = elementOffsetTop + elementHeight - 200;
+		// Y 좌표 중간값 = 스크롤 Y좌표 + 화면 높이 - 200px
+		var scrollMiddle = scrollPosition + windowHeight - 200;
+
+		if (scrollMiddle >= elementMiddle - windowHeight / 4 && scrollMiddle <= elementMiddle + windowHeight / 4 && !isExecuted) {
+			// 화면 중간 근처에 위치했을 때 실행될 코드를 여기에 작성하세요
+			getEventList();
+			isExecuted = true;
+		}
+	});
 </script>
 
 

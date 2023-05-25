@@ -22,6 +22,11 @@ public class ResultData {
 	private String data1Name;
 	@Getter
 	private Object data1;
+	@Getter
+	private String data2Name;
+	@Getter
+	private Object data2;
+	
 	
 	private Map<String, Object> body;
 
@@ -75,5 +80,10 @@ public class ResultData {
 	/** resultCode 성공 실패 판단 */
 	public boolean isFail() {
 		return isSuccess() == false;
+	}
+	
+	public void setData2(String data2Name, Object data2) {
+		this.data2Name = data2Name;
+		this.data2 = data2;
 	}
 }
