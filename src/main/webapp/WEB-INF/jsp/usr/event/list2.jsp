@@ -25,12 +25,16 @@
 	
 	// 이벤트 불러오기
 	function getEventList(){
+		var offset = $('#center_box').children('.content_box').length;
+		
 		var action = "/usr/event/getEventList";
 	
 		$.ajax({
 			  url: action, // 요청을 보낼 URL
 			  method: 'GET', // HTTP 요청 메서드 (GET, POST, 등)
-			  data: {}, // 요청에 포함될 데이터 (객체 형태)
+			  data: {
+				  offset : offset,
+			  }, // 요청에 포함될 데이터 (객체 형태)
 			  success: function(data) {
 			    // 성공적으로 요청을 받았을 때 실행될 함수
 			    // 응답 데이터는 'response' 매개변수로 전달됨
@@ -59,7 +63,7 @@
 				+	'<div class="location_box">' + event.location 
 				+	'</div>'
 				+	'<div class="img_box flex">'
-				+ 	'<a class="detail_btn flex" href="javascript:popup(' + index + ');" onclick="getReplyList(' + event.id + ');">'
+				+ 	'<a class="detail_btn flex" href="javascript:popup(' + event.id + ');" onclick="getReplyList(' + event.id + ');">'
 				+	'<img src="/resource/image/image_' + event.imgId + '.jpg" alt="image" />'
 				+	'</a>'
 				+	'</div>'
@@ -73,8 +77,8 @@
 				+	'<div class="reply_box pl-5"></div>'
 				+	'</div>'
 				+	'</div>'
-				+	'<div class="detail_bg" id="detail_bg_' + index +'"></div>'
-				+	'<div class="detail_box" id="detail_' + index + '">'
+				+	'<div class="detail_bg" id="detail_bg_' + event.id +'"></div>'
+				+	'<div class="detail_box" id="detail_' + event.id + '">'
 				+	'<div class="flex">'
 				+	'<div class="dt_content_box">'
 				+	'<div class="dt_img">'
@@ -89,13 +93,13 @@
 				+	'<div class="dt_location flex">' + event.location + '</div>'
 				+	'<div class="dt_content_body">' + event.title + '</div>'
 					// 댓글 삽입부
-				+	'<div class="dt_reply"></div>'
+				+	'<div class="dt_reply" id="dt_reply_' + event.id + '"></div>'
 				+	'<div class="dt_reply_edit">'
-				+	'<form action="">'
+				+	'<form onsubmit="return false;">'
 				+	'<div class="flex flex-ai-c">'
-				+	'<input type="hidden" name="memberId" value="rq.loginedMemberId" />'
-				+	'<textarea autofocus autocomplete="off" name="body" style="resize: none;" placeholder="댓글달기"></textarea>'
-				+	'<button>게시</button>'
+				+	'<input type="hidden" id="reply_relId_'+ event.id +'" name="relId" value="' + event.id + '" />'
+				+	'<textarea autofocus autocomplete="off" id="reply_body_'+ event.id +'" name="body" style="resize: none;" placeholder="댓글달기"></textarea>'
+				+	'<button onclick="writeReply('+ event.id +');" type="button">게시</button>'
 				+	'</div>'
 				+	'</form>'
 				+	'</div>'
@@ -130,12 +134,30 @@
 		});
 	}
 	
+	// 댓글 작성
+	function writeReply(eventId) {
+		
+		var relId = $('#reply_relId_' + eventId).val();
+		var body = $('#reply_body_' + eventId).val();
+		var action = "/usr/reply/doWrite";
+		console.log(relId);
+		console.log(body);
+		console.log(action);
+	
+		$.get(action, {
+			relTypeCode : 'event',
+			relId : relId,
+			body : body,
+		}, function(data) {
+			var replyList = data.data1;
+			$('#reply_body_' + eventId).val("");
+			displayReplies(replyList); // 댓글 데이터를 화면에 출력하는 함수 호출
+			scrollToBottom();
+		}, 'json');
+	};
+	
+	// 이벤트 불러오기 실행
 	getEventList();
-	
-// 	var divElement = document.getElementById('center_box'); // 대상 div 요소의 ID를 설정해주세요
-// 	var divHeight = divElement.offsetHeight;
-// 	console.log("div 요소의 높이: " + divHeight + "px");
-	
 	
 	window.addEventListener('scroll', function() {
 		// 엘리먼트 지정
@@ -161,6 +183,17 @@
 			isExecuted = true;
 		}
 	});
+	
+	function scrollToBottom() {
+		  var niceElement = document.querySelector('.dt_reply');
+
+		  if (niceElement) {
+		    var scrollHeight = niceElement.scrollHeight;
+		    var clientHeight = niceElement.clientHeight;
+
+		    niceElement.scrollTop = scrollHeight - clientHeight;
+		  }
+		}
 </script>
 
 

@@ -55,9 +55,10 @@ public class UsrEventController {
 	
 	@RequestMapping("/usr/event/getEventList")
 	@ResponseBody
-	public ResultData getEventList() {
-		List<Event> events = eventService.getEvents();
-		List<Event> events = eventService.getEvents2(0, 0);
+	public ResultData getEventList(int offset) {
+//		List<Event> events = eventService.getEvents();
+		int limit = 4;
+		List<Event> events = eventService.getEvents2(offset, limit);
 		ResultData Rd = ResultData.buildResultData("S-1", "", "events", events);
 		return Rd;
 	}

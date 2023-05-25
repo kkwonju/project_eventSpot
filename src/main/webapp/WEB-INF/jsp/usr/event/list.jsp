@@ -16,23 +16,6 @@
 		}, 'json');
 	}
 	
-// 	function writeReply(form, index) {
-		
-// 		var relId = form.relId.value;
-// 		var body = form.body.value;
-// 		var action = "../reply/doWrite";
-		
-// 		$.get(action, {
-// 			relTypeCode : 'event',
-// 			relId : relId,
-// 			body : body,
-// 		}, function(data) {
-// 			var replyList = data.replyList;
-// 			displayReplies(replyList); // 댓글 데이터를 화면에 출력하는 함수 호출
-// 			$('#dt_reply_' + index).scrollTop($('#dt_reply_' + index)[0].scrollHeight);
-// 			$('#reply_body_' + index).val("");
-// 		}, 'json');
-// 	};
 	
 	function displayReplies(replies) {
 		var replyContainer = $('.dt_reply'); // 댓글이 출력될 컨테이너 요소 선택

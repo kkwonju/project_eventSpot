@@ -34,16 +34,13 @@ public class UsrReplyController {
 
 	@RequestMapping("/usr/reply/doWrite")
 	@ResponseBody
-	public Map doWrite(String relTypeCode, int relId, String body) {
+	public ResultData doWrite(String relTypeCode, int relId, String body) {
 
 		ResultData writeReplyRd = replyService.writeReply(relTypeCode, relId, body, rq.getLoginedMemberId());
 
 		List<Reply> replyList = replyService.getForPrintReplies(rq.getLoginedMemberId(), relTypeCode, relId);
-
-		Map<String, Object> rd = new HashMap<>();
-
-		rd.put("replyList", replyList);
-		return rd;
+		
+		return ResultData.buildResultData("S-1", "", "replyList", replyList);
 	}
 
 //	@RequestMapping("/usr/reply/doWrite")
