@@ -3,6 +3,7 @@ package com.kkwo.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,10 +57,11 @@ public class UsrEventController {
 	@RequestMapping("/usr/event/getEventList")
 	@ResponseBody
 	public ResultData getEventList(int offset) {
-//		List<Event> events = eventService.getEvents();
 		int limit = 4;
 		List<Event> events = eventService.getEvents2(offset, limit);
+		int loginedMemberId = rq.getLoginedMemberId();
 		ResultData Rd = ResultData.buildResultData("S-1", "", "events", events);
+		Rd.setData2("loginedMemberId", loginedMemberId);
 		return Rd;
 	}
 	

@@ -516,7 +516,7 @@ html[data-theme="dark"] .center {
 	height: 10%;
 }
 
-.dt_reply_edit textarea {
+.dt_reply_edit input {
 	font-family: 'Pretendard-Regular', 'sans';
 	font-size: 1rem;
 	height: 40px;

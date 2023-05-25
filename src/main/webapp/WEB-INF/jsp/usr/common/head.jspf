@@ -48,7 +48,6 @@
 </script>
 
 <!-- common.js 불러오기 -->
-<script src="/resource/elements.js"></script>
 <script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
