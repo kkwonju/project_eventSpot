@@ -3,7 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kkwo.demo.repository.GenFileRepository">
-	
 		<insert id="saveMeta" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO genFile
 		SET regDate = NOW(),

@@ -48,7 +48,7 @@
 							<a class="detail_btn flex"
 								href="javascript:popup(${loop.index});"
 								onclick="getReplyList(${event.id});">
-								<img src="/resource/image/image_${event.imgId}.jpg" alt="image" />
+								<img src="/resource/image/image_${event.id}.jpg" alt="image" />
 							</a>
 						</div>
 						<div class="reaction_box">
@@ -73,7 +73,7 @@
 					<div class="flex">
 						<div class="dt_content_box">
 							<div class="dt_img">
-								<img src="/resource/image/image_${event.imgId}.jpg" alt="" />
+								<img src="/resource/image/image_${event.id}.jpg" alt="" />
 							</div>
 						</div>
 						<div class="dt_reply_box flex fd-c">

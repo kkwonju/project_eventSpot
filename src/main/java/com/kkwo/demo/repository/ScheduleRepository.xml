@@ -11,7 +11,7 @@
 	<select id="getScheduleList" resultType="Schedule">
 		SELECT *
 		FROM TB_SCHEDULE
-		ORDER BY eventDate, startTime;
+		ORDER BY eventDate;
 	</select>
 	
 		<select id="getForPrintScheduleList" resultType="Schedule">

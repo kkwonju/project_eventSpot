@@ -1,3 +1,4 @@
+// 이벤트 불러오기 제한
 var isExecuted = false;
 
 // 댓글 불러오기
@@ -13,7 +14,7 @@ function getReplyList(eventId) {
 	}, 'json');
 }
 
-// 디테일창 댓글 보여주기
+// 이벤트 디테일 페이지 댓글 보여주기
 function displayReplies(replies) {
 	var replyContainer = $('.dt_reply'); // 댓글이 출력될 컨테이너 요소 선택
 
@@ -32,8 +33,9 @@ function displayReplies(replies) {
 	});
 }
 
-function displayReplyOnEventList(replies, eventId){
-	var replyContainer = $('.reply_box_' + index); // 댓글이 출력될 컨테이너 요소 선택
+// 이벤트 리스트 페이지 댓글 보여주기
+function displayReplyOnEventList(replies, num){
+	var replyContainer = $('.reply_box_' + num); // 댓글이 출력될 컨테이너 요소 선택
 
 	// 기존 댓글 삭제
 	replyContainer.empty();
@@ -49,6 +51,29 @@ function displayReplyOnEventList(replies, eventId){
 		replyContainer.append(replyHtml);
 	});
 }
+
+// 댓글 작성
+function writeReply(eventId) {
+
+	var relId = $('#reply_relId_' + eventId).val();
+	var body = $('#reply_body_' + eventId).val();
+	var action = "/usr/reply/doWrite";
+	console.log(relId);
+	console.log(body);
+	console.log(action);
+
+	$.get(action, {
+		relTypeCode: 'event',
+		relId: relId,
+		body: body,
+	}, function(data) {
+		var replyList = data.data1;
+		$('#reply_body_' + eventId).val("");
+		displayReplies(replyList); // 댓글 데이터를 화면에 출력하는 함수 호출
+		scrollToBottom(eventId);
+	}, 'json');
+};
+
 
 // 이벤트 불러오기
 function getEventList() {
@@ -90,7 +115,7 @@ function displayEvent(events, loginedMemberId) {
 				+ '</div>'
 				+ '<div class="img_box flex">'
 				+ '<a class="detail_btn flex" href="javascript:popup(' + event.id + ');" onclick="getReplyList(' + event.id + ');">'
-				+ '<img src="/resource/image/image_' + event.imgId + '.jpg" alt="image" />'
+				+ '<img src="/resource/image/image_' + event.id + '.jpg" alt="image" />'
 				+ '</a>'
 				+ '</div>'
 				+ '<div class="reaction_box">'
@@ -108,7 +133,7 @@ function displayEvent(events, loginedMemberId) {
 				+ '<div class="flex">'
 				+ '<div class="dt_content_box">'
 				+ '<div class="dt_img">'
-				+ '<img src="/resource/image/image_' + event.imgId + '.jpg" alt="" />'
+				+ '<img src="/resource/image/image_' + event.id + '.jpg" alt="" />'
 				+ '</div>'
 				+ '</div>'
 				+ '<div class="dt_reply_box flex fd-c">'
@@ -125,7 +150,7 @@ function displayEvent(events, loginedMemberId) {
 				+ '<div class="flex flex-ai-c">'
 				+ '<input type="hidden" id="reply_memberId_' + event.id + '" name="memberId" value="' + loginedMemberId + '" />'
 				+ '<input type="hidden" id="reply_relId_' + event.id + '" name="relId" value="' + event.id + '" />'
-				+ '<input autofocus autocomplete="off" id="reply_body_' + event.id + '" name="body" placeholder="댓글달기"/>'
+				+ '<textarea autofocus autocomplete="off" id="reply_body_' + event.id + '" name="body" style="resize: none;" placeholder="댓글달기" onkeydown="handleKeyDown(event, '+ event.id +')"></textarea>'
 				+ '<button onclick="writeReply(' + event.id + ');" type="button">게시</button>'
 				+ '</div>'
 				+ '</form>'
@@ -142,28 +167,17 @@ function displayEvent(events, loginedMemberId) {
 	});
 }
 
-// 댓글 작성
-function writeReply(eventId) {
+// Enter 키 기능 멈추고 메서드 실행
+function handleKeyDown(e, eventId) {
+  if (e.keyCode === 13) { // Enter 키의 keyCode는 13입니다
+    e.preventDefault(); // 기본 동작인 줄바꿈을 막습니다
+    enterReply(eventId); // 특정 메서드를 실행합니다
+  }
+}
 
-	var relId = $('#reply_relId_' + eventId).val();
-	var body = $('#reply_body_' + eventId).val();
-	var action = "/usr/reply/doWrite";
-	console.log(relId);
-	console.log(body);
-	console.log(action);
-
-	$.get(action, {
-		relTypeCode: 'event',
-		relId: relId,
-		body: body,
-	}, function(data) {
-		var replyList = data.data1;
-		$('#reply_body_' + eventId).val("");
-		displayReplies(replyList); // 댓글 데이터를 화면에 출력하는 함수 호출
-		scrollToBottom(eventId);
-	}, 'json');
-};
-
+function enterReply(eventId) {
+	writeReply(eventId);
+}
 
 // 스크롤 이벤트 리스너 추가
 window.addEventListener('scroll', function() {

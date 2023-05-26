@@ -83,7 +83,7 @@
 						</li>
 						<c:if test="${rq.logined}">
 							<li>
-								<a href="#">COLLECT</a>
+								<a href="/usr/bookmark/list">BOOKMARK</a>
 							</li>
 						</c:if>
 						<li>
