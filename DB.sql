@@ -10,89 +10,67 @@ CREATE TABLE TB_EVENT(
     id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    beginDt DATE NOT NULL,
-    endDt DATE NOT NULL,
     genreId INT NOT NULL,
     location VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
     detail TEXT NOT NULL,
-    imgId INT NOT NULL,
-    duration INT DEFAULT 0 COMMENT '단위 (분)',
-    hitCount INT UNSIGNED DEFAULT 0
+    duration INT DEFAULT 0 COMMENT '단위 (분)'
 );
 
 # TB_EVENT 테스트 데이터 생성
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
-beginDt = "2023-07-01",
-endDt = "2023-07-01",
 genreId = 1003,
 location = "충남대학교 정심화홀",
 title = "김창옥 토크콘서트 시즌 3",
 detail = "2023년 7월 1일 (토요일) 오후 1시, 6시",
-imgId = 23,
 duration = 120;
 
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
-beginDt = "2023-05-19",
-endDt = "2023-05-21",
 genreId = 1002,
 location = "대전예술의전당 아트홀",
 title = "뮤지컬 〈캣츠〉 오리지널 내한－대전（Musical CATS）",
 detail = "2023년 5월 19일(금) 오후 7시 30분",
-imgId = 14,
 duration = 160;
 
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
-beginDt = "2023-06-01",
-endDt = "22023-07-30",
 genreId = 1001,
 location = "대전 상상아트홀",
 title = "NEW달을 품은 슈퍼맨",
 detail = "평일 19시 30분 / 주말,공휴일 16시 (월요일 공연 없음)",
-imgId = 20,
 duration = 110;
 
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
-beginDt = "2023-06-02",
-endDt = "2023-06-02",
 genreId = 1005,
 location = "대전시립연정국악원 작은마당",
 title = "피아니스트 강미연 리사이틀",
 detail = "2023년 6월 2일 금요일 오후 7시 30분",
-imgId = 78,
 duration = 90;
 
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
-beginDt = "2023-09-02",
-endDt = "2023-09-02",
 genreId = 1005,
 location = "대전예술의전당 아트홀",
 title = "2023 일리야 라쉬코프스키, 라흐마니노프 3개의 피아노협주곡",
 detail = "2023년 9월 2일(토) 오후 5시",
-imgId = 43,
 duration = 150;
 
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
-beginDt = "2023-06-02",
-endDt = "2023-06-03",
 genreId = 1005,
 location = "대전예술의전당 아트홀",
 title = "대전시립무용단 제73회 정기공연 춤극 ＂로미오와 줄리엣－유성과 예랑＂",
 detail = "2023년 6월 2일 금 19시 30분
 2023년 6월 3일 토 17시",
-imgId = 83,
 duration = 70;
 
 ###################################
@@ -191,8 +169,7 @@ CREATE TABLE TB_SCHEDULE(
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
     eventId INT NOT NULL,
-    eventDate DATE NOT NULL ,
-    startTime TIME NOT NULL
+    eventDate DATETIME NOT NULL
 );
 
 # TB_SCHEDULE 테스트 데이터 생성
@@ -200,22 +177,19 @@ INSERT INTO TB_SCHEDULE
 SET regDate = NOW(),
 updateDate = NOW(),
 eventId = 1,
-eventDate = '2023-05-06',
-startTime = '13:30:00';
+eventDate = '2023-05-06 13:30:00';
 
 INSERT INTO TB_SCHEDULE
 SET regDate = NOW(),
 updateDate = NOW(),
 eventId = 2,
-eventDate = '2023-05-10',
-startTime = '16:00:00';
+eventDate = '2023-05-10 16:00:00';
 
 INSERT INTO TB_SCHEDULE
 SET regDate = NOW(),
 updateDate = NOW(),
 eventId = 1,
-eventDate = '2023-05-06',
-startTime = '17:30:00';
+eventDate = '2023-05-06 17:30:00';
 
 ###################################
 
@@ -304,6 +278,32 @@ relId = FLOOR(1 + RAND() * 6),
                 SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1));
 
 
+CREATE TABLE TB_BOOKMARK (
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    eventId INT(10) NOT NULL COMMENT '관련 이벤트 번호'
+);
+
+INSERT INTO TB_BOOKMARK
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+eventId = 2;
+
+INSERT INTO TB_BOOKMARK
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+eventId = 3;
+
+INSERT INTO TB_BOOKMARK
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+eventId = 5;
+
 
 ###################################
 
@@ -316,6 +316,7 @@ SELECT * FROM TB_SCHEDULE;
 SELECT * FROM TB_GENRE;
 SELECT * FROM TB_MEMBER;
 SELECT * FROM TB_REPLY;
+SELECT * FROM TB_COLLECTION;
 
 # 먼저 일어나
 SELECT * FROM TB_SCHEDULE
