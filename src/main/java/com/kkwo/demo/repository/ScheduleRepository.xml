@@ -23,9 +23,8 @@
 			<if test="searchKeyword != ''">
 				E.title LIKE CONCAT('%', #{searchKeyword}, '%')
 				OR S.eventDate LIKE CONCAT('%', #{searchKeyword}, '%')
-				OR S.startTime LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
 		</where>
-		ORDER BY eventDate, startTime;
+		ORDER BY eventDate;
 	</select>
 </mapper>

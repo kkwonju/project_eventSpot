@@ -16,8 +16,10 @@
 	</select>
 	
 	<select id="getForPrintEvents" resultType="Event">
-		SELECT *
-		FROM TB_EVENT
+		SELECT E.*, G.name AS extra__genreName
+		FROM TB_EVENT E
+		INNER JOIN TB_GENRE G
+		ON E.genreId = G.id
 		<where>
 			<if test="searchKeyword != ''">
 				title LIKE CONCAT('%', #{searchKeyword}, '%')
@@ -25,7 +27,7 @@
 				OR `location` LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
 		</where>
-		ORDER BY id DESC;
+		ORDER BY E.id DESC;
 	</select>
 	
 	<select id="getEventById" resultType="Event">
@@ -38,8 +40,6 @@
 		INSERT INTO TB_EVENT
 		SET regDate = NOw(),
 		updateDate = now(),
-		beginDt = #{beginDt},
-		endDt = #{endDt},
 		genreId = #{genreId},
 		location = #{location},
 		title = #{title},
@@ -50,8 +50,6 @@
 	<update id="modifyEvent">
 		UPDATE TB_EVENT
 		SET updateDate = NOW(),
-		beginDt = #{beginDt},
-		endDt = #{endDt},
 		genreId = #{genreId},
 		location = #{location},
 		title = #{title},

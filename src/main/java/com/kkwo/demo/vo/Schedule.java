@@ -13,7 +13,6 @@ public class Schedule {
 	private String updateDate;
 	private int eventId;
 	private String eventDate;
-	private String startTime;
 	
 	private String eventTitle;
 }

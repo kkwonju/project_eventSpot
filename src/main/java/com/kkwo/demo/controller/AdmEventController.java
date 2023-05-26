@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
@@ -108,9 +109,9 @@ public class AdmEventController {
 	 * @return 관리자용 이벤트 리스트 페이지 반환
 	 */
 	@RequestMapping("/admin/manage/eventList")
-	public String showEventList(Model model) {
+	public String showEventList(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
 
-		List<Event> events = eventService.getEvents();
+		List<Event> events = eventService.getForPrintEvents(searchKeyword);
 
 		model.addAttribute("events", events);
 

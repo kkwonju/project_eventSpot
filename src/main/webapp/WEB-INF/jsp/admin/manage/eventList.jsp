@@ -44,7 +44,7 @@
 .eventList ul>li {
 	text-align: center;
 	border: 1px solid black;
-	width: calc(100%/ 12);
+	width: calc(100%/ 11);
 }
 
 .event>ul>li {
@@ -62,14 +62,11 @@
 			<li>Img.</li>
 			<li>등록 날짜</li>
 			<li>수정 날짜</li>
-			<li>시작일</li>
-			<li>종료일</li>
 			<li>장르</li>
 			<li>장소</li>
 			<li>제목</li>
 			<li>내용</li>
 			<li>진행 시간</li>
-			<li>조회수</li>
 			<li>수정</li>
 			<li>삭제</li>
 		</ul>
@@ -78,18 +75,15 @@
 				<ul class="flex">
 					<li>${event.id}</li>
 					<li>
-						<img src="/resource/image/image_${event.imgId}.jpg" alt="" />
+						<img src="/resource/image/image_${event.id}.jpg" alt="" />
 					</li>
 					<li>${event.regDate}</li>
 					<li>${event.updateDate}</li>
-					<li>${event.beginDt}</li>
-					<li>${event.endDt}</li>
-					<li>${event.genreId}</li>
+					<li>${event.extra__genreName}</li>
 					<li>${event.location}</li>
 					<li>${event.title}</li>
 					<li>${event.detail}</li>
 					<li>${event.duration}</li>
-					<li>${event.hitCount}</li>
 					<li>
 						<a href="/admin/manage/showModifyEvent?id=${event.id}">
 							<i class="fa-regular fa-pen-to-square" style="color: #000000;"></i>

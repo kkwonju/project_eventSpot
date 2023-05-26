@@ -40,7 +40,7 @@
 .scheduleList ul>li {
 	text-align: center;
 	border: 1px solid black;
-	width: calc(100%/ 8);
+	width: calc(100%/ 7);
 }
 
 .schedule>ul>li {
@@ -56,11 +56,10 @@
 	<div class="scheduleList">
 		<ul class="flex">
 			<li>No.</li>
+			<li>공연일</li>
 			<li>등록 날짜</li>
 			<li>수정 날짜</li>
 			<li>이벤트 ID</li>
-			<li>공연일</li>
-			<li>시작 시간</li>
 			<li>수정</li>
 			<li>삭제</li>
 		</ul>
@@ -68,11 +67,10 @@
 			<div class="schedule">
 				<ul class="flex">
 					<li>${schedule.id}</li>
+					<li>${schedule.eventDate}</li>
 					<li>${schedule.regDate}</li>
 					<li>${schedule.updateDate}</li>
 					<li>${schedule.eventId}</li>
-					<li>${schedule.eventDate}</li>
-					<li>${schedule.startTime}</li>
 					<li>
 						<a href="/admin/manage/showUpdateSchedule?id=${schedule.id}">
 							<i class="fa-regular fa-pen-to-square" style="color: #000000;"></i>
