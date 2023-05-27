@@ -42,18 +42,10 @@ public class UsrEventController {
 	 * @return 사용자용 이벤트 리스트 페이지 반환
 	 */
 	@RequestMapping("/usr/event/list")
-	public String showEventlist(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
-		List<Event> events = eventService.getForPrintEvents(searchKeyword);
-//		List<Reply> replyList = replyService.getReplies();
-		int eventsCnt = events.size();
-//		int repliesCnt = replyList.size();
-		model.addAttribute("events", events);
-//		model.addAttribute("replyList", replyList);
-		model.addAttribute("eventsCnt", eventsCnt);
-//		model.addAttribute("repliesCnt", repliesCnt);
+	public String showEventlist2(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
 		return "usr/event/list";
 	}
-	
+
 	@RequestMapping("/usr/event/getEventList")
 	@ResponseBody
 	public ResultData getEventList(int offset) {
@@ -64,20 +56,5 @@ public class UsrEventController {
 		Rd.setData2("loginedMemberId", loginedMemberId);
 		return Rd;
 	}
-	
-	@RequestMapping("/usr/event/list2")
-	public String showEventlist2(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
-//		List<Event> events = eventService.getEvents2(0, 2);
-//		int eventsCnt = events.size();
-//		model.addAttribute("events", events);
-//		model.addAttribute("eventsCnt", eventsCnt);
-		return "usr/event/list2";
-	}
-//	
-//	@RequestMapping("/loadMoreEvents")
-//	public List<Event> loadMorePosts(@RequestParam("offset") int offset, @RequestParam("limit") int limit) {
-//	    // offset과 limit을 기반으로 새로운 게시물을 가져오는 로직을 구현합니다.
-//	    List<Event> events = eventService.getEvents2(offset, limit);
-//	    return events;
-//	}
+
 }
