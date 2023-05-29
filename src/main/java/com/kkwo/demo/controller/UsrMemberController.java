@@ -190,16 +190,16 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doFindLoginId(String email) {
 		if (Ut.isEmpty(email)) {
-			return rq.jsHistoryBackOnView("이메일을 입력해주세요");
+			return Ut.jsHistoryBack("이메일을 입력해주세요");
 		}
 		
 		Member member = memberService.getMemberByEmail(email);
 
 		if (member == null) {
-			return rq.jsHistoryBackOnView(Ut.f("일치하는 이메일이 없습니다"));
+			return Ut.jsHistoryBack(Ut.f("일치하는 이메일이 없습니다"));
 		}
 		
-		return rq.jsReplaceOnView( Ut.f("LoginId : %s", member.getLoginId()), "/usr/member/login");
+		return Ut.jsReplace(Ut.f("LoginId : %s", member.getLoginId()), "/usr/member/login");
 	}
 	
 	// 비밀번호 찾기 페이지
@@ -222,13 +222,13 @@ public class UsrMemberController {
 		Member member = memberService.getMemberByLoginId(loginId);
 		
 		if (member == null) {
-			return rq.jsHistoryBackOnView(Ut.f("일치하는 아이디가 없습니다"));
+			return Ut.jsHistoryBack(Ut.f("일치하는 아이디가 없습니다"));
 		}
 
 		if (!member.getEmail().equals(email)) {
-			return rq.jsHistoryBackOnView(Ut.f("일치하는 이메일이 없습니다"));
+			return Ut.jsHistoryBack(Ut.f("일치하는 이메일이 없습니다"));
 		}
 		
-		return rq.jsReplaceOnView( Ut.f("LoginPw : %s", member.getLoginPw()), "/usr/member/login");
+		return Ut.jsReplace( Ut.f("LoginPw : %s", member.getLoginPw()), "/usr/member/login");
 	}
 }
