@@ -1,7 +1,10 @@
 package com.kkwo.demo.util;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -87,7 +90,7 @@ public class Ut {
 	 * 자바스크립트 메세지 띄운 뒤 특정 페이지로 이동
 	 *
 	 * @param resultMsg 보여줄 메세지
-	 * @param uri 실행 후 이동할 uri
+	 * @param uri       실행 후 이동할 uri
 	 * 
 	 * @return javascrpit문법 alert창 메세지 띄운 후 uri 페이지로 이동
 	 */
@@ -110,7 +113,43 @@ public class Ut {
 				</script>
 				""", resultMsg, uri);
 	}
-	
+
+	// sha256
+	public static String sha256(String input) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] hash = md.digest(input.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+
+			for (int i = 0; i < hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if (hex.length() == 1)
+					hexString.append('0');
+				hexString.append(hex);
+			}
+
+			return hexString.toString();
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static String getTempPassword(int length) {
+		int index = 0;
+		char[] charArr = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+				'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+		StringBuffer sb = new StringBuffer();
+
+		for (int i = 0; i < length; i++) {
+			index = (int) (charArr.length * Math.random());
+			sb.append(charArr[index]);
+		}
+
+		return sb.toString();
+	}
+
 	public static Map<String, Object> mapOf(Object... args) {
 		if (args.length % 2 != 0) {
 			throw new IllegalArgumentException("인자를 짝수개 입력해주세요.");
@@ -166,62 +205,6 @@ public class Ut {
 	public static <T> T reqAttr(HttpServletRequest req, String attrName, T defaultValue) {
 		return (T) ifNull(req.getAttribute(attrName), defaultValue);
 	}
-
-//	public static boolean empty(Object obj) {
-//		if (obj == null) {
-//			return true;
-//		}
-//
-//		if (obj instanceof Integer) {
-//			return ((int) obj) == 0;
-//		}
-//
-//		if (obj instanceof Long) {
-//			return ((long) obj) == 0;
-//		}
-//
-//		if (obj instanceof String == false) {
-//			return true;
-//		}
-//
-//		String str = (String) obj;
-//
-//		return str.trim().length() == 0;
-//	}
-
-//	public static boolean isEmpty(Object data) {
-//		if (data == null) {
-//			return true;
-//		}
-//
-//		if (data instanceof String) {
-//			String strData = (String) data;
-//
-//			return strData.trim().length() == 0;
-//		} else if (data instanceof List) {
-//			List listData = (List) data;
-//
-//			return listData.isEmpty();
-//		} else if (data instanceof Map) {
-//			Map mapData = (Map) data;
-//
-//			return mapData.isEmpty();
-//		}
-//
-//		return false;
-//	}
-//
-//	public static String jsHistoryBack(String msg) {
-//		return Ut.f("""
-//				<script>
-//				const msg = '%s'.trim();
-//				if ( msg.length > 0 ) {
-//					alert(msg);
-//				}
-//				history.back();
-//				</script>
-//				""", msg);
-//	}
 
 	public static String getUriEncoded(String str) {
 		try {

@@ -229,6 +229,7 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack(Ut.f("일치하는 이메일이 없습니다"));
 		}
 		
+		ResultData notifyTempLoginPwByEmailRd = memberService.notifyTempLoginPwByEmail(member);
 		return Ut.jsReplace( Ut.f("LoginPw : %s", member.getLoginPw()), "/usr/member/login");
 	}
 }

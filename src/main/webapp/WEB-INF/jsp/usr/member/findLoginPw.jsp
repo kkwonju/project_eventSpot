@@ -11,7 +11,7 @@
 				<label for="loginId">
 					<span>아이디</span>
 				</label>
-				<input autocomplete="off" type="text" name="loginId" placeholder="이메일을 입력하세요" id="loginId"/>
+				<input autocomplete="off" type="text" name="loginId" placeholder="아이디를 입력하세요" id="loginId"/>
 				<label for="email">
 					<span>이메일</span>
 				</label>
