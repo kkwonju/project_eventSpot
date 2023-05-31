@@ -3,10 +3,10 @@ server:
   port: 8081
 spring:
   mail:
-    host: smpt.gmail.com
+    host: smtp.gmail.com
     port: 587
-    username: kkwo@gmail.com
-    password:
+    username: doubleready4@gmail.com
+    password: (앱 비밀번호)
     properties:
       mail:
         smtp:

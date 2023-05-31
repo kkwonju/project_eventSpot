@@ -62,7 +62,7 @@ public class MemberService {
 			return ResultData.buildResultData("F-N", "아이디 또는 비밀번호가 일치하지 않습니다");
 		}
 		
-		if(!(member.getLoginPw().equals(loginPw))) {
+		if(!(member.getLoginPw().equals(Ut.sha256(loginPw)))) {
 			return ResultData.buildResultData("F-M", "아이디 또는 비밀번호가 일치하지 않습니다");
 		}
 		

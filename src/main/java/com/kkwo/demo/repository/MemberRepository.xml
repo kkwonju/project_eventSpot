@@ -79,7 +79,9 @@
 			<if test="newLoginPw != null">
 				loginPw = #{newLoginPw},
 			</if>
-			nickname = #{newNickname}
+			<if test="newNickname != null">
+				nickname = #{newNickname}
+			</if>
 		</set>
 		WHERE id = #{id}
 	</update>

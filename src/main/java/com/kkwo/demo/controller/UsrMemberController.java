@@ -104,10 +104,10 @@ public class UsrMemberController {
 		}
 
 		// 아이디, 비밀번호 일치 여부
-		ResultData loginMemberRd = memberService.doLoginMember(loginId, loginPw);
+		ResultData loginRd = memberService.doLoginMember(loginId, loginPw);
 
-		if (loginMemberRd.isFail()) {
-			return Ut.jsHistoryBack(loginMemberRd.getResultMsg());
+		if (loginRd.isFail()) {
+			return Ut.jsHistoryBack(loginRd.getResultMsg());
 		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
@@ -166,6 +166,8 @@ public class UsrMemberController {
 		}
 		if (Ut.isEmpty(loginPw)) {
 			loginPw = null;
+		} else {
+			loginPw = Ut.sha256(loginPw);
 		}
 
 		ResultData memberModifyRd = memberService.doModify(rq.getLoginedMemberId(), nickname, loginPw);
@@ -230,6 +232,7 @@ public class UsrMemberController {
 		}
 		
 		ResultData notifyTempLoginPwByEmailRd = memberService.notifyTempLoginPwByEmail(member);
-		return Ut.jsReplace( Ut.f("LoginPw : %s", member.getLoginPw()), "/usr/member/login");
+		
+		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getResultMsg(), "/usr/member/login");
 	}
 }
