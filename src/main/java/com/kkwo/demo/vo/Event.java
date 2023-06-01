@@ -18,4 +18,7 @@ public class Event {
 	private int duration;
 	
 	private String extra__genreName;
+	
+	private boolean actorCanModify;
+	private boolean actorCanDelete;
 }

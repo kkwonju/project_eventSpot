@@ -56,5 +56,4 @@ public class UsrEventController {
 		Rd.setData2("loginedMemberId", loginedMemberId);
 		return Rd;
 	}
-
 }

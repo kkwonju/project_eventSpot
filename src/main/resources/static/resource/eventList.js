@@ -58,9 +58,6 @@ function writeReply(eventId) {
 	var relId = $('#reply_relId_' + eventId).val();
 	var body = $('#reply_body_' + eventId).val();
 	var action = "/usr/reply/doWrite";
-	console.log(relId);
-	console.log(body);
-	console.log(action);
 
 	$.get(action, {
 		relTypeCode: 'event',
