@@ -143,6 +143,26 @@ public class UsrMemberController {
 		return "usr/member/profile";
 	}
 
+	@RequestMapping("/usr/member/checkPw")
+	public String showCheckPw() {
+
+		return "usr/member/checkPw";
+	}
+
+	@RequestMapping("/usr/member/doCheckPw")
+	@ResponseBody
+	public String doCheckPw(String loginPw, String replaceUri) {
+		if (Ut.isEmpty(loginPw)) {
+			return Ut.jsHistoryBack("비밀번호를 입력해주세요");
+		}
+
+		if (rq.getLoginedMember().getLoginPw().equals(Ut.sha256(loginPw)) == false) {
+			return Ut.jsHistoryBack("비밀번호가 틀립니다");
+		}
+
+		return Ut.jsReplace("비밀번호 일치","/usr/member/modify");
+	}
+	
 	/**
 	 * @return 사용자용 회원정보 수정 페이지 반환
 	 */

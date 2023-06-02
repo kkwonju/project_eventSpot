@@ -16,7 +16,7 @@
 				<div>${member.email}</div>
 			</div>
 		</div>
-		<div class="bhd_idCard"><a href="../member/modify">MODIFY > </a></div>
+		<div class="bhd_idCard"><a href="../member/checkPw">MODIFY > </a></div>
 	</div>
 </section>
 <%@ include file="../common/foot.jspf"%>
