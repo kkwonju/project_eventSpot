@@ -304,6 +304,9 @@ updateDate = NOW(),
 memberId = 2,
 eventId = 5;
 
+# 기존의 회원 비번을 암호화
+UPDATE TB_MEMBER
+SET loginPw = SHA2(loginPw,256);
 
 ###################################
 
