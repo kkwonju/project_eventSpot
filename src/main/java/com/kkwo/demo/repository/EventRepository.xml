@@ -40,6 +40,8 @@
 		INSERT INTO TB_EVENT
 		SET regDate = NOw(),
 		updateDate = now(),
+		beginDt = #{beginDt},
+		endDt = #{endDt},
 		genreId = #{genreId},
 		location = #{location},
 		title = #{title},
@@ -50,6 +52,8 @@
 	<update id="modifyEvent">
 		UPDATE TB_EVENT
 		SET updateDate = NOW(),
+		beginDt = #{beginDt},
+		endDt = #{endDt},
 		genreId = #{genreId},
 		location = #{location},
 		title = #{title},

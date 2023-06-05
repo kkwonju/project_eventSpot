@@ -57,7 +57,7 @@ public class AdmEventController {
 	 */
 	@RequestMapping("/admin/manage/addEvent")
 	@ResponseBody
-	public String addEvent(String beginDt, String endDt, int genreId, String location, String title, String detail,
+	public String addEvent(String beginDt, String endDt, String location, int genreId, String title, String detail,
 			int duration, MultipartRequest multipartRequest) {
 
 		// 유효성 검사
@@ -82,6 +82,8 @@ public class AdmEventController {
 		if (Ut.isEmpty(duration)) {
 			return Ut.jsHistoryBack("진행 시간을 입력해주세요");
 		}
+		
+		System.out.println("됌?----------------------------");
 
 		// 이벤트 추가를 시도하고 추가 결과에 따라 처리 ( 실패 : -1 )
 		int eventId = eventService.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
