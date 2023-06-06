@@ -80,7 +80,7 @@
 </style>
 <section class="addEventForm_box">
 	<h1>이벤트 추가</h1>
-	<form action="/admin/manage/addEvent" method="GET">
+	<form action="/admin/manage/addEvent" method="POST" enctype="multipart/form-data">
 		<div class="addEventForm flex">
 			<div class="info_box flex fd-c">
 				<label for="beginDt">시작 날짜</label>
@@ -112,7 +112,7 @@
 			<div class="image_box flex fd-c">
 				<div class="input_img">
 					<label for="image_input">Click here &nbsp;<i class="fa-regular fa-image" style="color: #000000;"></i></label>
-					<input name="file__article__0__extra__Img__1" type="file" accept="image/*" id="image_input"/>
+					<input name="file__article__0__extra__Img__1" type="file" id="image_input"/>
 				</div>
 				<div class="preview">
 					<img id="preview_img" src="#" alt="" />

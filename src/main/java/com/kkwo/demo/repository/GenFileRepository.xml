@@ -4,7 +4,7 @@
 
 <mapper namespace="com.kkwo.demo.repository.GenFileRepository">
 		<insert id="saveMeta" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO genFile
+		INSERT INTO TB_GENFILE
 		SET regDate = NOW(),
 		updateDate = NOW(),
 		relTypeCode
@@ -25,7 +25,7 @@
 
 	<select id="getGenFile" resultType="GenFile">
 		SELECT *
-		FROM genFile
+		FROM TB_GENFILE
 		WHERE 1
 		<if test="relTypeCode != null">
 			AND relTypeCode = #{relTypeCode}
@@ -46,14 +46,14 @@
 
 	<select id="getGenFileById" resultType="GenFile">
 		SELECT *
-		FROM genFile
+		FROM TB_GENFILE
 		WHERE 1
 		AND id = #{id}
 	</select>
 
 	<select id="getGenFiles" resultType="GenFile">
 		SELECT *
-		FROM genFile
+		FROM TB_GENFILE
 		WHERE 1
 		AND relTypeCode = #{relTypeCode}
 		AND relId =
@@ -70,7 +70,7 @@
 	<select id="getGenFilesByRelTypeCodeAndRelId"
 		resultType="GenFile">
 		SELECT *
-		FROM genFile
+		FROM TB_GENFILE
 		WHERE 1
 		AND relTypeCode = #{relTypeCode}
 		AND relId = #{relId}
@@ -81,7 +81,7 @@
 		id="getGenFilesRelTypeCodeAndRelIdsAndTypeCodeAndType2Code"
 		resultType="GenFile">
 		SELECT *
-		FROM genFile
+		FROM TB_GENFILE
 		WHERE 1
 		<if test="relIds != null and relIds.size > 0">
 			AND relId IN
@@ -98,7 +98,7 @@
 	</select>
 
 	<update id="changeRelId">
-		UPDATE genFile
+		UPDATE TB_GENFILE
 		<set>
 			updateDate = NOW(),
 			relId = #{relId}
@@ -107,13 +107,13 @@
 	</update>
 
 	<delete id="deleteFiles">
-		DELETE FROM genFile
+		DELETE FROM TB_GENFILE
 		WHERE relTypeCode = #{relTypeCode}
 		AND relId = #{relId}
 	</delete>
 
 	<delete id="deleteFile">
-		DELETE FROM genFile
+		DELETE FROM TB_GENFILE
 		WHERE id = #{id}
 	</delete>
 </mapper>

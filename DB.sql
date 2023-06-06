@@ -10,6 +10,8 @@ CREATE TABLE TB_EVENT(
     id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
+    beginDt DATETIME NOT NULL,
+    endDt DATETIME NOT NULL,
     genreId INT NOT NULL,
     location VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
@@ -21,6 +23,8 @@ CREATE TABLE TB_EVENT(
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
+beginDt = "2023-06-05",
+endDt = "2023-06-07",
 genreId = 1003,
 location = "충남대학교 정심화홀",
 title = "김창옥 토크콘서트 시즌 3",
@@ -30,6 +34,8 @@ duration = 120;
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
+beginDt = "2023-06-06",
+endDt = "2023-06-06",
 genreId = 1002,
 location = "대전예술의전당 아트홀",
 title = "뮤지컬 〈캣츠〉 오리지널 내한－대전（Musical CATS）",
@@ -39,6 +45,8 @@ duration = 160;
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
+beginDt = "2023-06-08",
+endDt = "2023-06-08",
 genreId = 1001,
 location = "대전 상상아트홀",
 title = "NEW달을 품은 슈퍼맨",
@@ -48,6 +56,8 @@ duration = 110;
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
+beginDt = "2023-06-10",
+endDt = "2023-06-12",
 genreId = 1005,
 location = "대전시립연정국악원 작은마당",
 title = "피아니스트 강미연 리사이틀",
@@ -57,6 +67,8 @@ duration = 90;
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
+beginDt = "2023-06-13",
+endDt = "2023-06-15",
 genreId = 1005,
 location = "대전예술의전당 아트홀",
 title = "2023 일리야 라쉬코프스키, 라흐마니노프 3개의 피아노협주곡",
@@ -66,6 +78,8 @@ duration = 150;
 INSERT INTO TB_EVENT
 SET regDate = NOW(),
 updateDate = NOW(),
+beginDt = "2023-06-13",
+endDt = "2023-06-14",
 genreId = 1005,
 location = "대전예술의전당 아트홀",
 title = "대전시립무용단 제73회 정기공연 춤극 ＂로미오와 줄리엣－유성과 예랑＂",
@@ -308,6 +322,28 @@ eventId = 5;
 UPDATE TB_MEMBER
 SET loginPw = SHA2(loginPw,256);
 
+# 파일 테이블 추가
+CREATE TABLE TB_GENFILE (
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, # 번호
+  regDate DATETIME DEFAULT NULL, # 작성날짜
+  updateDate DATETIME DEFAULT NULL, # 갱신날짜
+  delDate DATETIME DEFAULT NULL, # 삭제날짜
+  delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0, # 삭제상태(0:미삭제,1:삭제)
+  relTypeCode CHAR(50) NOT NULL, # 관련 데이터 타입(article, member)
+  relId INT(10) UNSIGNED NOT NULL, # 관련 데이터 번호
+  originFileName VARCHAR(100) NOT NULL, # 업로드 당시의 파일이름
+  fileExt CHAR(10) NOT NULL, # 확장자
+  typeCode CHAR(20) NOT NULL, # 종류코드 (common)
+  type2Code CHAR(20) NOT NULL, # 종류2코드 (attatchment)
+  fileSize INT(10) UNSIGNED NOT NULL, # 파일의 사이즈
+  fileExtTypeCode CHAR(10) NOT NULL, # 파일규격코드(img, video)
+  fileExtType2Code CHAR(10) NOT NULL, # 파일규격2코드(jpg, mp4)
+  fileNo SMALLINT(2) UNSIGNED NOT NULL, # 파일번호 (1)
+  fileDir CHAR(20) NOT NULL, # 파일이 저장되는 폴더명
+  PRIMARY KEY (id),
+  KEY relId (relTypeCode,relId,typeCode,type2Code,fileNo)
+);
+
 ###################################
 
 ###################################
@@ -320,6 +356,7 @@ SELECT * FROM TB_GENRE;
 SELECT * FROM TB_MEMBER;
 SELECT * FROM TB_REPLY;
 SELECT * FROM TB_COLLECTION;
+SELECT * FROM TB_GENFILE;
 
 # 먼저 일어나
 SELECT * FROM TB_SCHEDULE

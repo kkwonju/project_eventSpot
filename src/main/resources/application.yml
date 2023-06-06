@@ -30,7 +30,7 @@ spring:
 mybatis:
   type-aliases-package: com.kkwo.demo.vo
 custom:
-  genFileDirPath: C:\workspace_kkwo\sts-4.18.0.RELEASE-workspace\demo-1\images
+  genFileDirPath: C:\workspace_kkwo\sts-4.18.0.RELEASE-workspace\project_eventSpot\images
   siteName: ReadyReady
   siteMainUri: http://localhost:8081
   emailFrom: no-reply@localhost
