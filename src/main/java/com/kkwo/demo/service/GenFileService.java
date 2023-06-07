@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.google.common.base.Joiner;
+import com.kkwo.demo.repository.EventRepository;
 import com.kkwo.demo.repository.GenFileRepository;
 import com.kkwo.demo.util.Ut;
 import com.kkwo.demo.vo.GenFile;
@@ -27,6 +28,8 @@ public class GenFileService {
 
 	@Autowired
 	private GenFileRepository genFileRepository;
+	@Autowired
+	private EventRepository eventRepository;
 
 	public ResultData saveMeta(String relTypeCode, int relId, String typeCode, String type2Code, int fileNo,
 			String originFileName, String fileExtTypeCode, String fileExtType2Code, String fileExt, int fileSize,
@@ -80,7 +83,8 @@ public class GenFileService {
 
 		ResultData saveMetaRd = saveMeta(relTypeCode, relId, typeCode, type2Code, fileNo, originFileName,
 				fileExtTypeCode, fileExtType2Code, fileExt, fileSize, fileDir);
-		int newGenFileId = (int) saveMetaRd.getBody().get("id");
+//		int newGenFileId = (int) saveMetaRd.getBody().get("id");
+		int newEventId = eventRepository.getLastInsertId();
 
 		// 새 파일이 저장될 폴더(io파일) 객체 생성
 		String targetDirPath = genFileDirPath + "/" + relTypeCode + "/" + fileDir;
@@ -91,7 +95,7 @@ public class GenFileService {
 			targetDir.mkdirs();
 		}
 
-		String targetFileName = newGenFileId + "." + fileExt;
+		String targetFileName = newEventId + "." + fileExt;
 		String targetFilePath = targetDirPath + "/" + targetFileName;
 
 		// 파일 생성(업로드된 파일을 지정된 경로롤 옮김)
@@ -101,7 +105,7 @@ public class GenFileService {
 			return new ResultData("F-3", "파일저장에 실패하였습니다.");
 		}
 
-		return new ResultData("S-1", "파일이 생성되었습니다.", "id", newGenFileId, "fileRealPath", targetFilePath, "fileName",
+		return new ResultData("S-1", "파일이 생성되었습니다.", "id", newEventId, "fileRealPath", targetFilePath, "fileName",
 				targetFileName, "fileInputName", fileInputName);
 	}
 

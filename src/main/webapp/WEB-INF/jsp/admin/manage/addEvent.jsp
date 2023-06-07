@@ -112,7 +112,7 @@
 			<div class="image_box flex fd-c">
 				<div class="input_img">
 					<label for="image_input">Click here &nbsp;<i class="fa-regular fa-image" style="color: #000000;"></i></label>
-					<input name="file__article__0__extra__Img__1" type="file" id="image_input"/>
+					<input name="file__event__0__extra__Img__1" type="file" id="image_input"/>
 				</div>
 				<div class="preview">
 					<img id="preview_img" src="#" alt="" />

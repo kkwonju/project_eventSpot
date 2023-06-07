@@ -75,7 +75,7 @@
 				<ul class="flex">
 					<li>${event.id}</li>
 					<li>
-						<img src="/resource/image/image_${event.id}.jpg" alt="" />
+						<img src="${rq.getImgUri(event.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
 					</li>
 					<li>${event.regDate}</li>
 					<li>${event.updateDate}</li>
