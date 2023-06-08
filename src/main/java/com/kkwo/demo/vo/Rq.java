@@ -122,7 +122,7 @@ public class Rq {
 	}
 	
 	public String getImgUri(int id) {
-		return "/common/genFile/file/article/" + id + "/extra/Img/1";
+		return "/common/genFile/file/event/" + id + "/extra/Img/1";
 	}
 
 	public String getProfileFallbackImgUri() {
