@@ -75,7 +75,7 @@
 							</a>
 						</li>
 						<li class="js_search_box">
-							<form action="../event/list">
+							<form action="../event/foundList">
 								<input id="js_input_searchKeyword" name="searchKeyword"
 									autocomplete="off" type="text" placeholder="검색어를 입력하세요"
 									value="${param.searchKeyword}" />
@@ -86,9 +86,9 @@
 								<a href="/usr/bookmark/list">BOOKMARK</a>
 							</li>
 						</c:if>
-						<li>
-							<a href="/usr/schedule/list">SCHEDULE</a>
-						</li>
+<!-- 						<li> -->
+<!-- 							<a href="/usr/schedule/list">SCHEDULE</a> -->
+<!-- 						</li> -->
 						<li class="js_menu_toggle_box">
 							<a class="js_menu_toggle">
 								<i class="fas fa-sharp fa-regular fa-bars"></i>

@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<section class="center list">
+	<div class="center_box con" id="center_box">
+		<c:forEach var="event" items="${events}" varStatus="loop">
+			<div class="content_box">
+				<div class="contents flex">
+					<div class="location_box">${event.location }</div>
+					<div class="img_box flex">
+						<a class="detail_btn flex" href="javascript:popup(${event.id});"
+							onclick="getReplyList(${event.id});">
+							<img src="${rq.getImgUri(event.id)}" alt="image" />
+						</a>
+					</div>
+					<div class="reply_box pl-5" id="reply_box_${event.id}"></div>
+				</div>
+			</div>
+			<div class="detail_bg" id="detail_bg_${event.id}"></div>
+			<div class="detail_box" id="detail_${event.id}">
+				<div class="flex">
+					<div class="dt_content_box">
+						<div class="dt_img">
+							<img src="${rq.getImgUri(event.id)}" alt="" />
+						</div>
+					</div>
+					<div class="dt_reply_box flex fd-c">
+						<a class="side_btn exit_btn">
+							<i class="fa-solid fa-xmark"></i>
+						</a>
+						<a
+							href="http://ticket.interpark.com/TiKi/Special/TPRegionReserve.asp?Region=42061&RegionName=%B4%EB%C0%FC"
+							target="_blank" class="side_btn reservation_btn">예매</a>
+						<c:if test="${rq.logined}">
+							<a href="/usr/bookmark/setBookmark?relId=${event.id}" class="side_btn bookmark_btn">
+								<i class="unbookmarked fa-regular fa-bookmark"></i>
+								<i class="bookmarked fa-solid fa-bookmark"></i>
+							</a>
+						</c:if>
+						<div class="dt_location flex">${event.location }</div>
+						<div class="dt_content_body"></div>
+						<div class="dt_reply" id="dt_reply_${event.id}"></div>
+						<c:if test="${rq.logined }">
+							<div class="dt_reply_edit">
+								<form onsubmit="writeReply(${event.id}); return false;">
+									<div class="flex flex-ai-c">
+										<input type="hidden" id="reply_memberId_${event.id}" name="memberId"
+											value="${rq.loginedMemberId}" /><input type="hidden"
+											id="reply_relId_${event.id}" name="relId" value="${event.id}" />
+										<textarea autofocus autocomplete="off" id="reply_body_${event.id}"
+											name="body" style="resize: none;" placeholder="댓글달기"
+											onkeydown="handleKeyDown(event, ${event.id})"></textarea>
+										<button onclick="writeReply(${event.id});" type="button">게시</button>
+									</div>
+								</form>
+							</div>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+		<c:if test="${empty events}">
+			<div class="no_events">
+				<span>NO RESULTS FOUND</span>
+			</div>
+		</c:if>
+	</div>
+</section>
+

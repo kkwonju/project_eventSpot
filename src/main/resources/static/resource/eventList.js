@@ -28,7 +28,7 @@ function displayReplies(replies) {
 			+ '</span> <span class="reply_body">' + reply.body
 			+ '</span>' + '<div class="reply_add">' + '<span>'
 			+ reply.regDate.substring(5, 10) + '</span>'
-			+ '<a href="#"> reply</a>' + '</div>' + '</div>';
+			+ '</div>' + '</div>';
 		replyContainer.append(replyHtml);
 	});
 }
@@ -47,7 +47,7 @@ function displayReplyOnEventList(replies, num){
 			+ '</span> <span class="reply_body">' + reply.body
 			+ '</span>' + '<div class="reply_add">' + '<span>'
 			+ reply.regDate.substring(5, 10) + '</span>'
-			+ '<a href="#"> reply</a>' + '</div>' + '</div>';
+			+ '</div>' + '</div>';
 		replyContainer.append(replyHtml);
 	});
 }
@@ -112,7 +112,7 @@ function displayEvent(events, loginedMemberId) {
 				+ 		'<div class="location_box">' + event.location + '</div>'
 				+ 		'<div class="img_box flex">'
 				+ 			'<a class="detail_btn flex" href="javascript:popup(' + event.id + ');" onclick="getReplyList(' + event.id + ');">'
-				+ 				'<img src="/resource/image/image_' + event.id + '.jpg" alt="image" />'
+				+ 				'<img src="${rq.getImgUri(' + event.id + '.jpg)}" alt="image" />'
 				+ 			'</a>'
 				+ 		'</div>'
 				+ 		'<div class="reaction_box">'
@@ -172,13 +172,13 @@ function displayEvent(events, loginedMemberId) {
 function handleKeyDown(e, eventId) {
   if (e.keyCode === 13) { // Enter 키의 keyCode는 13입니다
     e.preventDefault(); // 기본 동작인 줄바꿈을 막습니다
-    enterReply(eventId); // 특정 메서드를 실행합니다
+    writeReply(eventId); // 특정 메서드를 실행합니다
   }
 }
 
-function enterReply(eventId) {
-	writeReply(eventId);
-}
+//function enterReply(eventId) {
+//	writeReply(eventId);
+//}
 
 // 스크롤 이벤트 리스너 추가
 window.addEventListener('scroll', function() {

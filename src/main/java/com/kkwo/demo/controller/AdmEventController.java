@@ -83,8 +83,6 @@ public class AdmEventController {
 			return Ut.jsHistoryBack("진행 시간을 입력해주세요");
 		}
 		
-		System.out.println("됌?----------------------------");
-
 		// 이벤트 추가를 시도하고 추가 결과에 따라 처리 ( 실패 : -1 )
 		int eventId = eventService.addEvent(beginDt, endDt, genreId, location, title, detail, duration);
 

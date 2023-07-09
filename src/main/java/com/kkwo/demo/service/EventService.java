@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kkwo.demo.repository.EventRepository;
+import com.kkwo.demo.vo.Bookmark;
 import com.kkwo.demo.vo.Event;
 
 @Service
@@ -132,6 +133,10 @@ public class EventService {
 
 	public List<Event> getEvents2(int offset, int limit) {
 		return eventRepository.getEvents2(offset, limit);
+	}
+
+	public List<Event> getBookmarkList(int actorId) {
+		return eventRepository.getBookmarkList(actorId);
 	}
 
 }

@@ -9,6 +9,10 @@ import com.kkwo.demo.vo.Bookmark;
 @Mapper
 public interface BookmarkRepository {
 
-	public List<Bookmark> getBookmarkList(int actorid);
+	public int getBookmarkCountByMemberId(int actorId, int relId);
+
+	public int setBookmark(int actorId, int relId);
+
+	public int unsetBookmark(int actorId, int relId);
 
 }

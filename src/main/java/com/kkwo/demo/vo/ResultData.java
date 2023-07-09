@@ -25,6 +25,10 @@ public class ResultData {
 	private String data2Name;
 	@Getter
 	private Object data2;
+	@Getter
+	private String data3Name;
+	@Getter
+	private Object data3;
 	
 	
 	private Map<String, Object> body;

@@ -32,6 +32,11 @@ public class AdmHomeController {
 		this.memberService = memberService;
 		this.scheduleService = scheduleService;
 	}
+	
+	@RequestMapping("/admin")
+	public String showRoot() {
+		return "redirect:/admin/home/search";
+	}
 
 	/**
 	 * TB_EVENT, TB_MEMBER, TB_SCHEDULE / 조회

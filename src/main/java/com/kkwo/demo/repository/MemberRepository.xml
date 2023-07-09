@@ -20,6 +20,14 @@
 		TB_MEMBER
 		WHERE loginId = #{loginId};
 	</select>
+	
+	<select id="getAdminByLoginId" resultType="Member">
+		SELECT *
+		FROM
+		TB_MEMBER
+		WHERE loginId = #{loginId}
+		AND authLevel = 5;
+	</select>
 
 	<select id="getMemberByEmail" resultType="Member">
 		SELECT *

@@ -40,4 +40,13 @@ public interface EventRepository {
 			LIMIT #{offset}, #{limit}
 			""")
 	public List<Event> getEvents2(int offset, int limit);
+
+	@Select("""
+			SELECT *
+			FROM TB_EVENT E
+			INNER JOIN TB_BOOKMARK BM
+			ON E.id = BM.relId
+			WHERE BM.memberId = #{actorId};
+			""")
+	public List<Event> getBookmarkList(int actorId);
 }

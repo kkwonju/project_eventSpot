@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kkwo.demo.interceptor.BeforeActionInterceptor;
+import com.kkwo.demo.interceptor.NeedAdminLoginInterceptor;
 import com.kkwo.demo.interceptor.NeedLoginInterceptor;
 import com.kkwo.demo.interceptor.NeedLogoutInterceptor;
 
@@ -28,6 +29,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 	BeforeActionInterceptor beforeActionInterceptor;
 	@Autowired
 	NeedLoginInterceptor needLoginInterceptor;
+	@Autowired
+	NeedAdminLoginInterceptor needAdminLoginInterceptor;
 	@Autowired
 	NeedLogoutInterceptor needLogoutInterceptor;
 
@@ -54,5 +57,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/member/login");
 		ir.addPathPatterns("/usr/member/doLogin");
 		
+		ir = registry.addInterceptor(needAdminLoginInterceptor);
+		ir.addPathPatterns("/admin/home/**");
+		ir.addPathPatterns("/admin/manage/**");
 	}
 }

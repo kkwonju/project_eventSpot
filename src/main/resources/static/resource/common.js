@@ -59,16 +59,3 @@ function popup(index) {
 		$('body').css('overflow', 'auto');
 	})
 }
-
-// Collect 버튼 클릭 시 아이콘 변환
-//function changeIcon(index){
-//	if($('.js_collect_btn').hasClass('active')) {
-//		$('.js_collect_btn').removeClass('active');
-//		$('.selected').hide();
-//		$('.unselected').show();
-//	} else {
-//		$('.js_collect_btn').addClass('active');
-//		$('.selected').show();
-//		$('.unselected').hide();		
-//	}
-//}

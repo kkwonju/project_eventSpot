@@ -377,8 +377,11 @@ html[data-theme="dark"] .center {
 
 /* 장소 BOX 시작 */
 .list .contents > .location_box {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
 	padding: 15px 0 0 5px;
-	font-size: 0.95rem;
+	font-size: 1rem;
 }
 /* 장소 BOX 끝 */
 
@@ -417,22 +420,22 @@ html[data-theme="dark"] .center {
 
 
 /* 리액션 BOX 시작 */
-.list .contents > .reaction_box > .js_collect_btn {
-	font-size: 20px;
+.js_collect_btn {
+/* 	font-size: 18px; */
 	cursor: pointer;
 	background-color: transparent;
 	border: none;
 }
 
-.list .contents > .reaction_box > button > i {
+.js_collect_btn > i {
 	color: var(--primary-b-w);	
 }
 
-.list .contents > .reaction_box > button > .selected {
+.js_collect_btn > .bookmarked {
 	display: none;
 }
 
-.list .contents > .reaction_box > button:active {
+.js_collect_btn:active {
 	scale: 0.9;
 }
 
@@ -597,6 +600,15 @@ html[data-theme="dark"] .center {
 }
 
 .detail_box .dt_reply_box > .reservation_btn:hover {
+	width: 120px;
+}
+
+.detail_box .dt_reply_box > .bookmark_btn {
+	left: 311px;
+	top: 101px;
+}
+
+.detail_box .dt_reply_box > .bookmark_btn:hover {
 	width: 120px;
 }
 

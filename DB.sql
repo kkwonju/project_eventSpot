@@ -94,7 +94,7 @@ CREATE TABLE TB_GENRE(
     id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    `name` CHAR(50)
+    `name` CHAR(50) NOT NULL
 ) AUTO_INCREMENT = 1001;
 
 # TB_GENRE 데이터 생성
@@ -159,7 +159,7 @@ loginId = 'admin1',
 loginPw = 'admin123',
 authLevel = 7,
 nickname = 'kkwo',
-email = 'kkwo@naver.com';
+email = 'leeplus0414@naver.com';
 
 INSERT INTO TB_MEMBER
 SET regDate = NOW(),
@@ -292,6 +292,9 @@ relId = FLOOR(1 + RAND() * 6),
                 SUBSTRING('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', FLOOR(1 + RAND() * 62), 1));
 
 
+###################################
+
+## TB_BOOKMARK 테이블 생성
 CREATE TABLE TB_BOOKMARK (
 	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
@@ -322,7 +325,10 @@ eventId = 5;
 UPDATE TB_MEMBER
 SET loginPw = SHA2(loginPw,256);
 
-# 파일 테이블 추가
+
+###################################
+
+# TB_GENFILE 테이블 추가
 CREATE TABLE TB_GENFILE (
   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, # 번호
   regDate DATETIME DEFAULT NULL, # 작성날짜
@@ -345,7 +351,6 @@ CREATE TABLE TB_GENFILE (
 );
 
 ###################################
-
 ###################################
 
 SELECT LAST_INSERT_ID();
@@ -355,7 +360,7 @@ SELECT * FROM TB_SCHEDULE;
 SELECT * FROM TB_GENRE;
 SELECT * FROM TB_MEMBER;
 SELECT * FROM TB_REPLY;
-SELECT * FROM TB_COLLECTION;
+SELECT * FROM TB_BOOKMARK;
 SELECT * FROM TB_GENFILE;
 
 # 먼저 일어나

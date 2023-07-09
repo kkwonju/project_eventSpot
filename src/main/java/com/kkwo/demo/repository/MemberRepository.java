@@ -38,4 +38,7 @@ public interface MemberRepository {
 
 	// SELECT
 	Member getMemberByNickname(String nickname);
+
+	// SELECT
+	Member getAdminByLoginId(String loginId);
 }

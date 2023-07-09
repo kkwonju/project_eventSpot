@@ -3,7 +3,6 @@ package com.kkwo.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kkwo.demo.service.EventService;
 import com.kkwo.demo.service.ReplyService;
+import com.kkwo.demo.util.Ut;
 import com.kkwo.demo.vo.Event;
-import com.kkwo.demo.vo.Reply;
 import com.kkwo.demo.vo.ResultData;
 import com.kkwo.demo.vo.Rq;
 
@@ -34,7 +33,7 @@ public class UsrEventController {
 		this.replyService = replyService;
 	}
 
-	/**
+	/** 
 	 * TB_EVENT / 조회
 	 * 
 	 * @param searchKeyword 검색어 (기본값 : "")
@@ -42,8 +41,22 @@ public class UsrEventController {
 	 * @return 사용자용 이벤트 리스트 페이지 반환
 	 */
 	@RequestMapping("/usr/event/list")
-	public String showEventlist2(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
+	public String showEventlist2(Model model) {
+		List<Event> events = eventService.getEvents();
+		model.addAttribute("events", events);
 		return "usr/event/list";
+	}
+
+	@RequestMapping("/usr/event/foundList")
+	public String showFoundList(Model model, @RequestParam(defaultValue = "") String searchKeyword) {
+		if (Ut.isEmpty(searchKeyword)) {
+			return "redirect:/usr/event/list";
+		}
+		List<Event> events = eventService.getForPrintEvents(searchKeyword);
+		int eventsCnt = events.size();
+		model.addAttribute("events", events);
+		model.addAttribute("eventsCnt", eventsCnt);
+		return "usr/event/foundList";
 	}
 
 	@RequestMapping("/usr/event/getEventList")

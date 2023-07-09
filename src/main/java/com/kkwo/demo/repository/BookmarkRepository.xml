@@ -3,10 +3,25 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kkwo.demo.repository.BookmarkRepository">
-	<select id="getBookmarkList" resultType="Bookmark">
-		SELECT *
-		FROM TB_BOOKMARK
-		ORDER BY regDate DESC;
+	<select id="getBookmarkCountByMemberId" resultType="int">
+		SELECT COUNT(BM.id)
+		FROM TB_BOOKMARK AS BM
+		WHERE BM.memberId = #{actorId}
+		AND BM.relId = #{relId};
 	</select>
+	
+	<insert id="setBookmark">
+		INSERT INTO TB_BOOKMARK
+		SET regDate = NOW(),
+		updateDate = NOW(),
+		memberId = #{actorId},
+		relId = #{relId};
+	</insert>
+	
+	<delete id="unsetBookmark">
+		DELETE FROM TB_BOOKMARK
+		WHERE memberId = #{actorId}
+		AND relId = #{relId};
+	</delete>
 
 </mapper>

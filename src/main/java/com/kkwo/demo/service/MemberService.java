@@ -45,7 +45,9 @@ public class MemberService {
 			return ResultData.buildResultData("F-E", "이미 존재하는 이메일입니다");
 		}
 		
-		int affectedRow = memberRepository.doJoinMember(loginId, loginPw, nickname, email);
+		String encryptedPassword = Ut.sha256(loginPw);
+		
+		int affectedRow = memberRepository.doJoinMember(loginId, encryptedPassword, nickname, email);
 		
 		if(affectedRow != 1) {
 			return ResultData.buildResultData("F-J", "회원가입 실패");
@@ -69,12 +71,31 @@ public class MemberService {
 		return ResultData.buildResultData("S-1", "로그인 성공");
 	}
 	
+
+	public ResultData doLoginAdmin(String loginId, String loginPw) {
+		Member member = getAdminByLoginId(loginId);
+		
+		if(member == null) {
+			return ResultData.buildResultData("F-N", "아이디 또는 비밀번호가 일치하지 않습니다");
+		}
+		
+		if(!(member.getLoginPw().equals(Ut.sha256(loginPw)))) {
+			return ResultData.buildResultData("F-M", "아이디 또는 비밀번호가 일치하지 않습니다");
+		}
+		
+		return ResultData.buildResultData("S-1", "로그인 성공");
+	}
+	
 	public Member getMemberById(int id) {
 		return memberRepository.getMemberById(id);
 	}
 
 	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
+	}
+	
+	public Member getAdminByLoginId(String loginId) {
+		return memberRepository.getAdminByLoginId(loginId);
 	}
 	
 	public Member getMemberByEmail(String email) {
@@ -139,4 +160,5 @@ public class MemberService {
 	private void setTempPassword(Member actor, String tempPassword) {
 		memberRepository.doModify(actor.getId(), null, Ut.sha256(tempPassword));
 	}
+
 }
