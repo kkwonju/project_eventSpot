@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../common/head.jspf"%>
 
+<script src="/resource/common2.js" defer></script>
+
 <%@ include file="../common/list.jspf"%>
 
 <%@ include file="../common/foot.jspf"%>

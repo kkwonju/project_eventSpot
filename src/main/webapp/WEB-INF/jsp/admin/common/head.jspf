@@ -52,17 +52,14 @@
 	<section class="header">
 		<nav class="top_bar">
 			<ul>
-				<li>
-					<a href="/admin/home/search">SEARCH</a>
-				</li>
+<!-- 				<li> -->
+<!-- 					<a href="/admin/home/search">SEARCH</a> -->
+<!-- 				</li> -->
 				<li>
 					<a href="/admin/manage/eventList">EVENT</a>
 				</li>
 				<li>
 					<a href="/admin/manage/memberList">MEMBER</a>
-				</li>
-				<li>
-					<a href="/admin/manage/schedule">SCHEDULE</a>
 				</li>
 				<c:if test="${rq.logined }">
 					<li>

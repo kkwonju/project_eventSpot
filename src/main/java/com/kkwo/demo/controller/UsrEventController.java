@@ -36,8 +36,6 @@ public class UsrEventController {
 	/** 
 	 * TB_EVENT / 조회
 	 * 
-	 * @param searchKeyword 검색어 (기본값 : "")
-	 * 
 	 * @return 사용자용 이벤트 리스트 페이지 반환
 	 */
 	@RequestMapping("/usr/event/list")
@@ -68,5 +66,19 @@ public class UsrEventController {
 		ResultData Rd = ResultData.buildResultData("S-1", "", "events", events);
 		Rd.setData2("loginedMemberId", loginedMemberId);
 		return Rd;
+	}
+	
+	@RequestMapping("/usr/event/kakaoAPI")
+	public String showMap() {
+		return "usr/event/map";
+	}
+	
+	@RequestMapping("/usr/event/getLocation")
+	@ResponseBody
+	public ResultData getLocation(int eventId) {
+		Event event = eventService.getEventById(eventId);
+		ResultData Rd = ResultData.buildResultData("S-1", "성공", "event", event);
+		return Rd;
+		
 	}
 }

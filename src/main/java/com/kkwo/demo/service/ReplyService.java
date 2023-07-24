@@ -73,9 +73,8 @@ public class ReplyService {
 	}
 
 	/* 댓글 삭제 */
-	public ResultData deleteReply(int id) {
+	public void deleteReply(int id) {
 		replyRepository.deleteReply(id);
-		return ResultData.buildResultData("S-1", Ut.f("%d번 댓글 삭제", id), "id", id);
 	}
 	
 	/* 출력용 댓글 가져오기 */

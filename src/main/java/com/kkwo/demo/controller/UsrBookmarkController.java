@@ -51,7 +51,7 @@ public class UsrBookmarkController {
 			Ut.jsHistoryBack("실패");
 		}
 
-		return Ut.jsReplace("저장됌", "/");
+		return Ut.jsReplace("Bookmark!", "/");
 	}
 	
 	@RequestMapping("/usr/bookmark/unsetBookmark")
@@ -68,7 +68,6 @@ public class UsrBookmarkController {
 			Ut.jsHistoryBack("실패");
 		}
 		
-		return Ut.jsReplace("제거됌", "/");
+		return Ut.jsReplace("remove", "/");
 	}
-
 }
